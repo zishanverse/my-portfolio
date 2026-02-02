@@ -8,12 +8,9 @@ import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ContainerTextFlip } from "@/components/ui/container-text-flip";
 
-// Dynamically import the 3D scene to avoid SSR issues with R3F
-const HeroScene = dynamic(() => import("@/components/3d/HeroScene"), {
-    ssr: false,
-    loading: () => <div className="h-[400px] w-full md:h-[600px] flex items-center justify-center text-muted-foreground">Loading 3D Experience...</div>
-});
+
 
 const Hero = () => {
     return (
@@ -25,11 +22,12 @@ const Hero = () => {
                     <div className="space-y-2">
                         <h2 className="text-xl md:text-2xl font-medium text-indigo-500">Hello, I&apos;m</h2>
                         <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-foreground">
-                            Jishan Khan
+                            Zishan Khan
                         </h1>
-                        <h2 className="text-3xl md:text-5xl font-semibold text-muted-foreground">
-                            Software Engineer
-                        </h2>
+                        <ContainerTextFlip
+                            words={["Full-Stack Dev.", "AI Integration", "DevOps", "Agentic AI"]}
+                            className="text-3xl md:text-5xl font-semibold text-muted-foreground"
+                        />
                     </div>
 
                     <p className="text-lg text-muted-foreground max-w-lg leading-relaxed">
@@ -55,7 +53,9 @@ const Hero = () => {
 
                 {/* 3D Scene */}
                 <div className="relative w-full h-full flex items-center justify-center">
-                    <HeroScene />
+
+                    {/* Placeholder for 3D Scene (now global) */}
+                    <div className="hidden lg:block w-full h-full" />
 
                     {/* Decorative Background Glow */}
                     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-indigo-500/20 rounded-full blur-[100px] -z-10" />

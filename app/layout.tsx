@@ -3,6 +3,7 @@ import { Outfit } from "next/font/google"; // Using Outfit as requested/planned 
 import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { ThemeProvider } from "@/components/providers/ThemeProvider";
 
 const outfit = Outfit({
   variable: "--font-outfit",
@@ -11,24 +12,24 @@ const outfit = Outfit({
 
 export const metadata: Metadata = {
   title: {
-    default: "jishan khan | Creative Developer",
-    template: "%s | jishan khan",
+    default: "Zishan Khan | Creative Developer",
+    template: "%s | Zishan Khan",
   },
   description: "A creative developer specializing in 3D web experiences, modern UI/UX, and scalable frontend architecture.",
   keywords: ["Creative Developer", "Frontend Engineer", "React", "Next.js", "Three.js", "Portfolio"],
-  authors: [{ name: "jishan khan" }],
-  creator: "jishan khan",
+  authors: [{ name: "Zishan Khan" }],
+  creator: "Zishan Khan",
   openGraph: {
     type: "website",
     locale: "en_US",
     url: "https://portfolio.example.com",
-    title: "jishan khan | Creative Developer",
+    title: "Zishan Khan | Creative Developer",
     description: "Building immersive digital experiences.",
-    siteName: "jishan khan Portfolio",
+    siteName: "Zishan Khan Portfolio",
   },
   twitter: {
     card: "summary_large_image",
-    title: "jishan khan | Creative Developer",
+    title: "Zishan Khan | Creative Developer",
     description: "Building immersive digital experiences.",
     creator: "@johndoe",
   },
@@ -44,15 +45,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
-        className={`${outfit.variable} antialiased min-h-screen flex flex-col`}
+        className={`${outfit.variable} antialiased min-h-screen flex flex-col transition-colors duration-300`}
       >
-        <Navbar />
-        <main className="flex-grow pt-20">
-          {children}
-        </main>
-        <Footer />
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <Navbar />
+          <main className="flex-grow pt-20">
+            {children}
+          </main>
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );

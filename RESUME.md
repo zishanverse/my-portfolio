@@ -1,4 +1,4 @@
-# Jishan Khan
+# Zishan Khan
 **Software Engineer**
 *Indore, MP* | *+919174996768* | *zishanverse@gmail.com*
 [LinkedIn](https://linkedin.com/in/zishan-khan-)

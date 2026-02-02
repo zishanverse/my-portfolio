@@ -73,7 +73,7 @@ const Contact = () => {
                     </div>
 
                     <footer className="pt-24 text-sm text-muted-foreground">
-                        <p>&copy; {new Date().getFullYear()} jishan khan. All rights reserved.</p>
+                        <p>&copy; {new Date().getFullYear()} Zishan Khan. All rights reserved.</p>
                     </footer>
                 </div>
             </div>

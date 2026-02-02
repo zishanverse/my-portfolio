@@ -1,33 +1,63 @@
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
 
 :root {
+  /* Platinum / Premium Light Theme */
+  --background: #fdfdfd;
+  --foreground: #0a0a0a;
+
+  --card: #ffffff;
+  --card-foreground: #0a0a0a;
+
+  --popover: #ffffff;
+  --popover-foreground: #0a0a0a;
+
+  --primary: #171717;
+  --primary-foreground: #fafafa;
+
+  --secondary: #f4f4f5;
+  --secondary-foreground: #18181b;
+
+  --muted: #f4f4f5;
+  --muted-foreground: #737373;
+  /* Neutral-500 */
+
+  --accent: #f4f4f5;
+  --accent-foreground: #18181b;
+
+  --destructive: #ef4444;
+  --destructive-foreground: #fafafa;
+
+  --border: #e5e5e5;
+  /* Neutral-200 - subtle but defined */
+  --input: #e5e5e5;
+  --ring: #0a0a0a;
+
+  --radius: 0.75rem;
+  /* Slightly more rounded for modern feel */
+}
+
+.dark {
+  /* Dark Mode (Zinc 950 based - Original) */
   --background: #09090b;
-  /* Zinc 950 */
   --foreground: #fafafa;
-  /* Zinc 50 */
   --card: #18181b;
-  /* Zinc 900 */
   --card-foreground: #fafafa;
   --popover: #09090b;
   --popover-foreground: #fafafa;
   --primary: #fafafa;
   --primary-foreground: #18181b;
   --secondary: #27272a;
-  /* Zinc 800 */
   --secondary-foreground: #fafafa;
   --muted: #27272a;
   --muted-foreground: #a1a1aa;
-  /* Zinc 400 */
   --accent: #27272a;
   --accent-foreground: #fafafa;
   --destructive: #ef4444;
-  /* Red 500 */
   --destructive-foreground: #fafafa;
   --border: #27272a;
   --input: #27272a;
   --ring: #d4d4d8;
-  /* Zinc 300 */
-  --radius: 0.5rem;
 }
 
 @theme inline {
@@ -85,13 +115,36 @@ body {
   color: var(--foreground);
   font-family: var(--font-outfit), sans-serif;
   overflow-x: hidden;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
 }
 
 /* Custom Utilities */
 .glass {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.03);
   backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.dark .glass {
+  background: rgba(0, 0, 0, 0.2);
   border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Premium Light Mode Glass */
+:root:not(.dark) .glass {
+  background: rgba(255, 255, 255, 0.75);
+  /* Frosted */
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.05),
+    0 2px 4px -1px rgba(0, 0, 0, 0.03),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+  /* Inner highlight */
 }
 
 h1 {

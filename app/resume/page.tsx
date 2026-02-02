@@ -24,7 +24,7 @@ import { cn } from "@/lib/utils";
 // --- Data ---
 
 const contactInfo = {
-    name: "Jishan Khan",
+    name: "Zishan Khan",
     title: "Software Engineer",
     location: "Indore, MP",
     phone: "+919174996768",

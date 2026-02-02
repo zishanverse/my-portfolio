@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useMotionValueEvent, useScroll, motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
+import { ThemeToggle } from "@/components/ui/ThemeToggle";
 
 export const Navbar = () => {
     const { scrollY } = useScroll();
@@ -43,11 +44,11 @@ export const Navbar = () => {
             transition={{ duration: 0.3 }}
             className={cn(
                 "fixed top-0 inset-x-0 mx-auto z-50 w-full px-6 py-4 transition-all duration-300",
-                lastScrollY > 50 ? "bg-black/50 backdrop-blur-md border-b border-white/10" : "bg-transparent"
+                lastScrollY > 50 ? "glass" : "bg-transparent"
             )}
         >
             <div className="max-w-7xl mx-auto flex items-center justify-between">
-                <Link href="/" className="text-xl font-bold tracking-tight text-white">
+                <Link href="/" className="text-xl font-bold tracking-tight text-foreground">
                     Portfolio<span className="text-indigo-500">.</span>
                 </Link>
 
@@ -57,18 +58,22 @@ export const Navbar = () => {
                         <Link
                             key={item.name}
                             href={item.link}
-                            className="text-sm font-medium text-gray-300 hover:text-white transition-colors"
+                            className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
                         >
                             {item.name}
                         </Link>
                     ))}
-                    <button className="px-4 py-2 bg-white text-black text-sm font-semibold rounded-full hover:bg-gray-200 transition-colors">
-                        Hire Me
-                    </button>
+                    <div className="flex items-center gap-4">
+                        <ThemeToggle />
+                        <button className="px-4 py-2 bg-white text-black text-sm font-semibold rounded-full hover:bg-gray-200 transition-colors">
+                            Hire Me
+                        </button>
+                    </div>
                 </div>
 
                 {/* Mobile Menu Toggle */}
-                <div className="md:hidden">
+                <div className="md:hidden flex items-center gap-4">
+                    <ThemeToggle />
                     <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="text-white">
                         {isMobileMenuOpen ? <X /> : <Menu />}
                     </button>

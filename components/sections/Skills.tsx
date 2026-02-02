@@ -75,7 +75,7 @@ const TiltCard = ({ children, className }: { children: React.ReactNode; classNam
                     transform: "translateZ(50px)",
                     transformStyle: "preserve-3d",
                 }}
-                className="w-full h-full bg-black/40 border border-white/10 rounded-xl p-8 backdrop-blur-sm shadow-xl flex flex-col gap-4"
+                className="w-full h-full glass rounded-xl p-8 flex flex-col gap-4"
             >
                 {children}
             </div>
@@ -89,7 +89,7 @@ const Skills = () => {
             {/* Background gradient blob */}
             <div className="absolute top-1/4 right-0 w-[500px] h-[500px] bg-indigo-500/10 rounded-full blur-[100px] -z-10" />
 
-            <div className="container mx-auto px-6">
+            <div className="container mx-auto px-6 relative z-20">
                 <div className="mb-16">
                     <h2 className="text-3xl font-bold tracking-tight text-foreground">Skills & Expertise</h2>
                     <p className="text-muted-foreground mt-2 text-lg">My creative and technical toolbox.</p>
@@ -106,7 +106,7 @@ const Skills = () => {
                                         {category.skills.map((skill) => (
                                             <span
                                                 key={skill}
-                                                className="px-3 py-1 text-sm bg-white/5 border border-white/10 rounded-full text-neutral-300 hover:bg-white/10 transition-colors cursor-default"
+                                                className="px-3 py-1 text-sm bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-full text-foreground/80 dark:text-neutral-300 hover:bg-black/10 dark:hover:bg-white/10 transition-colors cursor-default"
                                             >
                                                 {skill}
                                             </span>
