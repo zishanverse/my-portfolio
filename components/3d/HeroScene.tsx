@@ -19,7 +19,7 @@ export default function HeroScene() {
         gsap.set(splineRef.current, {
             x: "25vw", // Use viewport units for consistent screen positioning
             yPercent: 0,
-            scale: 1,
+            scale: 0.85, // Reduced from 1
             opacity: 1
         });
 
@@ -37,7 +37,7 @@ export default function HeroScene() {
         tl.to(splineRef.current, {
             x: "-25vw", // Move to Left
             yPercent: 20,
-            scale: 1,
+            scale: 0.85, // Reduced from 1
             duration: 0.2,
             ease: "power2.inOut"
         });
@@ -46,7 +46,7 @@ export default function HeroScene() {
         tl.to(splineRef.current, {
             x: "35vw",  // Move Right
             yPercent: 10,
-            scale: 0.8,
+            scale: 0.65, // Reduced from 0.8
             duration: 0.2,
             ease: "power2.inOut"
         });
@@ -55,7 +55,7 @@ export default function HeroScene() {
         tl.to(splineRef.current, {
             x: "-25vw", // Reduced shift to keep visible (same as About section)
             yPercent: 0,
-            scale: 0.8,
+            scale: 0.65, // Reduced from 0.8
             duration: 0.1,
             ease: "power2.inOut"
         });
@@ -64,7 +64,7 @@ export default function HeroScene() {
         tl.to(splineRef.current, {
             x: "-25vw", // Hold at visible position
             yPercent: 0,
-            scale: 0.8,
+            scale: 0.65, // Reduced from 0.8
             duration: 0.2,
             ease: "none"
         });
@@ -73,7 +73,7 @@ export default function HeroScene() {
         tl.to(splineRef.current, {
             x: "35vw",
             yPercent: 0,
-            scale: 0.8,
+            scale: 0.65, // Reduced from 0.8
             duration: 0.2,
             ease: "power2.inOut"
         });
@@ -82,7 +82,7 @@ export default function HeroScene() {
         tl.to(splineRef.current, {
             x: "0vw",   // Center specifically for Awards
             yPercent: 10,
-            scale: 0.9,
+            scale: 0.7, // Reduced from 0.9
             duration: 0.2,
             ease: "power2.inOut"
         });
