@@ -8,6 +8,7 @@ import { CometCard } from "@/components/ui/comet-card";
 import { TextHighlight } from "@/components/ui/hero-highlight";
 import { Trophy, Star, Medal } from "lucide-react";
 import { AchievementModal, AchievementData } from "./AchievementModal";
+import Image from "next/image";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -109,10 +110,12 @@ const Achievements = () => {
                                 >
                                     <div className="relative aspect-[4/3] w-full overflow-hidden">
                                         <div className="absolute inset-0 bg-indigo-500/10 group-hover:bg-indigo-500/0 transition-colors z-10" />
-                                        <img
+                                        <Image
                                             src={achievement.image}
                                             alt={achievement.title}
-                                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                            fill
+                                            className="object-cover transition-transform duration-500 group-hover:scale-110"
+                                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                                         />
                                         <div className="absolute top-4 right-4 bg-black/60 backdrop-blur-md border border-white/10 p-2 rounded-full z-20">
                                             <Trophy className="w-5 h-5 text-yellow-400" />
