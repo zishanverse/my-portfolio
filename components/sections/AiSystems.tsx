@@ -38,8 +38,8 @@ const AiSystems = () => {
             title: "AI Agent UI",
             value: "chat",
             content: (
-                <div className="w-full overflow-hidden relative h-full rounded-2xl p-10 text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-indigo-700 to-violet-900">
-                    <p className="mb-8 text-2xl">Interactive Agentic Interface</p>
+                <div className="w-full overflow-hidden relative h-full rounded-2xl p-4 md:p-10 text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-indigo-700 to-violet-900">
+                    <p className="mb-4 md:mb-8 text-2xl">Interactive Agentic Interface</p>
                     <AiChatDemo />
                 </div>
             ),
@@ -48,8 +48,8 @@ const AiSystems = () => {
             title: "Automation & Workflows",
             value: "automation",
             content: (
-                <div className="w-full overflow-hidden relative h-full rounded-2xl p-10 text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-purple-700 to-indigo-900">
-                    <p className="mb-8 text-2xl">Agentic Process Automation</p>
+                <div className="w-full overflow-hidden relative h-full rounded-2xl p-4 md:p-10 text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-purple-700 to-indigo-900">
+                    <p className="mb-4 md:mb-8 text-2xl">Agentic Process Automation</p>
                     <AutomationDemos />
                 </div>
             ),
@@ -69,7 +69,7 @@ const AiSystems = () => {
                 </p>
             </div>
 
-            <div className="h-[40rem] md:h-[50rem] [perspective:1000px] relative flex flex-col max-w-5xl mx-auto w-full items-start justify-start my-10 px-4">
+            <div className="h-[55rem] md:h-[50rem] [perspective:1000px] relative flex flex-col max-w-5xl mx-auto w-full items-start justify-start my-10 px-4">
                 <Tabs tabs={tabs} />
             </div>
 

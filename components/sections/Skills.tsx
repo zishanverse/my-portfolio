@@ -27,7 +27,7 @@ const skillCategories = [
 
 const Skills = () => {
     return (
-        <section id="skills" className="py-24 w-full bg-background relative overflow-hidden">
+        <section id="skills" className="py-12 md:py-24 w-full bg-background relative overflow-hidden">
             {/* Background gradient blob */}
             <div className="absolute top-1/4 right-0 w-[500px] h-[500px] bg-indigo-500/10 rounded-full blur-[100px] -z-10" />
 
@@ -37,11 +37,11 @@ const Skills = () => {
                     <p className="text-muted-foreground mt-2 text-lg">My creative and technical toolbox.</p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
                     {skillCategories.map((category) => (
                         <div key={category.title} className="h-full">
-                            <CardContainer className="inter-var">
-                                <CardBody className="bg-gray-50 relative group/card  dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] h-auto rounded-xl p-6 border  ">
+                            <CardContainer className="inter-var w-full">
+                                <CardBody className="bg-gray-50 relative group/card  dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-full max-w-[30rem] h-auto rounded-xl p-4 md:p-6 border  ">
                                     <CardItem
                                         translateZ="50"
                                         className="text-xl font-bold text-indigo-400 dark:text-white"
