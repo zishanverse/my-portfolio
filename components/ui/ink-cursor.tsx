@@ -1,13 +1,23 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 
 export const InkCursor = () => {
     const cursorRef = useRef<HTMLDivElement>(null);
+    const [isDesktop, setIsDesktop] = useState(false);
 
     useEffect(() => {
-        if (!cursorRef.current) return;
+        const checkWidth = () => {
+            setIsDesktop(window.innerWidth >= 800);
+        };
+        checkWidth();
+        window.addEventListener("resize", checkWidth);
+        return () => window.removeEventListener("resize", checkWidth);
+    }, []);
+
+    useEffect(() => {
+        if (!cursorRef.current || !isDesktop) return;
 
         // Configuration
         const amount = 20;
@@ -157,7 +167,9 @@ export const InkCursor = () => {
                 cursorRef.current.innerHTML = '';
             }
         };
-    }, []);
+    }, [isDesktop]);
+
+    if (!isDesktop) return null;
 
     return (
         <>
@@ -175,14 +187,16 @@ export const InkCursor = () => {
             {/* Cursor Container */}
             <div
                 ref={cursorRef}
-                className="fixed top-0 left-0 w-full h-full pointer-events-none z-[9999] mix-blend-difference"
+                className="fixed top-0 left-0 w-full h-full pointer-events-none z-[9999] mix-blend-difference hidden md:block"
                 style={{ filter: "url('#goo')" }}
             />
 
             {/* Global Styles to hide original cursor */}
             <style jsx global>{`
-            body, html, a, button, input {
-                cursor: none !important;
+            @media (min-width: 800px) {
+                body, html, a, button, input {
+                    cursor: none !important;
+                }
             }
         `}</style>
         </>

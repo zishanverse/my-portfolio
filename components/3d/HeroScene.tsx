@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Spline from '@splinetool/react-spline';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
@@ -11,9 +11,21 @@ gsap.registerPlugin(ScrollTrigger);
 export default function HeroScene() {
     const containerRef = useRef<HTMLDivElement>(null);
     const splineRef = useRef<HTMLDivElement>(null);
+    const [isDesktop, setIsDesktop] = useState(false);
+
+    useEffect(() => {
+        // Check initial width and set listener
+        const checkWidth = () => {
+            setIsDesktop(window.innerWidth >= 800);
+        };
+
+        checkWidth();
+        window.addEventListener('resize', checkWidth);
+        return () => window.removeEventListener('resize', checkWidth);
+    }, []);
 
     useGSAP(() => {
-        if (!containerRef.current || !splineRef.current) return;
+        if (!containerRef.current || !splineRef.current || !isDesktop) return;
 
         const mm = gsap.matchMedia();
 
@@ -98,50 +110,9 @@ export default function HeroScene() {
             });
         });
 
-        // MOBILE ANIMATION
-        mm.add("(max-width: 799px)", () => {
-            // Initial State (Centered, Smaller)
-            gsap.set(splineRef.current, {
-                x: "0vw",
-                yPercent: 0,
-                scale: 0.5,
-                opacity: 1
-            });
+    }, { scope: containerRef, dependencies: [isDesktop] });
 
-            const tl = gsap.timeline({
-                scrollTrigger: {
-                    trigger: "body",
-                    start: "top top",
-                    end: "bottom bottom",
-                    scrub: 1.5,
-                }
-            });
-
-            // Simple subtle move/fade for mobile
-            // 1. Fade out/in or slight movement to keep it dynamic but unobtrusive
-
-            // Move slightly down and fade out during content heavy sections
-            tl.to(splineRef.current, {
-                yPercent: 10,
-                scale: 0.45,
-                duration: 0.2
-            });
-
-            // Keep it relatively static but present
-            tl.to(splineRef.current, {
-                yPercent: 20,
-                scale: 0.45,
-                duration: 0.8
-            });
-
-            // Fade out at end
-            tl.to(splineRef.current, {
-                opacity: 0,
-                duration: 0.1
-            });
-        });
-
-    }, { scope: containerRef });
+    if (!isDesktop) return null;
 
     return (
         <div ref={containerRef} className="fixed inset-0 z-10 pointer-events-none flex items-center justify-center">
