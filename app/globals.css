@@ -181,11 +181,18 @@ small {
   font-weight: 500;
 }
 
-/* Hide Spline Logo/Watermark */
-a[href="https://spline.design"],
-a[href="https://spline.design/"] {
+/* Hide Spline Logo/Watermark - Robust */
+#spline-watermark,
+a[href^="https://spline.design"],
+a[href*="spline.design"],
+[class*="spline-watermark"],
+canvas+a {
   display: none !important;
   opacity: 0 !important;
   visibility: hidden !important;
   pointer-events: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  position: absolute !important;
+  z-index: -9999 !important;
 }

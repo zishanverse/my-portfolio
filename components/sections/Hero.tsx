@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/Button";
+import { Button as MovingButton } from "@/components/ui/moving-border";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { ArrowRight, FileText } from "lucide-react";
@@ -36,18 +37,24 @@ const Hero = () => {
                     </p>
 
                     <div className="flex flex-wrap gap-4 mt-4">
-                        <Button size="lg" className="rounded-full group">
+                        <MovingButton
+                            borderRadius="1.75rem"
+                            className="bg-background text-foreground border-neutral-200 dark:border-slate-800"
+                        >
                             <Link href="#projects" className="flex items-center gap-2">
                                 View Projects
                                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                             </Link>
-                        </Button>
-                        <Button size="lg" variant="outline" className="rounded-full">
+                        </MovingButton>
+                        <MovingButton
+                            borderRadius="1.75rem"
+                            className="bg-background text-foreground border-neutral-200 dark:border-slate-800"
+                        >
                             <Link href="/resume" className="flex items-center gap-2">
                                 <FileText className="w-4 h-4" />
                                 Resume
                             </Link>
-                        </Button>
+                        </MovingButton>
                     </div>
                 </div>
 

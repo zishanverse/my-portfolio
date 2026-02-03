@@ -1,8 +1,8 @@
 "use client";
 
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import React, { useRef } from "react";
 import { cn } from "@/lib/utils";
+import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
 
 const skillCategories = [
     {
@@ -23,65 +23,7 @@ const skillCategories = [
     },
 ];
 
-const TiltCard = ({ children, className }: { children: React.ReactNode; className?: string }) => {
-    const ref = useRef<HTMLDivElement>(null);
 
-    const x = useMotionValue(0);
-    const y = useMotionValue(0);
-
-    const mouseXSpring = useSpring(x);
-    const mouseYSpring = useSpring(y);
-
-    const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["15deg", "-15deg"]);
-    const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-15deg", "15deg"]);
-
-    const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-        if (!ref.current) return;
-
-        const rect = ref.current.getBoundingClientRect();
-
-        const width = rect.width;
-        const height = rect.height;
-
-        const mouseX = e.clientX - rect.left;
-        const mouseY = e.clientY - rect.top;
-
-        const xPct = mouseX / width - 0.5;
-        const yPct = mouseY / height - 0.5;
-
-        x.set(xPct);
-        y.set(yPct);
-    };
-
-    const handleMouseLeave = () => {
-        x.set(0);
-        y.set(0);
-    };
-
-    return (
-        <motion.div
-            ref={ref}
-            onMouseMove={handleMouseMove}
-            onMouseLeave={handleMouseLeave}
-            style={{
-                rotateY,
-                rotateX,
-                transformStyle: "preserve-3d",
-            }}
-            className={cn("relative w-full h-full", className)}
-        >
-            <div
-                style={{
-                    transform: "translateZ(50px)",
-                    transformStyle: "preserve-3d",
-                }}
-                className="w-full h-full glass rounded-xl p-8 flex flex-col gap-4"
-            >
-                {children}
-            </div>
-        </motion.div>
-    );
-};
 
 const Skills = () => {
     return (
@@ -97,12 +39,20 @@ const Skills = () => {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {skillCategories.map((category) => (
-                        <div key={category.title} className="h-full min-h-[300pxPerspective]">
-                            {/* Perspective container needed for 3D effect */}
-                            <div style={{ perspective: "1000px" }} className="h-full">
-                                <TiltCard>
-                                    <h3 className="text-xl font-bold text-indigo-400">{category.title}</h3>
-                                    <div className="flex flex-wrap gap-2 mt-2">
+                        <div key={category.title} className="h-full">
+                            <CardContainer className="inter-var">
+                                <CardBody className="bg-gray-50 relative group/card  dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] h-auto rounded-xl p-6 border  ">
+                                    <CardItem
+                                        translateZ="50"
+                                        className="text-xl font-bold text-indigo-400 dark:text-white"
+                                    >
+                                        {category.title}
+                                    </CardItem>
+                                    <CardItem
+                                        as="div"
+                                        translateZ="60"
+                                        className="flex flex-wrap gap-2 mt-4"
+                                    >
                                         {category.skills.map((skill) => (
                                             <span
                                                 key={skill}
@@ -111,9 +61,9 @@ const Skills = () => {
                                                 {skill}
                                             </span>
                                         ))}
-                                    </div>
-                                </TiltCard>
-                            </div>
+                                    </CardItem>
+                                </CardBody>
+                            </CardContainer>
                         </div>
                     ))}
                 </div>
