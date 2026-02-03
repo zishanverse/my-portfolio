@@ -4,6 +4,7 @@ import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
+import { InkCursor } from "@/components/ui/ink-cursor";
 
 const outfit = Outfit({
   variable: "--font-outfit",
@@ -55,6 +56,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <InkCursor />
           <Navbar />
           <main className="flex-grow pt-20">
             {children}
