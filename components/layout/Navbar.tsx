@@ -80,11 +80,14 @@ export const Navbar = () => {
                         </div>
                     </div>
 
-                    {/* Mobile Menu Toggle */}
                     <div className="md:hidden flex items-center gap-4">
                         <ThemeToggle />
-                        <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="text-white">
-                            {isMobileMenuOpen ? <X /> : <Menu />}
+                        <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+                            {isMobileMenuOpen ? (
+                                <X className="!text-black dark:!text-white" />
+                            ) : (
+                                <Menu className="!text-black dark:!text-white" />
+                            )}
                         </button>
                     </div>
                 </div>
