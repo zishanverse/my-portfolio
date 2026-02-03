@@ -54,3 +54,9 @@ npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser.
+
+## 📝 TODO List
+
+1.  Add personal photo
+2.  Project UI screenshost img with route for project description and prototype
+3.  3d section

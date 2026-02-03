@@ -1,10 +1,16 @@
 "use client";
 
 import { useEffect, useRef, useState } from 'react';
-import Spline from '@splinetool/react-spline';
+import dynamic from 'next/dynamic';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+// Dynamic import for Spline
+const Spline = dynamic(() => import('@splinetool/react-spline'), {
+    ssr: false,
+    loading: () => null, // Or a placeholder spinner
+});
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -14,14 +20,23 @@ export default function HeroScene() {
     const [isDesktop, setIsDesktop] = useState(false);
 
     useEffect(() => {
-        // Check initial width and set listener
+        let timeoutId: NodeJS.Timeout;
+
         const checkWidth = () => {
             setIsDesktop(window.innerWidth >= 800);
         };
 
+        const debouncedCheckWidth = () => {
+            clearTimeout(timeoutId);
+            timeoutId = setTimeout(checkWidth, 150); // Debounce resize by 150ms
+        };
+
         checkWidth();
-        window.addEventListener('resize', checkWidth);
-        return () => window.removeEventListener('resize', checkWidth);
+        window.addEventListener('resize', debouncedCheckWidth);
+        return () => {
+            window.removeEventListener('resize', debouncedCheckWidth);
+            clearTimeout(timeoutId);
+        };
     }, []);
 
     useGSAP(() => {
@@ -106,7 +121,8 @@ export default function HeroScene() {
             // 6. Fade out at end
             tl.to(splineRef.current, {
                 opacity: 0,
-                duration: 0.1
+                duration: 0.1,
+                pointerEvents: "none" // Disable interaction
             });
         });
 

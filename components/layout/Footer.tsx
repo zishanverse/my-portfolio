@@ -4,7 +4,7 @@ import { Github, Twitter, Linkedin, Mail } from "lucide-react";
 
 export const Footer = () => {
     return (
-        <footer className="w-full bg-black border-t border-white/10 py-12 px-6">
+        <footer className="w-full bg-black border-t border-white/10 py-12 px-6 relative z-50">
             <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
                 <div className="flex flex-col gap-2">
                     <h3 className="text-xl font-bold text-white">Portfolio.</h3>

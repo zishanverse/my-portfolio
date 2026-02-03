@@ -82,7 +82,7 @@ export const Navbar = () => {
 
                     <div className="md:hidden flex items-center gap-4">
                         <ThemeToggle />
-                        <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+                        <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} aria-label="Toggle mobile menu">
                             {isMobileMenuOpen ? (
                                 <X className="!text-black dark:!text-white" />
                             ) : (
