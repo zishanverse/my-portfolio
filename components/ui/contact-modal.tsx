@@ -35,15 +35,34 @@ const ContactModal = ({ onClose }: ContactModalProps) => {
         );
     }, { scope: modalRef });
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const [isLoading, setIsLoading] = useState(false);
+
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        const subject = encodeURIComponent(`Hire Me Inquiry: ${formData.name}`);
-        const body = encodeURIComponent(
-            `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
-        );
-        window.location.href = `mailto:zishanverse@gmail.com?subject=${subject}&body=${body}`;
-        // Verify with user if they want to close after send or keep open
-        // onClose(); 
+        setIsLoading(true);
+
+        try {
+            const response = await fetch('/api/contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            });
+
+            if (response.ok) {
+                alert('Message sent successfully!');
+                setFormData({ name: "", email: "", message: "" });
+                onClose();
+            } else {
+                alert('Failed to send message. Please try again.');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert('Something went wrong. Please try again later.');
+        } finally {
+            setIsLoading(false);
+        }
     };
 
     return (
@@ -110,15 +129,15 @@ const ContactModal = ({ onClose }: ContactModalProps) => {
                             <Button type="button" variant="outline" onClick={onClose}>
                                 Cancel
                             </Button>
-                            <Button type="submit" className="gap-2">
-                                <Send className="w-4 h-4" />
-                                Send Proposal
+                            <Button type="submit" className="gap-2" disabled={isLoading}>
+                                {isLoading ? null : <Send className="w-4 h-4" />}
+                                {isLoading ? "Sending..." : "Send Proposal"}
                             </Button>
                         </div>
                     </form>
                 </div>
-            </div>
-        </div>
+            </div >
+        </div >
     );
 };
 
