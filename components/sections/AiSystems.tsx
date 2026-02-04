@@ -38,7 +38,7 @@ const AiSystems = () => {
             title: "AI Agent UI",
             value: "chat",
             content: (
-                <div className="w-full overflow-hidden relative h-full rounded-2xl p-4 md:p-10 text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-indigo-700 to-violet-900">
+                <div className="w-full overflow-hidden relative h-full rounded-2xl p-4 md:p-10 text-xl md:text-4xl font-bold text-white bg-black/40 dark:bg-black/40 backdrop-blur-md border border-white/10 shadow-lg shadow-indigo-500/10">
                     <p className="mb-4 md:mb-8 text-2xl">Interactive Agentic Interface</p>
                     <AiChatDemo />
                 </div>
@@ -48,7 +48,7 @@ const AiSystems = () => {
             title: "Automation & Workflows",
             value: "automation",
             content: (
-                <div className="w-full overflow-hidden relative h-full rounded-2xl p-4 md:p-10 text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-purple-700 to-indigo-900">
+                <div className="w-full overflow-hidden relative h-full rounded-2xl p-4 md:p-10 text-xl md:text-4xl font-bold text-white bg-black/40 dark:bg-black/40 backdrop-blur-md border border-white/10 shadow-lg shadow-purple-500/10">
                     <p className="mb-4 md:mb-8 text-2xl">Agentic Process Automation</p>
                     <AutomationDemos />
                 </div>
@@ -57,13 +57,13 @@ const AiSystems = () => {
     ];
 
     return (
-        <section ref={containerRef} className="py-24 w-full bg-background relative overflow-hidden flex flex-col items-center">
+        <section ref={containerRef} className="py-24 w-full bg-background dark:bg-transparent relative overflow-hidden flex flex-col items-center">
 
-            <div ref={textRef} className="text-center space-y-4 mb-12 z-10 px-4">
-                <TextHighlight className="text-3xl md:text-5xl font-bold tracking-tight text-foreground">
+            <div ref={textRef} className="text-center space-y-4 mb-24 z-10 px-4">
+                <TextHighlight className="text-3xl md:text-5xl font-bold tracking-tight text-foreground dark:text-white">
                     Next-Gen AI Systems
                 </TextHighlight>
-                <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+                <p className="text-muted-foreground dark:text-gray-200 text-lg max-w-2xl mx-auto mt-5">
                     Exploring the frontier of Agentic AI, Large Language Models, and intelligent automation.
                     Switch tabs below to see my work in action.
                 </p>

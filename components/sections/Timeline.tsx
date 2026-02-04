@@ -79,10 +79,10 @@ const TimelineCard = ({ item, index }: { item: TimelineItem; index: number }) =>
 
 const Timeline = () => {
     return (
-        <section id="experience" className="py-24 bg-background w-full overflow-hidden">
+        <section id="experience" className="py-24 bg-background dark:bg-transparent w-full overflow-hidden">
             <div className="container mx-auto px-6">
                 <div className="mb-16 text-center">
-                    <h2 className="text-3xl font-bold tracking-tight text-foreground">Experience & Education</h2>
+                    <h2 className="text-3xl font-bold tracking-tight text-foreground dark:text-white">Experience & Education</h2>
                     <p className="text-muted-foreground mt-2 text-lg">My professional journey so far.</p>
                 </div>
 

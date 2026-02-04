@@ -5,6 +5,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import { InkCursor } from "@/components/ui/ink-cursor";
+import { BackgroundGradientAnimation } from "@/components/ui/background-gradient-animation";
 
 const outfit = Outfit({
   variable: "--font-outfit",
@@ -48,7 +49,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${outfit.variable} antialiased min-h-screen flex flex-col transition-colors duration-300`}
+        className={`${outfit.variable} antialiased min-h-screen flex flex-col transition-colors duration-300 dark:bg-transparent`}
       >
         <ThemeProvider
           attribute="class"
@@ -56,6 +57,9 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <div className="fixed inset-0 z-[-1] hidden dark:block pointer-events-none">
+            <BackgroundGradientAnimation />
+          </div>
           <InkCursor />
           <Navbar />
           <main className="flex-grow pt-20">

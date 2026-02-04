@@ -48,7 +48,7 @@ export default function HeroScene() {
         mm.add("(min-width: 800px)", () => {
             // Initial State (Hero Section - Right Side)
             gsap.set(splineRef.current, {
-                x: "25vw",
+                x: "20vw",
                 yPercent: 0,
                 scale: 0.85,
                 opacity: 1
@@ -70,12 +70,13 @@ export default function HeroScene() {
                 yPercent: 20,
                 scale: 0.85,
                 duration: 0.2,
+                rotate: 360,
                 ease: "power2.inOut"
             });
 
             // 2. About -> Skills (Move Right)
             tl.to(splineRef.current, {
-                x: "35vw",
+                x: "45vw",
                 yPercent: 10,
                 scale: 0.65,
                 duration: 0.2,
@@ -87,7 +88,7 @@ export default function HeroScene() {
                 x: "-25vw",
                 yPercent: 0,
                 scale: 0.65,
-                duration: 0.1,
+                duration: 0.2,
                 ease: "power2.inOut"
             });
 
@@ -115,6 +116,7 @@ export default function HeroScene() {
                 yPercent: 10,
                 scale: 0.7,
                 duration: 0.2,
+                rotate: -360,
                 ease: "power2.inOut"
             });
 
@@ -133,7 +135,7 @@ export default function HeroScene() {
     return (
         <div ref={containerRef} className="fixed inset-0 z-10 pointer-events-none flex items-center justify-center">
             {/* Container with constrained interactive area */}
-            <div ref={splineRef} className="w-[800px] h-[800px] pointer-events-auto relative overflow-hidden">
+            <div ref={splineRef} className="w-[1200px] h-[600px] pointer-events-auto relative overflow-hidden">
                 {/* 
                   Oversized Inner Container to push watermark out of view.
                   Height increased +200px, Top shifted -80px.

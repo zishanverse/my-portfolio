@@ -27,13 +27,13 @@ const skillCategories = [
 
 const Skills = () => {
     return (
-        <section id="skills" className="py-12 md:py-24 w-full bg-background relative overflow-hidden">
+        <section id="skills" className="py-12 md:py-24 w-full bg-background dark:bg-transparent relative overflow-hidden">
             {/* Background gradient blob */}
             <div className="absolute top-1/4 right-0 w-[500px] h-[500px] bg-indigo-500/10 rounded-full blur-[100px] -z-10" />
 
             <div className="container mx-auto px-6 relative z-20">
                 <div className="mb-16">
-                    <h2 className="text-3xl font-bold tracking-tight text-foreground">Skills & Expertise</h2>
+                    <h2 className="text-3xl font-bold tracking-tight text-foreground dark:text-white">Skills & Expertise</h2>
                     <p className="text-muted-foreground mt-2 text-lg">My creative and technical toolbox.</p>
                 </div>
 

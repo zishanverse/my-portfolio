@@ -15,7 +15,7 @@ import { ContainerTextFlip } from "@/components/ui/container-text-flip";
 
 const Hero = () => {
     return (
-        <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-background pt-20">
+        <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-background dark:bg-transparent pt-20">
             <div className="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
                 {/* Text Content */}
@@ -31,7 +31,7 @@ const Hero = () => {
                         />
                     </div>
 
-                    <p className="text-lg text-muted-foreground max-w-lg leading-relaxed">
+                    <p className="text-lg text-muted-foreground dark:text-gray-300 max-w-lg leading-relaxed">
                         Full-Stack Developer with strong expertise in Next.js, React, Node.js, and AI-powered development.
                         Experienced in building scalable web applications and integrating AI/ML solutions.
                     </p>
