@@ -57,7 +57,7 @@ const AiSystems = () => {
     ];
 
     return (
-        <section ref={containerRef} className="py-24 w-full bg-background dark:bg-transparent relative overflow-hidden flex flex-col items-center">
+        <section ref={containerRef} className="py-24 w-full bg-transparent dark:bg-transparent relative overflow-hidden flex flex-col items-center">
 
             <div ref={textRef} className="text-center space-y-4 mb-24 z-10 px-4">
                 <TextHighlight className="text-3xl md:text-5xl font-bold tracking-tight text-foreground dark:text-white">

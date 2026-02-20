@@ -5,7 +5,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import { InkCursor } from "@/components/ui/ink-cursor";
-import { BackgroundGradientAnimation } from "@/components/ui/background-gradient-animation";
+import ThemeAwareParticles from "@/components/ui/ThemeAwareParticles";
 
 const outfit = Outfit({
   variable: "--font-outfit",
@@ -57,8 +57,8 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className="fixed inset-0 z-[-1] hidden dark:block pointer-events-none">
-            <BackgroundGradientAnimation />
+          <div className="fixed inset-0 z-[-1] pointer-events-none">
+            <ThemeAwareParticles />
           </div>
           <InkCursor />
           <Navbar />

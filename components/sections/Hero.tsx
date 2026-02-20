@@ -15,7 +15,7 @@ import { ContainerTextFlip } from "@/components/ui/container-text-flip";
 
 const Hero = () => {
     return (
-        <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-background dark:bg-transparent pt-20">
+        <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-transparent dark:bg-transparent pt-20">
             <div className="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
                 {/* Text Content */}

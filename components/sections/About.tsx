@@ -5,7 +5,7 @@ import { HeroHighlight, TextHighlight } from "@/components/ui/hero-highlight";
 
 const About = () => {
     return (
-        <HeroHighlight containerClassName="py-24 bg-background dark:bg-transparent w-full h-auto min-h-[50vh]">
+        <HeroHighlight containerClassName="py-24 bg-transparent dark:bg-transparent w-full h-auto min-h-[50vh]">
             <div className="container mx-auto px-6 relative z-30">
                 <div className="flex flex-col md:flex-row gap-16">
                     {/* Header */}

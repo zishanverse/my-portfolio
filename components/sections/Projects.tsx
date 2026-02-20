@@ -39,7 +39,7 @@ const Projects = () => {
     const [selectedProject, setSelectedProject] = useState<ProjectData | null>(null);
 
     return (
-        <section id="projects" className="py-24 bg-background dark:bg-transparent w-full">
+        <section id="projects" className="py-24 bg-transparent dark:bg-transparent w-full">
             <div className="container mx-auto px-6">
                 <div className="mb-12">
                     <h2 className="text-3xl font-bold tracking-tight text-foreground dark:text-white">Featured Projects</h2>

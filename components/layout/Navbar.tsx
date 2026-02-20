@@ -6,8 +6,8 @@ import { useMotionValueEvent, useScroll, motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
-
 import { ContactModal } from "@/components/ui/contact-modal";
+import GlassSurface from "@/components/ui/GlassSurface";
 
 export const Navbar = () => {
     const { scrollY } = useScroll();
@@ -47,17 +47,30 @@ export const Navbar = () => {
                 animate={{ y: visible ? 0 : -100 }}
                 transition={{ duration: 0.3 }}
                 className={cn(
-                    "fixed top-0 inset-x-0 mx-auto z-50 w-full px-6 py-4 transition-all duration-300",
-                    lastScrollY > 50 ? "glass" : "bg-transparent"
+                    "fixed top-4 inset-x-0 mx-auto z-50 w-[95%] max-w-5xl rounded-full transition-all duration-300",
+                    visible ? "translate-y-0" : "-translate-y-full"
                 )}
             >
-                <div className="max-w-7xl mx-auto flex items-center justify-between">
-                    <Link href="/" className="text-xl font-bold tracking-tight text-foreground">
+                <div className="absolute inset-0 w-full h-full -z-10 rounded-full overflow-hidden shadow-sm">
+                    <GlassSurface
+                        width="100%"
+                        height="100%"
+                        borderRadius={30}
+                        borderWidth={0}
+                        opacity={0.8}
+                        blur={15}
+                        saturation={1.5}
+                        mixBlendMode="normal"
+                        backgroundOpacity={lastScrollY > 20 ? 0.6 : 0.2}
+                    />
+                </div>
+                <div className="w-full flex items-center justify-between px-6 py-3">
+                    <Link href="/" className="text-xl font-bold tracking-tight text-foreground relative z-20">
                         Portfolio<span className="text-indigo-500">.</span>
                     </Link>
 
                     {/* Desktop Menu */}
-                    <div className="hidden md:flex items-center gap-8">
+                    <div className="hidden md:flex items-center gap-8 relative z-20">
                         {navItems.map((item) => (
                             <Link
                                 key={item.name}
@@ -80,7 +93,7 @@ export const Navbar = () => {
                         </div>
                     </div>
 
-                    <div className="md:hidden flex items-center gap-4">
+                    <div className="md:hidden flex items-center gap-4 relative z-20">
                         <ThemeToggle />
                         <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} aria-label="Toggle mobile menu">
                             {isMobileMenuOpen ? (
@@ -95,9 +108,10 @@ export const Navbar = () => {
                 {/* Mobile Menu */}
                 {isMobileMenuOpen && (
                     <motion.div
-                        initial={{ opacity: 0, y: -20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="absolute top-full left-0 w-full bg-black/95 backdrop-blur-xl border-b border-white/10 p-6 md:hidden flex flex-col gap-4"
+                        initial={{ opacity: 0, y: -20, scale: 0.95 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: -20, scale: 0.95 }}
+                        className="absolute top-full left-0 mt-2 w-full bg-black/80 backdrop-blur-xl border border-white/10 rounded-2xl p-6 md:hidden flex flex-col gap-4 shadow-xl"
                     >
                         {navItems.map((item) => (
                             <Link
