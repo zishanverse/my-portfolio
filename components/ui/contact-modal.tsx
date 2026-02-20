@@ -55,7 +55,8 @@ const ContactModal = ({ onClose }: ContactModalProps) => {
                 setFormData({ name: "", email: "", message: "" });
                 onClose();
             } else {
-                alert('Failed to send message. Please try again.');
+                const data = await response.json();
+                alert(`Failed to send message: ${data.details || 'Please try again.'}`);
             }
         } catch (error) {
             console.error('Error:', error);

@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/Button";
+import Dock from "@/components/ui/Dock";
 import { Github, Linkedin, Mail, Code } from "lucide-react";
 import Link from "next/link";
 
@@ -32,44 +33,34 @@ const Contact = () => {
                         </Link>
                     </div>
 
-                    <div className="pt-12 flex items-center justify-center gap-6">
-                        <Link
-                            href="https://github.com/zishanverse/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="p-3 bg-secondary rounded-full text-secondary-foreground hover:bg-indigo-500 hover:text-white transition-all transform hover:scale-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
-                            aria-label="GitHub Profile"
-                        >
-                            <Github className="w-6 h-6" />
-                        </Link>
-
-                        <Link
-                            href="https://linkedin.com/in/zishan-khan-"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="p-3 bg-secondary rounded-full text-secondary-foreground hover:bg-indigo-500 hover:text-white transition-all transform hover:scale-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
-                            aria-label="LinkedIn Profile"
-                        >
-                            <Linkedin className="w-6 h-6" />
-                        </Link>
-
-                        <Link
-                            href="https://leetcode.com/u/zishverse/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="p-3 bg-secondary rounded-full text-secondary-foreground hover:bg-indigo-500 hover:text-white transition-all transform hover:scale-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
-                            aria-label="LeetCode Profile"
-                        >
-                            <Code className="w-6 h-6" />
-                        </Link>
-
-                        <Link
-                            href="mailto:zishanverse@gmail.com"
-                            className="p-3 bg-secondary rounded-full text-secondary-foreground hover:bg-indigo-500 hover:text-white transition-all transform hover:scale-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
-                            aria-label="Email Me"
-                        >
-                            <Mail className="w-6 h-6" />
-                        </Link>
+                    <div className="pt-12 flex items-center justify-center w-full">
+                        <Dock
+                            items={[
+                                {
+                                    icon: <Github className="w-8 h-8 dark:text-white text-neutral-200" />,
+                                    label: 'GitHub',
+                                    onClick: () => window.open('https://github.com/zishanverse/', '_blank')
+                                },
+                                {
+                                    icon: <Linkedin className="w-8 h-8 dark:text-white text-neutral-200" />,
+                                    label: 'LinkedIn',
+                                    onClick: () => window.open('https://linkedin.com/in/zishan-khan-', '_blank')
+                                },
+                                {
+                                    icon: <Code className="w-8 h-8 dark:text-white text-neutral-200" />,
+                                    label: 'LeetCode',
+                                    onClick: () => window.open('https://leetcode.com/u/zishverse/', '_blank')
+                                },
+                                {
+                                    icon: <Mail className="w-8 h-8 dark:text-white text-neutral-200" />,
+                                    label: 'Email',
+                                    onClick: () => window.location.href = 'mailto:zishanverse@gmail.com'
+                                },
+                            ]}
+                            panelHeight={88}
+                            baseItemSize={70}
+                            magnification={90}
+                        />
                     </div>
 
                     <footer className="pt-24 text-sm text-muted-foreground">

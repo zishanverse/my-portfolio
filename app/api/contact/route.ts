@@ -49,7 +49,7 @@ ${message}
     } catch (error) {
         console.error('Error sending email:', error);
         return NextResponse.json(
-            { error: 'Failed to send email' },
+            { error: 'Failed to send email', details: error instanceof Error ? error.message : String(error) },
             { status: 500 }
         );
     }
