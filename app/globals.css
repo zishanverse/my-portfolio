@@ -157,6 +157,17 @@
       transform: translateY(-50%);
     }
   }
+
+  @keyframes shimmer-slide {
+    0% {
+      transform: translateX(-100%) skewX(-12deg);
+    }
+    100% {
+      transform: translateX(200%) skewX(-12deg);
+    }
+  }
+
+  --animate-shimmer-slide: shimmer-slide 3s infinite;
 }
 
 body {
@@ -182,6 +193,14 @@ html {
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.05);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
 }
 
 .dark .glass {

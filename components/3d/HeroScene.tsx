@@ -92,18 +92,18 @@ export default function HeroScene() {
                 ease: "power2.inOut"
             });
 
-            // 3.5 Hold at AiSystems
+            // 3.5 Projects Section (Move Right & Scale Down)
             tl.to(splineRef.current, {
-                x: "-25vw",
-                yPercent: 0,
-                scale: 0.65,
+                x: "40vw",
+                yPercent: -10,
+                scale: 0.5,
                 duration: 0.2,
-                ease: "none"
+                ease: "power2.inOut"
             });
 
-            // 4. AiSystems -> Experience (Move Right)
+            // 4. Projects -> Experience (Move Left)
             tl.to(splineRef.current, {
-                x: "35vw",
+                x: "-30vw",
                 yPercent: 0,
                 scale: 0.65,
                 duration: 0.2,
@@ -120,11 +120,14 @@ export default function HeroScene() {
                 ease: "power2.inOut"
             });
 
-            // 6. Fade out at end
+            // 6. Keep visible at end (Footer/Contact)
             tl.to(splineRef.current, {
-                opacity: 0,
-                duration: 0.1,
-                pointerEvents: "none" // Disable interaction
+                x: "20vw",
+                yPercent: 20,
+                scale: 0.5,
+                opacity: 0.6,
+                duration: 0.2,
+                ease: "power2.inOut"
             });
         });
 

@@ -35,18 +35,19 @@ const contactInfo = {
 const executiveSummary = "Full-Stack Developer with strong expertise in Next.js, React, Node.js, and AI-powered development. Experienced in building scalable web applications, integrating AI/ML solutions, and deploying production systems. Skilled in leveraging LLMs and prompt engineering to optimize workflows, improve code quality, and deliver intelligent, high-performance applications.";
 
 const highlights = [
+    "Production-ready AI chat platform with RAG-based persistent memory (pgvector)",
+    "Containerized architecture with monitoring (Prometheus/Grafana)",
     "Full-stack development with Next.js, React, Node.js, REST APIs",
-    "AI/ML integration with Python, Scikit-learn, LLMs",
-    "Prompt engineering using ChatGPT and Claude AI",
-    "Advanced UI with 3D models and animations",
-    "Deployment & hosting of production apps",
+    "AI/ML integration with Python, Scikit-learn, LLMs, LangGraph",
+    "Prompt engineering using ChatGPT, Claude, and Model Context Protocol (MCP)",
+    "Advanced UI with 3D models (Spline/Three.js) and GSAP/Framer-Motion animations",
 ];
 
 const technicalSkills = [
-    { category: "Languages & Frameworks", skills: ["Node.js", "TypeScript", "Next.js", "Python", "React"] },
-    { category: "Databases & Caching", skills: ["MongoDB", "Redis", "PostgreSQL", "Prisma"] },
-    { category: "AI & ML", skills: ["Agentic AI", "Prompt Engineering", "RAG", "Scikit-learn", "NumPy", "Pandas"] },
-    { category: "DevOps & Cloud", skills: ["CI/CD (GitHub/GitLab)", "AWS", "Azure (Basics)", "Vercel", "Hostinger", "EC2"] },
+    { category: "Languages & Frameworks", skills: ["Node.js", "TypeScript", "Next.js", "Python", "React", "FastAPI"] },
+    { category: "Databases & Caching", skills: ["PostgreSQL", "pgvector", "MongoDB", "Redis", "Prisma"] },
+    { category: "AI & ML", skills: ["Agentic AI", "RAG", "LangGraph", "LangChain", "Prompt Engineering", "Hugging Face"] },
+    { category: "DevOps & Cloud", skills: ["Docker", "Prometheus", "Grafana", "AWS (EC2/S3)", "Azure", "Vercel", "CI/CD"] },
 ];
 
 const softSkills = [
@@ -103,8 +104,14 @@ const experience = [
 
 const projects = [
     {
+        title: "Haanna - AI-Powered Conversational Platform with RAG",
+        period: "2026",
+        description: "Built a production-ready AI chat platform with RAG-based persistent memory using pgvector and structured prompt assembly. Implemented containerized architecture with Prometheus and Grafana for latency monitoring.",
+        stack: "Next.js, Node.js, pgvector, PostgreSQL, Docker, Prometheus, Grafana, LLM, RAG, LangGraph, Redis, WebSocket",
+    },
+    {
         title: "Intelligent DCRM Diagnostics & Predictive Maintenance System",
-        period: "2025 - Present",
+        period: "2025",
         description: "Engineered a real-time analytics engine processing widely varying telemetry data. Reduced manual analysis time by replacing legacy workflows with automated, AI-driven fault detection and reporting pipelines.",
         stack: "Next.js, React Query, Python, FastAPI, PostgreSQL, Prisma, LLMs (Gemini), REST APIs",
     },
@@ -215,10 +222,10 @@ export default function ResumePage() {
                         </div>
                     </div>
                     <button
-                        onClick={handlePrint}
+                        onClick={() => window.open("https://drive.google.com/file/d/1r4-I_-UUYEqXXIdOjcLrCD6QkYsEnt8Y/view?usp=sharing", "_blank")}
                         className="hidden md:flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:opacity-90 transition-opacity font-medium print:hidden"
                     >
-                        <Download size={18} /> Download PDF
+                        <Download size={18} /> Download Resume
                     </button>
                 </motion.header>
 
