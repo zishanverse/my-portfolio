@@ -173,7 +173,7 @@
 body {
   background-color: var(--background);
   color: var(--foreground);
-  font-family: var(--font-outfit), sans-serif;
+  font-family: var(--font-inter), ui-sans-serif, system-ui, -apple-system, sans-serif;
   overflow-x: hidden;
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -271,3 +271,4 @@ canvas+a {
   position: absolute !important;
   z-index: -9999 !important;
 }
+

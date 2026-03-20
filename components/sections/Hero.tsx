@@ -9,6 +9,7 @@ import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { motion } from "framer-motion";
 import { ContainerTextFlip } from "@/components/ui/container-text-flip";
 
 
@@ -58,14 +59,62 @@ const Hero = () => {
                     </div>
                 </div>
 
-                {/* 3D Scene */}
-                <div className="relative w-full h-full flex items-center justify-center">
+                {/* 3D Scene / Profile Image Column */}
+                <div className="relative w-full h-[400px] md:h-full flex items-center justify-center lg:justify-end">
+                    
+                    {/* Placeholder for 3D Scene (Background) */}
+                    <div className="hidden lg:block w-full h-full absolute inset-0 -z-10" />
 
-                    {/* Placeholder for 3D Scene (now global) */}
-                    <div className="hidden lg:block w-full h-full" />
+                    {/* Premium Profile Image Container */}
+                    <motion.div 
+                        initial={{ opacity: 0, scale: 0.8, x: 50 }}
+                        animate={{ opacity: 1, scale: 1, x: 0 }}
+                        transition={{ duration: 1, ease: "easeOut", delay: 0.3 }}
+                        whileHover={{ y: -10 }}
+                        className="relative w-[280px] h-[350px] md:w-[350px] md:h-[450px] rounded-[2.5rem] p-3 bg-white/5 dark:bg-white/5 backdrop-blur-xl border border-white/20 shadow-2xl group overflow-visible"
+                    >
+                        {/* Decorative Background Glows */}
+                        <div className="absolute -inset-4 bg-indigo-500/20 rounded-[3rem] blur-2xl group-hover:bg-indigo-500/30 transition-all duration-500 -z-10" />
+                        <div className="absolute -top-10 -right-10 w-32 h-32 bg-purple-500/10 rounded-full blur-3xl" />
+                        
+                        {/* The Image */}
+                        <div className="relative w-full h-full rounded-[2rem] overflow-hidden border border-white/10">
+                            <img 
+                                src="/profile.jpg" 
+                                alt="Zishan Khan" 
+                                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out grayscale-[0.2] hover:grayscale-0"
+                            />
+                            
+                            {/* Inner Glass Overlay (Bottom) */}
+                            <div className="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/80 via-black/40 to-transparent">
+                                <p className="text-white font-bold text-lg tracking-tight">Zishan Khan</p>
+                                <p className="text-zinc-400 text-xs font-medium uppercase tracking-widest">Creative Developer</p>
+                            </div>
+                        </div>
 
-                    {/* Decorative Background Glow */}
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-indigo-500/20 rounded-full blur-[100px] -z-10" />
+                        {/* Floating Interaction Badges */}
+                        <motion.div 
+                            animate={{ y: [0, -10, 0] }}
+                            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                            className="absolute -top-6 -left-6 p-4 rounded-2xl bg-white/80 dark:bg-zinc-900/80 backdrop-blur-2xl border border-white/20 dark:border-white/10 shadow-xl hidden sm:block"
+                        >
+                            <div className="flex items-center gap-3">
+                                <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                                <span className="text-xs font-bold text-zinc-900 dark:text-white uppercase tracking-tighter">Available for Work</span>
+                            </div>
+                        </motion.div>
+
+                        <motion.div 
+                            animate={{ y: [0, 10, 0] }}
+                            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                            className="absolute -bottom-6 -right-6 p-4 rounded-2xl bg-indigo-600/90 backdrop-blur-xl border border-white/20 shadow-xl hidden sm:block"
+                        >
+                            <span className="text-xs font-black text-white uppercase tracking-widest">3+ Years Exp.</span>
+                        </motion.div>
+                    </motion.div>
+
+                    {/* Background Decorative Glow (Main) */}
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-indigo-500/20 rounded-full blur-[100px] -z-20" />
                 </div>
             </div>
         </section>

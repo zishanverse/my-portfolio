@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Outfit } from "next/font/google"; // Using Outfit as requested/planned for modern look
+import { Inter } from "next/font/google"; // Using Inter for a more premium, tech-focused look
 import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
@@ -7,8 +7,8 @@ import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import { InkCursor } from "@/components/ui/ink-cursor";
 import ThemeAwareParticles from "@/components/ui/ThemeAwareParticles";
 
-const outfit = Outfit({
-  variable: "--font-outfit",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
 });
 
@@ -49,7 +49,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${outfit.variable} antialiased min-h-screen flex flex-col transition-colors duration-300 dark:bg-transparent`}
+        className={`${inter.variable} antialiased min-h-screen flex flex-col transition-colors duration-300 dark:bg-transparent`}
       >
         <ThemeProvider
           attribute="class"
