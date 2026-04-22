@@ -73,18 +73,18 @@ const Projects = () => {
     const [selectedProject, setSelectedProject] = useState<ProjectData | null>(null);
 
     return (
-        <section id="projects" className="py-32 md:py-48 bg-transparent dark:bg-transparent w-full relative overflow-hidden">
+        <section id="projects" className="py-20 md:py-32 lg:py-48 bg-transparent dark:bg-transparent w-full relative overflow-hidden">
             {/* Background decorative elements */}
             <div className="absolute top-0 left-1/4 w-64 h-64 bg-indigo-500/5 blur-[120px] rounded-full pointer-events-none" />
             <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/5 blur-[150px] rounded-full pointer-events-none" />
 
-            <div className="container mx-auto px-6 relative z-20">
-                <div className="mb-20 max-w-2xl">
-                    <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight text-foreground dark:text-white mb-4 bg-clip-text text-transparent bg-gradient-to-r from-white to-white/60">
+            <div className="container mx-auto px-4 sm:px-6 relative z-20">
+                <div className="mb-12 md:mb-20 max-w-2xl">
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-4 bg-clip-text text-transparent bg-linear-to-r from-foreground to-muted-foreground">
                         Featured Projects
                     </h2>
                     <div className="h-1.5 w-20 bg-indigo-500 rounded-full mb-6" />
-                    <p className="text-muted-foreground text-xl leading-relaxed">
+                    <p className="text-muted-foreground text-base sm:text-lg md:text-xl leading-relaxed">
                         A curation of my professional work and personal experiments, focusing on AI systems and high-performance web applications.
                     </p>
                 </div>

@@ -53,7 +53,7 @@ const TimelineCard = ({ item, index }: { item: TimelineItem; index: number }) =>
     return (
         <div className={`flex flex-col md:flex-row gap-4 md:gap-0 ${index % 2 === 0 ? "md:flex-row-reverse" : ""} relative`}>
             {/* Center Line Dot */}
-            <div className="absolute left-0 md:left-1/2 w-4 h-4 rounded-full bg-indigo-500 border-4 border-background -translate-x-1.5 md:-translate-x-2 mt-1.5 z-10" />
+            <div className="absolute left-0 md:left-1/2 w-3.5 h-3.5 md:w-4 md:h-4 rounded-full bg-indigo-500 border-4 border-background -translate-x-1.5 md:-translate-x-2 mt-2 z-10" />
 
             {/* Content Spacer for Alternating Layout */}
             <div className="hidden md:block md:w-1/2" />
@@ -64,13 +64,13 @@ const TimelineCard = ({ item, index }: { item: TimelineItem; index: number }) =>
                 whileInView={{ opacity: 1, y: 0, x: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className={`md:w-1/2 ml-8 md:ml-0 ${index % 2 === 0 ? "md:pr-12" : "md:pl-12"}`}
+                className={`md:w-1/2 ml-6 sm:ml-8 md:ml-0 ${index % 2 === 0 ? "md:pr-12" : "md:pl-12"}`}
             >
-                <div className="bg-card border border-border p-6 rounded-xl hover:border-indigo-500/30 transition-colors">
+                <div className="bg-card border border-border p-4 sm:p-6 rounded-xl hover:border-indigo-500/30 transition-colors">
                     <span className="text-sm font-semibold text-indigo-400 block mb-2">{item.year}</span>
-                    <h3 className="text-xl font-bold text-foreground">{item.title}</h3>
-                    <h4 className="text-md font-medium text-muted-foreground mb-4">{item.company}</h4>
-                    <p className="text-muted-foreground leading-relaxed">{item.description}</p>
+                    <h3 className="text-lg sm:text-xl font-bold text-foreground">{item.title}</h3>
+                    <h4 className="text-sm sm:text-md font-medium text-muted-foreground mb-3 sm:mb-4">{item.company}</h4>
+                    <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">{item.description}</p>
                 </div>
             </motion.div>
         </div>
@@ -79,16 +79,16 @@ const TimelineCard = ({ item, index }: { item: TimelineItem; index: number }) =>
 
 const Timeline = () => {
     return (
-        <section id="experience" className="py-24 bg-transparent dark:bg-transparent w-full overflow-hidden">
-            <div className="container mx-auto px-6">
+        <section id="experience" className="py-20 md:py-24 bg-transparent dark:bg-transparent w-full overflow-hidden">
+            <div className="container mx-auto px-4 sm:px-6">
                 <div className="mb-16 text-center">
                     <h2 className="text-3xl font-bold tracking-tight text-foreground dark:text-white">Experience & Education</h2>
-                    <p className="text-muted-foreground mt-2 text-lg">My professional journey so far.</p>
+                    <p className="text-muted-foreground mt-2 text-base sm:text-lg">My professional journey so far.</p>
                 </div>
 
                 <div className="relative max-w-4xl mx-auto">
                     {/* Vertical Line */}
-                    <div className="absolute left-0.5 md:left-1/2 w-0.5 h-full bg-border -translate-x-1/2" />
+                    <div className="absolute left-0 md:left-1/2 w-0.5 h-full bg-border -translate-x-1/2" />
 
                     <div className="flex flex-col gap-12">
                         {timelineData.map((item, index) => (

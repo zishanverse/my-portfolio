@@ -57,12 +57,18 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <a
+            href="#main-content"
+            className="sr-only focus:not-sr-only focus:absolute focus:top-3 focus:left-3 focus:z-100 focus:px-4 focus:py-2 focus:rounded-md focus:bg-background focus:text-foreground focus:border focus:border-border"
+          >
+            Skip to main content
+          </a>
           <div className="fixed inset-0 z-[-1] pointer-events-none">
             <ThemeAwareParticles />
           </div>
           <InkCursor />
           <Navbar />
-          <main className="flex-grow pt-20">
+          <main id="main-content" className="grow pt-20">
             {children}
           </main>
           <Footer />

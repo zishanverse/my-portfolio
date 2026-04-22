@@ -33,6 +33,7 @@ type DockItemProps = {
     className?: string;
     children: React.ReactNode;
     onClick?: () => void;
+    ariaLabel?: string;
     mouseX: MotionValue<number>;
     spring: SpringOptions;
     distance: number;
@@ -44,6 +45,7 @@ function DockItem({
     children,
     className = '',
     onClick,
+    ariaLabel,
     mouseX,
     spring,
     distance,
@@ -64,6 +66,15 @@ function DockItem({
     const targetSize = useTransform(mouseDistance, [-distance, 0, distance], [baseItemSize, magnification, baseItemSize]);
     const size = useSpring(targetSize, spring);
 
+    const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+        if (!onClick) return;
+
+        if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            onClick();
+        }
+    };
+
     return (
         <motion.div
             ref={ref}
@@ -76,10 +87,11 @@ function DockItem({
             onFocus={() => isHovered.set(1)}
             onBlur={() => isHovered.set(0)}
             onClick={onClick}
+            onKeyDown={handleKeyDown}
             className={`relative inline-flex items-center justify-center rounded-full bg-[#060010] border-neutral-700 border-2 shadow-md ${className}`}
             tabIndex={0}
             role="button"
-            aria-haspopup="true"
+            aria-label={ariaLabel}
         >
             {Children.map(children, child =>
                 React.isValidElement(child)
@@ -173,6 +185,7 @@ export default function Dock({
                     <DockItem
                         key={index}
                         onClick={item.onClick}
+                        ariaLabel={typeof item.label === 'string' ? item.label : 'Dock action'}
                         className={item.className}
                         mouseX={mouseX}
                         spring={spring}

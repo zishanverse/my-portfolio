@@ -148,20 +148,20 @@ const SkillCard = ({ skill, index }: { skill: typeof aiSkills[0]; index: number 
             viewport={{ once: true }}
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}
-            className={`relative p-4 rounded-2xl bg-gradient-to-br ${skill.color} border ${skill.border} backdrop-blur-sm cursor-default transition-all duration-300 ${hovered ? `shadow-lg ${skill.glow}` : ""} group overflow-hidden`}
+            className={`relative p-3 sm:p-4 rounded-2xl bg-linear-to-br ${skill.color} border ${skill.border} backdrop-blur-sm cursor-default transition-all duration-300 ${hovered ? `shadow-lg ${skill.glow}` : ""} group overflow-hidden`}
         >
             {/* hover shimmer */}
             <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -skew-x-12 translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-700" />
+                <div className="absolute inset-0 bg-linear-to-r from-transparent via-white/5 to-transparent -skew-x-12 translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-700" />
             </div>
 
             <div className="flex items-start gap-3 relative z-10">
-                <div className={`p-2 rounded-xl bg-zinc-900/60 flex-shrink-0 ${hovered ? "scale-110" : ""} transition-transform duration-200`}>
-                    <Icon className={`w-4 h-4 ${skill.iconColor}`} />
+                <div className={`p-2 rounded-xl bg-black/10 dark:bg-zinc-900/60 shrink-0 ${hovered ? "scale-110" : ""} transition-transform duration-200`}>
+                    <Icon className={`w-4 h-4 sm:w-4 sm:h-4 ${skill.iconColor}`} />
                 </div>
                 <div className="min-w-0">
-                    <p className="text-sm font-bold text-white leading-tight truncate">{skill.label}</p>
-                    <p className="text-[11px] text-zinc-500 mt-0.5 leading-tight">{skill.desc}</p>
+                    <p className="text-xs sm:text-sm font-bold text-foreground leading-tight truncate">{skill.label}</p>
+                    <p className="text-[10px] sm:text-[11px] text-muted-foreground mt-0.5 leading-tight">{skill.desc}</p>
                 </div>
             </div>
         </motion.div>
@@ -192,38 +192,38 @@ const AiSystems = () => {
     }, { scope: containerRef });
 
     return (
-        <section ref={containerRef} className="py-32 w-full bg-transparent dark:bg-transparent relative overflow-hidden flex flex-col items-center">
+        <section ref={containerRef} className="py-20 md:py-32 w-full bg-transparent dark:bg-transparent relative overflow-hidden flex flex-col items-center">
             {/* Background Neural Glow */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full opacity-20 pointer-events-none">
-                <div className="w-[900px] h-[900px] bg-indigo-500/10 rounded-full blur-[140px] animate-pulse mx-auto" />
+                <div className="w-225 h-225 bg-indigo-500/10 rounded-full blur-[140px] animate-pulse mx-auto" />
             </div>
 
             {/* Section Header */}
-            <div ref={textRef} className="text-center space-y-4 mb-20 z-10 px-4">
-                <TextHighlight className="text-4xl md:text-6xl font-black tracking-tight text-foreground dark:text-white uppercase italic">
+            <div ref={textRef} className="text-center space-y-4 mb-14 md:mb-20 z-10 px-4">
+                <TextHighlight className="text-3xl sm:text-4xl md:text-6xl font-black tracking-tight text-foreground uppercase italic">
                     Agentic AI Ecosystem
                 </TextHighlight>
-                <p className="text-zinc-400 text-lg md:text-xl max-w-2xl mx-auto mt-6 font-medium">
+                <p className="text-muted-foreground text-base sm:text-lg md:text-xl max-w-2xl mx-auto mt-4 md:mt-6 font-medium">
                     Spanning the full AI stack — from conversational agents and multi-step workflows to RAG, fine-tuning, and real-time inference.
                 </p>
             </div>
 
             {/* Main Two-Column Layout */}
-            <div className="w-full max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start relative z-10">
+            <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-start relative z-10">
 
                 {/* LEFT: Agent + Context */}
                 <motion.div
                     initial={{ opacity: 0, x: -50 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.8, ease: "easeOut" }}
-                    className="flex flex-col gap-8"
+                    className="flex flex-col gap-6 md:gap-8"
                 >
                     <div className="space-y-5">
                         <div className="flex items-center gap-3">
                             <div className="w-2 h-10 bg-indigo-500 rounded-full shadow-[0_0_15px_rgba(79,70,229,0.5)]" />
-                            <h3 className="text-3xl font-bold text-white uppercase tracking-tighter">Autonomous Operations</h3>
+                            <h3 className="text-2xl sm:text-3xl font-bold text-foreground uppercase tracking-tighter">Autonomous Operations</h3>
                         </div>
-                        <p className="text-zinc-400 text-lg leading-relaxed">
+                        <p className="text-muted-foreground text-base sm:text-lg leading-relaxed">
                             My AI systems leverage agentic workflows, RAG, and multimodal models to automate complex
                             decision-making processes. From appointment booking to AI companions with long-term memory —
                             these agents operate at the edge of possibility.
@@ -231,16 +231,16 @@ const AiSystems = () => {
                     </div>
 
                     {/* Quick-stat pills */}
-                    <div className="flex flex-wrap gap-3">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         {[
                             { label: "RAG Systems", value: "Vector-Embedded Memory" },
                             { label: "Agentic Flows", value: "Multi-Step Reasoners" },
                             { label: "Tools", value: "LangGraph · LangChain" },
                             { label: "Automation", value: "Make · N8N" },
                         ].map((stat, i) => (
-                            <div key={i} className="px-4 py-2 rounded-xl bg-white/5 border border-white/5 backdrop-blur-sm hover:border-indigo-500/30 transition-all">
+                            <div key={i} className="px-4 py-2 rounded-xl bg-card/70 dark:bg-white/5 border border-border dark:border-white/5 backdrop-blur-sm hover:border-indigo-500/30 transition-all">
                                 <p className="text-[10px] uppercase tracking-widest text-indigo-400 font-black">{stat.label}</p>
-                                <p className="text-white text-sm font-bold">{stat.value}</p>
+                                <p className="text-foreground text-sm font-bold">{stat.value}</p>
                             </div>
                         ))}
                     </div>
@@ -254,13 +254,13 @@ const AiSystems = () => {
                     initial={{ opacity: 0, x: 50 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
-                    className="flex flex-col gap-5"
+                    className="flex flex-col gap-4 md:gap-5"
                 >
                     {/* Header */}
                     <div className="flex items-center justify-between">
                         <div>
-                            <h3 className="text-2xl font-bold text-white tracking-tight">Full AI Stack</h3>
-                            <p className="text-zinc-500 text-sm mt-0.5">Skills · Frameworks · Workflows</p>
+                            <h3 className="text-xl sm:text-2xl font-bold text-foreground tracking-tight">Full AI Stack</h3>
+                            <p className="text-muted-foreground text-sm mt-0.5">Skills · Frameworks · Workflows</p>
                         </div>
                         <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20">
                             <div className={`w-2 h-2 rounded-full ${isAgentActive ? "bg-green-400 animate-pulse" : "bg-indigo-500"}`} />
@@ -271,7 +271,7 @@ const AiSystems = () => {
                     </div>
 
                     {/* Skills masonry grid */}
-                    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-2 xl:grid-cols-3 gap-3">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-3">
                         {aiSkills.map((skill, i) => (
                             <SkillCard key={i} skill={skill} index={i} />
                         ))}
@@ -282,14 +282,14 @@ const AiSystems = () => {
                         initial={{ opacity: 0, y: 10 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.6 }}
-                        className="mt-1 p-4 rounded-2xl bg-zinc-950/60 border border-white/5 backdrop-blur-xl flex items-center gap-4"
+                        className="mt-1 p-4 rounded-2xl bg-card/70 dark:bg-zinc-950/60 border border-border dark:border-white/5 backdrop-blur-xl flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4"
                     >
-                        <div className="w-10 h-10 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center flex-shrink-0">
+                        <div className="w-10 h-10 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center shrink-0">
                             <Workflow className="w-5 h-5 text-indigo-400" />
                         </div>
                         <div>
-                            <p className="text-sm font-bold text-white">End-to-End AI Automation</p>
-                            <p className="text-xs text-zinc-500 mt-0.5">
+                            <p className="text-sm sm:text-base font-bold text-foreground">End-to-End AI Automation</p>
+                            <p className="text-xs sm:text-sm text-muted-foreground mt-0.5">
                                 Designing pipelines from data ingestion → reasoning → action → feedback loops
                             </p>
                         </div>

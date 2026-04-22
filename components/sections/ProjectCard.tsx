@@ -73,10 +73,10 @@ const ProjectCard = ({ project, onClick }: ProjectCardProps) => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            className="group relative h-[450px] w-full cursor-pointer perspective-1000"
+            className="group relative h-97.5 sm:h-112.5 w-full cursor-pointer perspective-1000"
         >
             {/* Outer Container for Glassmorphism & Shadow */}
-            <div className="absolute inset-0 bg-white/[0.03] dark:bg-zinc-900/40 backdrop-blur-xl border border-white/10 rounded-3xl overflow-hidden transition-all duration-500 group-hover:border-indigo-500/50 group-hover:shadow-[0_0_50px_-12px_rgba(79,70,229,0.3)] shadow-2xl">
+            <div className="absolute inset-0 bg-white/3 dark:bg-zinc-900/40 backdrop-blur-xl border border-white/10 rounded-3xl overflow-hidden transition-all duration-500 group-hover:border-indigo-500/50 group-hover:shadow-[0_0_50px_-12px_rgba(79,70,229,0.3)] shadow-2xl">
                 
                 {/* Mouse-following Glow Effect */}
                 <motion.div
@@ -91,16 +91,16 @@ const ProjectCard = ({ project, onClick }: ProjectCardProps) => {
                 />
 
                 {/* Decorative Pattern / Lighting */}
-                <div className={`absolute top-0 right-0 w-64 h-64 bg-gradient-to-br ${project.imageColor} opacity-[0.05] group-hover:opacity-20 rounded-bl-full -mr-24 -mt-24 transition-all duration-700 blur-3xl`} />
+                <div className={`absolute top-0 right-0 w-64 h-64 bg-linear-to-br ${project.imageColor} opacity-[0.05] group-hover:opacity-20 rounded-bl-full -mr-24 -mt-24 transition-all duration-700 blur-3xl`} />
 
                 {/* Content Section */}
                 <div 
-                    className="relative z-10 flex flex-col h-full p-8 md:p-10 justify-between"
+                    className="relative z-10 flex flex-col h-full p-5 sm:p-8 md:p-10 justify-between"
                     style={{ transform: "translateZ(50px)" }} // Pop out content
                 >
                     <div>
                         <div className="flex items-start justify-between">
-                            <h3 className="text-2xl md:text-3xl font-extrabold text-foreground tracking-tight group-hover:text-indigo-400 transition-colors duration-300">
+                            <h3 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-foreground tracking-tight group-hover:text-indigo-400 transition-colors duration-300">
                                 {project.title}
                             </h3>
                             <div className="p-2 rounded-full bg-white/5 border border-white/10 group-hover:border-indigo-500/50 group-hover:bg-indigo-500/10 transition-all duration-300">
@@ -108,7 +108,7 @@ const ProjectCard = ({ project, onClick }: ProjectCardProps) => {
                             </div>
                         </div>
 
-                        <p className="mt-6 text-muted-foreground text-lg leading-relaxed line-clamp-4 font-medium opacity-80 group-hover:opacity-100 transition-opacity">
+                        <p className="mt-4 sm:mt-6 text-muted-foreground text-sm sm:text-base md:text-lg leading-relaxed line-clamp-4 font-medium opacity-80 group-hover:opacity-100 transition-opacity">
                             {project.description}
                         </p>
                     </div>
@@ -118,7 +118,7 @@ const ProjectCard = ({ project, onClick }: ProjectCardProps) => {
                             {project.tags.map((tag) => (
                                 <span 
                                     key={tag} 
-                                    className="text-[10px] uppercase tracking-wider font-bold px-3 py-1 bg-white/5 border border-white/5 rounded-full text-zinc-400 group-hover:text-indigo-300 group-hover:border-indigo-500/30 transition-colors"
+                                    className="text-[10px] uppercase tracking-wider font-bold px-3 py-1 bg-white/5 border border-white/5 rounded-full text-muted-foreground group-hover:text-indigo-600 dark:group-hover:text-indigo-300 group-hover:border-indigo-500/30 transition-colors"
                                 >
                                     {tag}
                                 </span>

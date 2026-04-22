@@ -3,12 +3,30 @@ import nodemailer from 'nodemailer';
 
 export async function POST(req: Request) {
     try {
-        const { name, email, message } = await req.json();
+        const body = await req.json();
+        const name = String(body?.name ?? "").trim();
+        const email = String(body?.email ?? "").trim();
+        const message = String(body?.message ?? "").trim();
 
         if (!name || !email || !message) {
             return NextResponse.json(
                 { error: 'Missing required fields' },
                 { status: 400 }
+            );
+        }
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            return NextResponse.json(
+                { error: 'Invalid email format' },
+                { status: 400 }
+            );
+        }
+
+        if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+            return NextResponse.json(
+                { error: 'Email service is not configured' },
+                { status: 500 }
             );
         }
 

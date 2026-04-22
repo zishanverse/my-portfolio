@@ -37,22 +37,22 @@ const Contact = () => {
                         <Dock
                             items={[
                                 {
-                                    icon: <Github className="w-8 h-8 dark:text-white text-neutral-200" />,
+                                    icon: <Github className="w-8 h-8 text-neutral-700 dark:text-white" />,
                                     label: 'GitHub',
                                     onClick: () => window.open('https://github.com/zishanverse/', '_blank')
                                 },
                                 {
-                                    icon: <Linkedin className="w-8 h-8 dark:text-white text-neutral-200" />,
+                                    icon: <Linkedin className="w-8 h-8 text-neutral-700 dark:text-white" />,
                                     label: 'LinkedIn',
                                     onClick: () => window.open('https://linkedin.com/in/zishan-khan-', '_blank')
                                 },
                                 {
-                                    icon: <Code className="w-8 h-8 dark:text-white text-neutral-200" />,
+                                    icon: <Code className="w-8 h-8 text-neutral-700 dark:text-white" />,
                                     label: 'LeetCode',
                                     onClick: () => window.open('https://leetcode.com/u/zishverse/', '_blank')
                                 },
                                 {
-                                    icon: <Mail className="w-8 h-8 dark:text-white text-neutral-200" />,
+                                    icon: <Mail className="w-8 h-8 text-neutral-700 dark:text-white" />,
                                     label: 'Email',
                                     onClick: () => window.location.href = 'mailto:zishanverse@gmail.com'
                                 },

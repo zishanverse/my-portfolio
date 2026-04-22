@@ -56,10 +56,10 @@ const About = () => {
         <section 
             id="about"
             ref={containerRef} 
-            className="py-32 w-full bg-white dark:bg-black/20 relative overflow-hidden transition-colors duration-500"
+            className="py-32 w-full bg-transparent dark:bg-transparent relative overflow-hidden transition-colors duration-500"
         >
             {/* Background Ambient Glow */}
-            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-indigo-500/5 dark:bg-indigo-500/10 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2" />
+            <div className="absolute top-0 right-0 w-125 h-125 bg-indigo-500/5 dark:bg-indigo-500/10 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2" />
             
             <div className="container mx-auto px-6 relative z-10">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
