@@ -7,6 +7,22 @@ import { AnimatePresence } from "framer-motion"; // Using AnimatePresence for co
 
 const projectsData: ProjectData[] = [
     {
+        id: "5",
+        title: "Interactive AI/ML Lab",
+        description: "High-fidelity interactive machine learning workspace showcasing Deep Learning telemetry classification (1D CNN), Association Rules (Apriori graph networks), and curriculum timelines.",
+        longDescription: "An interactive, browser-based AI/ML engineering environment converting Python Jupyter notebook algorithms into client-side JS runtime models. Features real training metric replays, D3-style SVG rule graphs, active input sliders, and software engineering API endpoints.",
+        features: [
+            "Real client-side 1D CNN inference",
+            "Interactive SVG force-directed node graphs",
+            "Saved metrics epoch playback simulator",
+            "Production REST API integration (/api/predict)"
+        ],
+        tags: ["Next.js", "ONNX Web", "Apriori Mining", "TensorFlow.js", "SVG Graphs"],
+        imageColor: "from-emerald-500 to-indigo-600",
+        link: "/ai-lab",
+        github: "https://github.com/zishanverse/my-portfolio/tree/main/aiml%20course"
+    },
+    {
         id: "4",
         title: "Haanna - AI-Powered RAG Platform",
         description: "Production-ready AI chat platform with RAG-based persistent memory using pgvector and structured prompt assembly.",

@@ -55,7 +55,7 @@ const Hero = () => {
                 </div>
 
                 {/* 3D Scene / Profile Image Column */}
-                <div className="relative w-full h-80 sm:h-95 md:h-full flex items-center justify-center lg:justify-end">
+                <div className="relative w-full h-80 sm:h-95 md:h-full flex items-center justify-center lg:justify-end pr-6 lg:pr-8">
                     
                     {/* Placeholder for 3D Scene (Background) */}
                     <div className="hidden lg:block w-full h-full absolute inset-0 -z-10" />
@@ -66,7 +66,7 @@ const Hero = () => {
                         animate={{ opacity: 1, scale: 1, x: 0 }}
                         transition={{ duration: 1, ease: "easeOut", delay: 0.3 }}
                         whileHover={{ y: -10 }}
-                        className="relative w-60 h-75 sm:w-70 sm:h-87.5 md:w-87.5 md:h-112.5 rounded-[2.5rem] p-3 bg-white/5 dark:bg-white/5 backdrop-blur-xl border border-white/20 shadow-2xl group overflow-visible"
+                        className="relative w-64 sm:w-72 md:w-80 aspect-[3/4] rounded-[2.5rem] p-3 bg-white/5 dark:bg-white/5 backdrop-blur-xl border border-white/20 shadow-2xl group overflow-visible"
                     >
                         {/* Decorative Background Glows */}
                         <div className="absolute -inset-4 bg-indigo-500/20 rounded-[3rem] blur-2xl group-hover:bg-indigo-500/30 transition-all duration-500 -z-10" />

@@ -4,6 +4,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { X } from "lucide-react";
 import { useEffect, useRef } from "react";
+import { useRouter } from "next/navigation";
 import { ProjectData } from "./ProjectCard";
 import { Button } from "@/components/ui/Button";
 
@@ -15,6 +16,7 @@ interface ProjectModalProps {
 }
 
 const ProjectModal = ({ project, onClose }: ProjectModalProps) => {
+    const router = useRouter();
     const modalRef = useRef<HTMLDivElement>(null);
     const contentRef = useRef<HTMLDivElement>(null);
     const overlayRef = useRef<HTMLDivElement>(null);
@@ -185,7 +187,14 @@ const ProjectModal = ({ project, onClose }: ProjectModalProps) => {
                     <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 mt-10 sm:mt-16 pt-6 sm:pt-10 border-t border-white/10">
                         <Button 
                             className="flex-1 py-6 sm:py-8 text-base sm:text-lg font-bold rounded-2xl bg-indigo-600 hover:bg-indigo-500 shadow-[0_0_20px_rgba(79,70,229,0.3)] transition-all"
-                            onClick={() => window.open(project.link, '_blank', 'noopener,noreferrer')}
+                            onClick={() => {
+                                if (project.link?.startsWith("/")) {
+                                    onClose();
+                                    router.push(project.link);
+                                } else {
+                                    window.open(project.link, '_blank', 'noopener,noreferrer');
+                                }
+                            }}
                         >
                             Explore Live Project
                         </Button>
