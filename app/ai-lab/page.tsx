@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import dynamic from "next/dynamic";
 import { HeroAI } from "@/components/ai/HeroAI";
@@ -22,6 +22,7 @@ import {
     Shield,
     Globe,
     ArrowRight,
+    X,
 } from "lucide-react";
 
 // --- Dynamic Client Components ---
@@ -121,12 +122,12 @@ const FeatureTabs = ({
     active: string;
     onChange: (t: string) => void;
 }) => (
-    <div className="flex border-b border-white/8">
+    <div className="flex border-b border-white/8 overflow-x-auto no-visible-scrollbar">
         {tabs.map((tab) => (
             <button
                 key={tab}
                 onClick={() => onChange(tab)}
-                className={`px-5 py-3 text-xs font-semibold tracking-wide transition-colors cursor-pointer border-b-2 -mb-px ${
+                className={`px-5 py-3 text-xs font-semibold tracking-wide transition-colors cursor-pointer border-b-2 -mb-px whitespace-nowrap ${
                     active === tab
                         ? "border-white text-white"
                         : "border-transparent text-zinc-500 hover:text-zinc-300"
@@ -208,65 +209,126 @@ const ProjectCard = ({
         amber: "text-amber-400 bg-amber-400/8 border-amber-400/20",
     };
     const iconColor = accentColors[accent] ?? accentColors.indigo;
+    const layoutId = title.replace(/\s+/g, "-").toLowerCase();
+
+    useEffect(() => {
+        if (open) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "auto";
+        }
+        return () => {
+            document.body.style.overflow = "auto";
+        };
+    }, [open]);
 
     return (
-        <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.4 }}
-            className="rounded-2xl border border-white/8 bg-zinc-900/50 overflow-hidden"
-        >
-            {/* Card header — always visible */}
-            <div className="p-6">
-                <div className="flex items-start gap-4">
-                    <div
-                        className={`w-10 h-10 rounded-xl border flex items-center justify-center shrink-0 ${iconColor}`}
-                    >
-                        <Icon className="w-5 h-5" />
-                    </div>
-                    <div className="flex-1 min-w-0">
-                        <Label>{label}</Label>
-                        <h3 className="text-base font-bold text-white mb-1.5">{title}</h3>
-                        <p className="text-sm text-zinc-400 leading-relaxed">{description}</p>
-                        <div className="flex flex-wrap gap-1.5 mt-3">
-                            {tags.map((tag) => (
-                                <span
-                                    key={tag}
-                                    className="px-2 py-0.5 rounded-md bg-white/5 border border-white/8 text-[11px] font-mono text-zinc-400"
-                                >
-                                    {tag}
-                                </span>
-                            ))}
+        <>
+            <motion.div
+                layoutId={`card-container-${layoutId}`}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.4 }}
+                className="rounded-2xl border border-white/8 bg-zinc-900/50 overflow-hidden flex flex-col h-full hover:border-white/20 transition-colors"
+            >
+                <div className="p-6 flex-1 flex flex-col">
+                    <div className="flex items-start gap-4 mb-4">
+                        <motion.div
+                            layoutId={`card-icon-${layoutId}`}
+                            className={`w-10 h-10 rounded-xl border flex items-center justify-center shrink-0 ${iconColor}`}
+                        >
+                            <Icon className="w-5 h-5" />
+                        </motion.div>
+                        <div className="flex-1 min-w-0">
+                            <Label>{label}</Label>
+                            <motion.h3 
+                                layoutId={`card-title-${layoutId}`}
+                                className="text-base font-bold text-white mb-1.5"
+                            >
+                                {title}
+                            </motion.h3>
+                            <motion.p 
+                                layoutId={`card-desc-${layoutId}`}
+                                className="text-sm text-zinc-400 leading-relaxed"
+                            >
+                                {description}
+                            </motion.p>
                         </div>
                     </div>
-                </div>
-                <button
-                    onClick={() => setOpen(!open)}
-                    className="mt-4 w-full flex items-center justify-center gap-1.5 py-2.5 rounded-xl border border-white/8 text-xs font-semibold text-zinc-400 hover:text-white hover:bg-white/5 transition-colors cursor-pointer"
-                >
-                    {open ? "Collapse" : "Explore System"}
-                    <ChevronDown
-                        className={`w-3.5 h-3.5 transition-transform ${open ? "rotate-180" : ""}`}
-                    />
-                </button>
-            </div>
-
-            {/* Expanded content */}
-            <AnimatePresence initial={false}>
-                {open && (
-                    <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.3 }}
-                        className="overflow-hidden border-t border-white/8"
+                    <div className="flex flex-wrap gap-1.5 mb-6 mt-auto">
+                        {tags.map((tag) => (
+                            <span
+                                key={tag}
+                                className="px-2 py-0.5 rounded-md bg-white/5 border border-white/8 text-[11px] font-mono text-zinc-400"
+                            >
+                                {tag}
+                            </span>
+                        ))}
+                    </div>
+                    <button
+                        onClick={() => setOpen(true)}
+                        className="w-full flex items-center justify-center gap-1.5 py-2.5 rounded-xl bg-white text-zinc-900 text-sm font-bold hover:bg-zinc-100 transition-colors"
                     >
-                        <div className="p-6">{content}</div>
-                    </motion.div>
+                        Explore System
+                    </button>
+                </div>
+            </motion.div>
+
+            <AnimatePresence>
+                {open && (
+                    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-12">
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+                            onClick={() => setOpen(false)}
+                        />
+                        <motion.div
+                            layoutId={`card-container-${layoutId}`}
+                            className="relative w-full max-w-5xl max-h-[90vh] overflow-hidden rounded-3xl border border-white/10 bg-zinc-950 shadow-2xl flex flex-col z-10"
+                        >
+                            <div className="sticky top-0 z-20 flex items-center justify-between p-4 sm:p-6 border-b border-white/10 bg-zinc-950/80 backdrop-blur-xl shrink-0">
+                                <div className="flex items-center gap-4">
+                                    <motion.div
+                                        layoutId={`card-icon-${layoutId}`}
+                                        className={`w-10 h-10 rounded-xl border flex items-center justify-center shrink-0 ${iconColor}`}
+                                    >
+                                        <Icon className="w-5 h-5" />
+                                    </motion.div>
+                                    <div>
+                                        <motion.h3 
+                                            layoutId={`card-title-${layoutId}`}
+                                            className="text-base sm:text-lg font-bold text-white leading-tight"
+                                        >
+                                            {title}
+                                        </motion.h3>
+                                        <p className="text-xs text-zinc-400 hidden sm:block">{label}</p>
+                                    </div>
+                                </div>
+                                <button
+                                    onClick={() => setOpen(false)}
+                                    className="p-2 sm:p-2.5 rounded-full hover:bg-white/10 transition-colors bg-white/5 border border-white/10 flex shrink-0"
+                                >
+                                    <X className="w-4 h-4 sm:w-5 sm:h-5 text-zinc-300" />
+                                </button>
+                            </div>
+                            
+                            <div className="flex-1 overflow-y-auto no-visible-scrollbar p-4 sm:p-8">
+                                <motion.div 
+                                    initial={{ opacity: 0, y: 10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ delay: 0.2 }}
+                                >
+                                    {content}
+                                </motion.div>
+                            </div>
+                        </motion.div>
+                    </div>
                 )}
             </AnimatePresence>
-        </motion.div>
+        </>
     );
 };
 
@@ -552,10 +614,10 @@ export default function AiLabPage() {
                                 I'm actively looking for ML engineering and software engineering roles. Let's talk.
                             </p>
                         </div>
-                        <div className="flex flex-wrap items-center justify-center gap-3">
+                        <div className="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-3 w-full md:w-auto mt-6 md:mt-0">
                             <a
                                 href="/resume"
-                                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white text-zinc-900 text-sm font-bold hover:bg-zinc-100 transition-colors"
+                                className="w-full sm:w-auto inline-flex justify-center items-center gap-2 px-5 py-2.5 rounded-xl bg-white text-zinc-900 text-sm font-bold hover:bg-zinc-100 transition-colors"
                             >
                                 <FileText className="w-4 h-4" />
                                 View Resume
@@ -564,14 +626,14 @@ export default function AiLabPage() {
                                 href="https://github.com"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-white/10 bg-white/5 text-zinc-300 text-sm font-semibold hover:bg-white/10 hover:text-white transition-colors"
+                                className="w-full sm:w-auto inline-flex justify-center items-center gap-2 px-5 py-2.5 rounded-xl border border-white/10 bg-white/5 text-zinc-300 text-sm font-semibold hover:bg-white/10 hover:text-white transition-colors"
                             >
                                 <Github className="w-4 h-4" />
                                 GitHub Profile
                             </a>
                             <a
                                 href="/#contact"
-                                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-white/10 bg-white/5 text-zinc-300 text-sm font-semibold hover:bg-white/10 hover:text-white transition-colors"
+                                className="w-full sm:w-auto inline-flex justify-center items-center gap-2 px-5 py-2.5 rounded-xl border border-white/10 bg-white/5 text-zinc-300 text-sm font-semibold hover:bg-white/10 hover:text-white transition-colors"
                             >
                                 Contact Me
                                 <ArrowRight className="w-4 h-4" />

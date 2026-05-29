@@ -6,7 +6,6 @@ import { useMotionValueEvent, useScroll, motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
-import { ContactModal } from "@/components/ui/contact-modal";
 import GlassSurface from "@/components/ui/GlassSurface";
 
 export const Navbar = () => {
@@ -14,7 +13,6 @@ export const Navbar = () => {
     const [visible, setVisible] = useState(true);
     const [lastScrollY, setLastScrollY] = useState(0);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-    const [isContactOpen, setIsContactOpen] = useState(false);
 
     useMotionValueEvent(scrollY, "change", (current) => {
         if (typeof current === "number") {
@@ -35,9 +33,9 @@ export const Navbar = () => {
 
     const navItems = [
         { name: "Home", link: "/" },
-        { name: "About", link: "#about" },
-        { name: "Projects", link: "#projects" },
-        { name: "Contact", link: "#contact" },
+        { name: "About", link: "/#about" },
+        { name: "Projects", link: "/#projects" },
+        { name: "Contact", link: "/contact" },
     ];
 
     return (
@@ -83,12 +81,12 @@ export const Navbar = () => {
                         <div className="flex items-center gap-4">
                             <ThemeToggle />
                             <div >
-                                <button
-                                    onClick={() => setIsContactOpen(true)}
-                                    className="cursor-pointer pointer-events-auto relative z-50 px-4 py-2 bg-white text-black text-sm font-semibold rounded-full hover:bg-gray-200 transition-colors"
+                                <Link
+                                    href="/contact"
+                                    className="inline-flex items-center justify-center relative z-50 px-4 py-2 bg-white text-black text-sm font-semibold rounded-full hover:bg-gray-200 transition-colors"
                                 >
                                     Hire Me
-                                </button>
+                                </Link>
                             </div>
                         </div>
                     </div>
@@ -123,22 +121,16 @@ export const Navbar = () => {
                                 {item.name}
                             </Link>
                         ))}
-                        <button
-                            onClick={() => {
-                                setIsMobileMenuOpen(false);
-                                setIsContactOpen(true);
-                            }}
-                            className="w-full py-3 mt-2 bg-indigo-600 text-white font-semibold rounded-xl hover:bg-indigo-700 transition-colors"
+                        <Link
+                            href="/contact"
+                            onClick={() => setIsMobileMenuOpen(false)}
+                            className="w-full py-3 mt-2 text-center bg-indigo-600 text-white font-semibold rounded-xl hover:bg-indigo-700 transition-colors block"
                         >
                             Hire Me
-                        </button>
+                        </Link>
                     </motion.div>
                 )}
             </motion.nav>
-
-            {isContactOpen && (
-                <ContactModal onClose={() => setIsContactOpen(false)} />
-            )}
         </>
     );
 };

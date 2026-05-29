@@ -1,13 +1,12 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import AiConversationalAgent from "../ai/AiConversationalAgent";
 import { TextHighlight } from "@/components/ui/hero-highlight";
 import { motion } from "framer-motion";
-import { useState } from "react";
 import {
     Brain,
     Workflow,
@@ -26,142 +25,37 @@ import {
 gsap.registerPlugin(ScrollTrigger);
 
 const aiSkills = [
-    {
-        icon: GitBranch,
-        label: "Agentic Workflows",
-        desc: "LangGraph · CrewAI · AutoGen",
-        color: "from-indigo-500/20 to-indigo-500/5",
-        border: "border-indigo-500/30",
-        iconColor: "text-indigo-400",
-        glow: "shadow-indigo-500/20",
-    },
-    {
-        icon: Database,
-        label: "RAG & Vector Memory",
-        desc: "pgvector · Pinecone · Chroma",
-        color: "from-violet-500/20 to-violet-500/5",
-        border: "border-violet-500/30",
-        iconColor: "text-violet-400",
-        glow: "shadow-violet-500/20",
-    },
-    {
-        icon: Brain,
-        label: "LLM Orchestration",
-        desc: "GPT-4 · Claude · Gemini · Qwen",
-        color: "from-purple-500/20 to-purple-500/5",
-        border: "border-purple-500/30",
-        iconColor: "text-purple-400",
-        glow: "shadow-purple-500/20",
-    },
-    {
-        icon: MessageSquare,
-        label: "Multimodal AI",
-        desc: "GPT-4o · Gemini 1.5 Pro · Claude",
-        color: "from-blue-500/20 to-blue-500/5",
-        border: "border-blue-500/30",
-        iconColor: "text-blue-400",
-        glow: "shadow-blue-500/20",
-    },
-    {
-        icon: Search,
-        label: "Semantic Search",
-        desc: "Embeddings · Hybrid Retrieval",
-        color: "from-cyan-500/20 to-cyan-500/5",
-        border: "border-cyan-500/30",
-        iconColor: "text-cyan-400",
-        glow: "shadow-cyan-500/20",
-    },
-    {
-        icon: Workflow,
-        label: "AI Automation",
-        desc: "N8n · Make · Zapier + AI",
-        color: "from-emerald-500/20 to-emerald-500/5",
-        border: "border-emerald-500/30",
-        iconColor: "text-emerald-400",
-        glow: "shadow-emerald-500/20",
-    },
-    {
-        icon: Layers,
-        label: "Prompt Engineering",
-        desc: "Chain-of-Thought · Few-shot · ReAct",
-        color: "from-yellow-500/20 to-yellow-500/5",
-        border: "border-yellow-500/30",
-        iconColor: "text-yellow-400",
-        glow: "shadow-yellow-500/20",
-    },
-    {
-        icon: Network,
-        label: "Multi-Agent Systems",
-        desc: "Supervisor · Critic · Planner Agents",
-        color: "from-rose-500/20 to-rose-500/5",
-        border: "border-rose-500/30",
-        iconColor: "text-rose-400",
-        glow: "shadow-rose-500/20",
-    },
-    {
-        icon: Shield,
-        label: "AI Safety & Guardrails",
-        desc: "Validation · Filtering · Monitoring",
-        color: "from-orange-500/20 to-orange-500/5",
-        border: "border-orange-500/30",
-        iconColor: "text-orange-400",
-        glow: "shadow-orange-500/20",
-    },
-    {
-        icon: Cpu,
-        label: "Model Fine-tuning",
-        desc: "LoRA · QLoRA · PEFT",
-        color: "from-pink-500/20 to-pink-500/5",
-        border: "border-pink-500/30",
-        iconColor: "text-pink-400",
-        glow: "shadow-pink-500/20",
-    },
-    {
-        icon: Bot,
-        label: "Tool-Use & Function Calls",
-        desc: "APIs · Code Exec · Web Search",
-        color: "from-lime-500/20 to-lime-500/5",
-        border: "border-lime-500/30",
-        iconColor: "text-lime-400",
-        glow: "shadow-lime-500/20",
-    },
-    {
-        icon: Zap,
-        label: "Real-time Inference",
-        desc: "Streaming · SSE · WebSocket",
-        color: "from-sky-500/20 to-sky-500/5",
-        border: "border-sky-500/30",
-        iconColor: "text-sky-400",
-        glow: "shadow-sky-500/20",
-    },
+    { icon: GitBranch, label: "Agentic Workflows", desc: "LangGraph · CrewAI" },
+    { icon: Database, label: "RAG Memory", desc: "pgvector · Pinecone" },
+    { icon: Brain, label: "LLM Orchestration", desc: "GPT-4 · Claude · Gemini" },
+    { icon: MessageSquare, label: "Multimodal AI", desc: "Vision · Audio · Text" },
+    { icon: Search, label: "Semantic Search", desc: "Hybrid Retrieval" },
+    { icon: Workflow, label: "AI Automation", desc: "N8n · Make · Zapier" },
+    { icon: Layers, label: "Prompt Engineering", desc: "Chain-of-Thought · ReAct" },
+    { icon: Network, label: "Multi-Agent Systems", desc: "Supervisor · Critic" },
+    { icon: Shield, label: "AI Safety", desc: "Validation · Guardrails" },
+    { icon: Cpu, label: "Model Fine-tuning", desc: "LoRA · QLoRA" },
+    { icon: Bot, label: "Tool-Use", desc: "APIs · Code Exec" },
+    { icon: Zap, label: "Real-time Inference", desc: "Streaming · WebSockets" },
 ];
 
 const SkillCard = ({ skill, index }: { skill: typeof aiSkills[0]; index: number }) => {
-    const [hovered, setHovered] = useState(false);
     const Icon = skill.icon;
-
     return (
         <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: index * 0.05 }}
             viewport={{ once: true }}
-            onMouseEnter={() => setHovered(true)}
-            onMouseLeave={() => setHovered(false)}
-            className={`relative p-3 sm:p-4 rounded-2xl bg-linear-to-br ${skill.color} border ${skill.border} backdrop-blur-sm cursor-default transition-all duration-300 ${hovered ? `shadow-lg ${skill.glow}` : ""} group overflow-hidden`}
+            className="group relative p-4 rounded-xl bg-card border border-border hover:border-foreground/20 transition-all duration-300 flex flex-col gap-3"
         >
-            {/* hover shimmer */}
-            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                <div className="absolute inset-0 bg-linear-to-r from-transparent via-white/5 to-transparent -skew-x-12 translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-700" />
-            </div>
-
-            <div className="flex items-start gap-3 relative z-10">
-                <div className={`p-2 rounded-xl bg-black/10 dark:bg-zinc-900/60 shrink-0 ${hovered ? "scale-110" : ""} transition-transform duration-200`}>
-                    <Icon className={`w-4 h-4 sm:w-4 sm:h-4 ${skill.iconColor}`} />
+            <div className="flex items-center gap-3">
+                <div className="p-2 rounded-lg bg-muted text-foreground/70 group-hover:text-foreground group-hover:bg-foreground/5 transition-colors">
+                    <Icon className="w-4 h-4" />
                 </div>
                 <div className="min-w-0">
-                    <p className="text-xs sm:text-sm font-bold text-foreground leading-tight truncate">{skill.label}</p>
-                    <p className="text-[10px] sm:text-[11px] text-muted-foreground mt-0.5 leading-tight">{skill.desc}</p>
+                    <p className="text-sm font-bold text-foreground leading-tight truncate">{skill.label}</p>
+                    <p className="text-[11px] text-muted-foreground mt-0.5 leading-tight">{skill.desc}</p>
                 </div>
             </div>
         </motion.div>
@@ -177,101 +71,100 @@ const AiSystems = () => {
         if (!containerRef.current || !textRef.current) return;
 
         gsap.fromTo(textRef.current,
-            { y: 50, opacity: 0 },
+            { y: 30, opacity: 0 },
             {
                 y: 0,
                 opacity: 1,
                 duration: 1,
                 scrollTrigger: {
                     trigger: containerRef.current,
-                    start: "top 80%",
+                    start: "top 85%",
                 }
             }
         );
-
     }, { scope: containerRef });
 
     return (
         <section ref={containerRef} className="py-20 md:py-32 w-full bg-transparent dark:bg-transparent relative overflow-hidden flex flex-col items-center">
-            {/* Background Neural Glow */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full opacity-20 pointer-events-none">
-                <div className="w-225 h-225 bg-indigo-500/10 rounded-full blur-[140px] animate-pulse mx-auto" />
-            </div>
-
+            
             {/* Section Header */}
-            <div ref={textRef} className="text-center space-y-4 mb-14 md:mb-20 z-10 px-4">
-                <TextHighlight className="text-3xl sm:text-4xl md:text-6xl font-black tracking-tight text-foreground uppercase italic">
-                    Agentic AI Ecosystem
+            <div ref={textRef} className="text-center space-y-4 mb-16 md:mb-24 z-10 px-4">
+                <TextHighlight className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-foreground uppercase">
+                    Agentic Ecosystem
                 </TextHighlight>
-                <p className="text-muted-foreground text-base sm:text-lg md:text-xl max-w-2xl mx-auto mt-4 md:mt-6 font-medium">
+                <p className="text-muted-foreground font-medium text-sm tracking-widest uppercase mt-2">
+                    Systems Architecture
+                </p>
+                <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto mt-6 font-medium leading-relaxed">
                     Spanning the full AI stack — from conversational agents and multi-step workflows to RAG, fine-tuning, and real-time inference.
                 </p>
             </div>
 
             {/* Main Two-Column Layout */}
-            <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-start relative z-10">
+            <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16 items-start relative z-10">
 
                 {/* LEFT: Agent + Context */}
                 <motion.div
-                    initial={{ opacity: 0, x: -50 }}
+                    initial={{ opacity: 0, x: -30 }}
                     whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.8, ease: "easeOut" }}
-                    className="flex flex-col gap-6 md:gap-8"
+                    transition={{ duration: 0.6, ease: "easeOut" }}
+                    className="flex flex-col gap-8"
                 >
-                    <div className="space-y-5">
-                        <div className="flex items-center gap-3">
-                            <div className="w-2 h-10 bg-indigo-500 rounded-full shadow-[0_0_15px_rgba(79,70,229,0.5)]" />
-                            <h3 className="text-2xl sm:text-3xl font-bold text-foreground uppercase tracking-tighter">Autonomous Operations</h3>
+                    <div className="space-y-4">
+                        <div className="flex items-center gap-3 mb-2">
+                            <div className="w-2 h-6 bg-foreground/20 rounded-full" />
+                            <h3 className="text-2xl font-bold text-foreground tracking-tight">Autonomous Operations</h3>
                         </div>
-                        <p className="text-muted-foreground text-base sm:text-lg leading-relaxed">
+                        <p className="text-muted-foreground text-base leading-relaxed max-w-lg">
                             My AI systems leverage agentic workflows, RAG, and multimodal models to automate complex
-                            decision-making processes. From appointment booking to AI companions with long-term memory —
-                            these agents operate at the edge of possibility.
+                            decision-making processes. These agents operate effectively at the edge of possibility.
                         </p>
                     </div>
 
-                    {/* Quick-stat pills */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    {/* Quick-stat pills - Clean style */}
+                    <div className="grid grid-cols-2 gap-3 max-w-lg">
                         {[
-                            { label: "RAG Systems", value: "Vector-Embedded Memory" },
-                            { label: "Agentic Flows", value: "Multi-Step Reasoners" },
-                            { label: "Tools", value: "LangGraph · LangChain" },
-                            { label: "Automation", value: "Make · N8N" },
+                            { label: "Memory", value: "Vector RAG" },
+                            { label: "Flows", value: "Multi-Step Logic" },
+                            { label: "Tools", value: "LangGraph" },
+                            { label: "Orchestration", value: "N8N & Make" },
                         ].map((stat, i) => (
-                            <div key={i} className="px-4 py-2 rounded-xl bg-card/70 dark:bg-white/5 border border-border dark:border-white/5 backdrop-blur-sm hover:border-indigo-500/30 transition-all">
-                                <p className="text-[10px] uppercase tracking-widest text-indigo-400 font-black">{stat.label}</p>
-                                <p className="text-foreground text-sm font-bold">{stat.value}</p>
+                            <div key={i} className="px-4 py-3 rounded-xl bg-card border border-border flex flex-col justify-center">
+                                <p className="text-[10px] uppercase tracking-widest text-muted-foreground font-bold mb-1">{stat.label}</p>
+                                <p className="text-foreground text-sm font-semibold">{stat.value}</p>
                             </div>
                         ))}
                     </div>
 
-                    {/* Voice Agent */}
-                    <AiConversationalAgent onStatusChange={setIsAgentActive} />
+                    {/* Voice Agent in a sleek card */}
+                    <div className="rounded-2xl border border-border bg-card p-2 sm:p-4 max-w-lg">
+                        <AiConversationalAgent onStatusChange={setIsAgentActive} />
+                    </div>
                 </motion.div>
 
                 {/* RIGHT: AI Skills Grid */}
                 <motion.div
-                    initial={{ opacity: 0, x: 50 }}
+                    initial={{ opacity: 0, x: 30 }}
                     whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
-                    className="flex flex-col gap-4 md:gap-5"
+                    transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
+                    className="flex flex-col gap-6"
                 >
                     {/* Header */}
                     <div className="flex items-center justify-between">
                         <div>
-                            <h3 className="text-xl sm:text-2xl font-bold text-foreground tracking-tight">Full AI Stack</h3>
-                            <p className="text-muted-foreground text-sm mt-0.5">Skills · Frameworks · Workflows</p>
+                            <h3 className="text-xl font-bold text-foreground tracking-tight">Full AI Stack</h3>
+                            <p className="text-muted-foreground text-xs mt-1 uppercase tracking-wider font-semibold">Skills & Frameworks</p>
                         </div>
-                        <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20">
-                            <div className={`w-2 h-2 rounded-full ${isAgentActive ? "bg-green-400 animate-pulse" : "bg-indigo-500"}`} />
-                            <span className="text-[11px] font-bold text-indigo-300 uppercase tracking-widest">
-                                {isAgentActive ? "Agent Active" : `${aiSkills.length} Skills`}
+                        <div className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-border bg-card">
+                            <div className={`w-2 h-2 rounded-full transition-colors duration-500 ${isAgentActive ? "bg-green-500" : "bg-foreground/30"}`} />
+                            <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest">
+                                {isAgentActive ? "Agent Active" : `${aiSkills.length} Modules`}
                             </span>
                         </div>
                     </div>
 
-                    {/* Skills masonry grid */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-3">
+                    {/* Clean Skills Grid */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         {aiSkills.map((skill, i) => (
                             <SkillCard key={i} skill={skill} index={i} />
                         ))}
@@ -281,15 +174,15 @@ const AiSystems = () => {
                     <motion.div
                         initial={{ opacity: 0, y: 10 }}
                         whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.6 }}
-                        className="mt-1 p-4 rounded-2xl bg-card/70 dark:bg-zinc-950/60 border border-border dark:border-white/5 backdrop-blur-xl flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4"
+                        transition={{ delay: 0.4 }}
+                        className="p-4 rounded-xl bg-muted/50 border border-border flex flex-col sm:flex-row items-start sm:items-center gap-4 mt-2"
                     >
-                        <div className="w-10 h-10 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center shrink-0">
-                            <Workflow className="w-5 h-5 text-indigo-400" />
+                        <div className="p-3 rounded-lg bg-card border border-border shrink-0">
+                            <Workflow className="w-5 h-5 text-foreground/70" />
                         </div>
                         <div>
-                            <p className="text-sm sm:text-base font-bold text-foreground">End-to-End AI Automation</p>
-                            <p className="text-xs sm:text-sm text-muted-foreground mt-0.5">
+                            <p className="text-sm font-bold text-foreground">End-to-End Automation</p>
+                            <p className="text-xs text-muted-foreground mt-1">
                                 Designing pipelines from data ingestion → reasoning → action → feedback loops
                             </p>
                         </div>

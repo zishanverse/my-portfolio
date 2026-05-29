@@ -37,15 +37,6 @@ export const HeroAI = () => {
 
             <div className="relative z-10 max-w-4xl mx-auto space-y-8">
                 {/* Label pill */}
-                <motion.div
-                    initial={{ opacity: 0, y: -12 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5 }}
-                    className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-white/10 bg-white/5 text-xs font-semibold text-zinc-400 tracking-widest uppercase"
-                >
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                    AI/ML Engineering Lab
-                </motion.div>
 
                 {/* Headline */}
                 <motion.h1
@@ -75,18 +66,18 @@ export const HeroAI = () => {
                     initial={{ opacity: 0, y: 12 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.3 }}
-                    className="flex flex-col sm:flex-row items-center justify-center gap-3"
+                    className="flex flex-col sm:flex-row items-center justify-center gap-3 w-full"
                 >
                     <button
                         onClick={() => scrollTo("featured-system")}
-                        className="group inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white text-zinc-900 text-sm font-bold hover:bg-zinc-100 transition-colors"
+                        className="group w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-white text-zinc-900 text-sm font-bold hover:bg-zinc-100 transition-colors"
                     >
                         Run Live Inference
                         <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
                     </button>
                     <button
                         onClick={() => scrollTo("experiments")}
-                        className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-white/10 bg-white/5 text-zinc-300 text-sm font-semibold hover:bg-white/10 transition-colors"
+                        className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl border border-white/10 bg-white/5 text-zinc-300 text-sm font-semibold hover:bg-white/10 transition-colors"
                     >
                         View All Projects
                     </button>

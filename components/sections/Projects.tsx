@@ -1,9 +1,10 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { ProjectCard, ProjectData } from "./ProjectCard";
 import { ProjectModal } from "./ProjectModal";
-import { AnimatePresence } from "framer-motion"; // Using AnimatePresence for conditional rendering logic, though animation is GSAP inside
+import { AnimatePresence } from "framer-motion";
 
 const projectsData: ProjectData[] = [
     {
@@ -86,6 +87,7 @@ const projectsData: ProjectData[] = [
 ];
 
 const Projects = () => {
+    const router = useRouter();
     const [selectedProject, setSelectedProject] = useState<ProjectData | null>(null);
 
     return (
@@ -110,7 +112,13 @@ const Projects = () => {
                         <ProjectCard
                             key={project.id}
                             project={project}
-                            onClick={setSelectedProject}
+                            onClick={(p) => {
+                                if (p.link?.startsWith("/")) {
+                                    router.push(p.link);
+                                } else {
+                                    setSelectedProject(p);
+                                }
+                            }}
                         />
                     ))}
                 </div>
