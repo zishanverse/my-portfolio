@@ -33,7 +33,7 @@ export const InsightGenerator: React.FC<InsightGeneratorProps> = ({ minSupport, 
 
     return (
         <div className="space-y-3 select-none">
-            <div className="flex items-center gap-1.5 text-xs font-bold text-zinc-400 uppercase">
+            <div className="flex items-center gap-1.5 text-xs font-bold text-muted-foreground uppercase">
                 <Sparkles className="w-3.5 h-3.5 text-indigo-400 animate-pulse" />
                 <span>Mining Insights</span>
             </div>
@@ -41,15 +41,15 @@ export const InsightGenerator: React.FC<InsightGeneratorProps> = ({ minSupport, 
             <div className="space-y-2 max-h-[140px] overflow-y-auto pr-1 scrollbar-thin">
                 {activeInsights.length > 0 ? (
                     activeInsights.map((insight, idx) => (
-                        <div key={idx} className="p-2.5 rounded-xl bg-white/2 border border-white/5 flex gap-2.5 items-start">
+                        <div key={idx} className="p-2.5 rounded-xl bg-white/2 border border-border flex gap-2.5 items-start">
                             <CheckCircle className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
-                            <p className="text-[11px] text-zinc-400 leading-relaxed font-medium">
+                            <p className="text-[11px] text-muted-foreground leading-relaxed font-medium">
                                 {insight.text}
                             </p>
                         </div>
                     ))
                 ) : (
-                    <p className="text-[11px] text-zinc-500 italic text-center py-4">
+                    <p className="text-[11px] text-muted-foreground italic text-center py-4">
                         Filters are too restrictive. Relax support or confidence to generate associations.
                     </p>
                 )}

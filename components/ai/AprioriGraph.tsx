@@ -101,15 +101,15 @@ export const AprioriGraph = () => {
     return (
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 select-none">
             {/* SVG Graph Network Screen */}
-            <div className="lg:col-span-8 p-6 rounded-2xl bg-zinc-900/60 border border-white/5 flex flex-col justify-between backdrop-blur-md min-h-[350px] relative">
-                <div className="flex items-center justify-between pb-3 border-b border-white/5 mb-2">
+            <div className="lg:col-span-8 p-6 rounded-2xl bg-card border border-border flex flex-col justify-between backdrop-blur-md min-h-[350px] relative">
+                <div className="flex items-center justify-between pb-3 border-b border-border mb-2">
                     <div className="flex items-center gap-2">
                         <Network className="w-4 h-4 text-emerald-400" />
-                        <span className="text-xs font-bold uppercase tracking-wider text-zinc-400">
+                        <span className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
                             Interactive Rule Association Map
                         </span>
                     </div>
-                    <span className="px-2 py-0.5 rounded bg-zinc-950 font-mono text-[9px] text-zinc-500">
+                    <span className="px-2 py-0.5 rounded bg-background font-mono text-[9px] text-muted-foreground">
                         drag nodes to restructure layout
                     </span>
                 </div>

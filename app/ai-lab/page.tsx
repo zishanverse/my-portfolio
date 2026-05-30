@@ -69,7 +69,7 @@ const LearningTimeline = dynamic(
 
 /** Thin label used for section sub-headings */
 const Label = ({ children }: { children: React.ReactNode }) => (
-    <p className="text-[11px] font-bold text-zinc-500 uppercase tracking-widest mb-2">
+    <p className="text-[11px] font-bold text-muted-foreground uppercase tracking-widest mb-2">
         {children}
     </p>
 );
@@ -83,7 +83,7 @@ const Card = ({
     className?: string;
 }) => (
     <div
-        className={`rounded-2xl border border-white/8 bg-zinc-900/50 backdrop-blur-sm ${className}`}
+        className={`rounded-2xl border border-border bg-card backdrop-blur-sm ${className}`}
     >
         {children}
     </div>
@@ -122,15 +122,15 @@ const FeatureTabs = ({
     active: string;
     onChange: (t: string) => void;
 }) => (
-    <div className="flex border-b border-white/8 overflow-x-auto no-visible-scrollbar">
+    <div className="flex border-b border-border overflow-x-auto no-visible-scrollbar">
         {tabs.map((tab) => (
             <button
                 key={tab}
                 onClick={() => onChange(tab)}
                 className={`px-5 py-3 text-xs font-semibold tracking-wide transition-colors cursor-pointer border-b-2 -mb-px whitespace-nowrap ${
                     active === tab
-                        ? "border-white text-white"
-                        : "border-transparent text-zinc-500 hover:text-zinc-300"
+                        ? "border-white text-foreground"
+                        : "border-transparent text-muted-foreground hover:text-muted-foreground"
                 }`}
             >
                 {tab}
@@ -149,14 +149,14 @@ const ExpandableNote = ({
 }) => {
     const [open, setOpen] = useState(false);
     return (
-        <div className="border border-white/8 rounded-xl overflow-hidden">
+        <div className="border border-border rounded-xl overflow-hidden">
             <button
                 onClick={() => setOpen(!open)}
-                className="w-full flex items-center justify-between px-5 py-4 text-left hover:bg-white/3 transition-colors cursor-pointer"
+                className="w-full flex items-center justify-between px-5 py-4 text-left hover:bg-secondary/50 transition-colors cursor-pointer"
             >
-                <span className="text-sm font-semibold text-zinc-200">{title}</span>
+                <span className="text-sm font-semibold text-foreground">{title}</span>
                 <ChevronDown
-                    className={`w-4 h-4 text-zinc-500 transition-transform ${open ? "rotate-180" : ""}`}
+                    className={`w-4 h-4 text-muted-foreground transition-transform ${open ? "rotate-180" : ""}`}
                 />
             </button>
             <AnimatePresence initial={false}>
@@ -168,7 +168,7 @@ const ExpandableNote = ({
                         transition={{ duration: 0.2 }}
                         className="overflow-hidden"
                     >
-                        <div className="px-5 pb-5 text-sm text-zinc-400 leading-relaxed border-t border-white/5">
+                        <div className="px-5 pb-5 text-sm text-muted-foreground leading-relaxed border-t border-border">
                             {children}
                         </div>
                     </motion.div>
@@ -230,7 +230,7 @@ const ProjectCard = ({
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.4 }}
-                className="rounded-2xl border border-white/8 bg-zinc-900/50 overflow-hidden flex flex-col h-full hover:border-white/20 transition-colors"
+                className="rounded-2xl border border-border bg-card overflow-hidden flex flex-col h-full hover:border-border transition-colors"
             >
                 <div className="p-6 flex-1 flex flex-col">
                     <div className="flex items-start gap-4 mb-4">
@@ -244,13 +244,13 @@ const ProjectCard = ({
                             <Label>{label}</Label>
                             <motion.h3 
                                 layoutId={`card-title-${layoutId}`}
-                                className="text-base font-bold text-white mb-1.5"
+                                className="text-base font-bold text-foreground mb-1.5"
                             >
                                 {title}
                             </motion.h3>
                             <motion.p 
                                 layoutId={`card-desc-${layoutId}`}
-                                className="text-sm text-zinc-400 leading-relaxed"
+                                className="text-sm text-muted-foreground leading-relaxed"
                             >
                                 {description}
                             </motion.p>
@@ -260,7 +260,7 @@ const ProjectCard = ({
                         {tags.map((tag) => (
                             <span
                                 key={tag}
-                                className="px-2 py-0.5 rounded-md bg-white/5 border border-white/8 text-[11px] font-mono text-zinc-400"
+                                className="px-2 py-0.5 rounded-md bg-secondary border border-border text-[11px] font-mono text-muted-foreground"
                             >
                                 {tag}
                             </span>
@@ -268,7 +268,7 @@ const ProjectCard = ({
                     </div>
                     <button
                         onClick={() => setOpen(true)}
-                        className="w-full flex items-center justify-center gap-1.5 py-2.5 rounded-xl bg-white text-zinc-900 text-sm font-bold hover:bg-zinc-100 transition-colors"
+                        className="w-full flex items-center justify-center gap-1.5 py-2.5 rounded-xl bg-foreground text-background text-sm font-bold hover:bg-foreground/90 transition-colors"
                     >
                         Explore System
                     </button>
@@ -287,9 +287,9 @@ const ProjectCard = ({
                         />
                         <motion.div
                             layoutId={`card-container-${layoutId}`}
-                            className="relative w-full max-w-5xl max-h-[90vh] overflow-hidden rounded-3xl border border-white/10 bg-zinc-950 shadow-2xl flex flex-col z-10"
+                            className="relative w-full max-w-5xl max-h-[90vh] overflow-hidden rounded-3xl border border-border bg-background shadow-2xl flex flex-col z-10"
                         >
-                            <div className="sticky top-0 z-20 flex items-center justify-between p-4 sm:p-6 border-b border-white/10 bg-zinc-950/80 backdrop-blur-xl shrink-0">
+                            <div className="sticky top-0 z-20 flex items-center justify-between p-4 sm:p-6 border-b border-border bg-background/80 backdrop-blur-xl shrink-0">
                                 <div className="flex items-center gap-4">
                                     <motion.div
                                         layoutId={`card-icon-${layoutId}`}
@@ -300,18 +300,18 @@ const ProjectCard = ({
                                     <div>
                                         <motion.h3 
                                             layoutId={`card-title-${layoutId}`}
-                                            className="text-base sm:text-lg font-bold text-white leading-tight"
+                                            className="text-base sm:text-lg font-bold text-foreground leading-tight"
                                         >
                                             {title}
                                         </motion.h3>
-                                        <p className="text-xs text-zinc-400 hidden sm:block">{label}</p>
+                                        <p className="text-xs text-muted-foreground hidden sm:block">{label}</p>
                                     </div>
                                 </div>
                                 <button
                                     onClick={() => setOpen(false)}
-                                    className="p-2 sm:p-2.5 rounded-full hover:bg-white/10 transition-colors bg-white/5 border border-white/10 flex shrink-0"
+                                    className="p-2 sm:p-2.5 rounded-full hover:bg-secondary transition-colors bg-secondary border border-border flex shrink-0"
                                 >
-                                    <X className="w-4 h-4 sm:w-5 sm:h-5 text-zinc-300" />
+                                    <X className="w-4 h-4 sm:w-5 sm:h-5 text-muted-foreground" />
                                 </button>
                             </div>
                             
@@ -340,7 +340,7 @@ export default function AiLabPage() {
     const [featuredTab, setFeaturedTab] = useState("Live Inference");
 
     return (
-        <div className="min-h-screen bg-zinc-950 text-white">
+        <div className="min-h-screen bg-background text-foreground">
             {/* ── Hero ── */}
             <HeroAI />
 
@@ -361,7 +361,7 @@ export default function AiLabPage() {
                 <div className="flex flex-wrap items-center gap-3 mb-8">
                     <StatusBadge text="Model Loaded" color="emerald" />
                     <StatusBadge text="TF.js Runtime" color="indigo" />
-                    <span className="text-xs text-zinc-600 font-mono">Conv1D · 3,892 params · &lt;2ms latency</span>
+                    <span className="text-xs text-muted-foreground font-mono">Conv1D · 3,892 params · &lt;2ms latency</span>
                 </div>
 
                 {/* Main tab panel */}
@@ -398,12 +398,12 @@ export default function AiLabPage() {
                     ].map((f) => (
                         <div
                             key={f.label}
-                            className="rounded-xl border border-white/8 bg-zinc-900/40 px-4 py-3"
+                            className="rounded-xl border border-border bg-card px-4 py-3"
                         >
-                            <p className="text-[11px] text-zinc-500 font-semibold uppercase tracking-wider mb-1">
+                            <p className="text-[11px] text-muted-foreground font-semibold uppercase tracking-wider mb-1">
                                 {f.label}
                             </p>
-                            <p className="text-sm font-bold text-white font-mono">{f.value}</p>
+                            <p className="text-sm font-bold text-foreground font-mono">{f.value}</p>
                         </div>
                     ))}
                 </div>
@@ -519,13 +519,13 @@ export default function AiLabPage() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, margin: "-60px" }}
                             transition={{ duration: 0.4 }}
-                            className="rounded-2xl border border-white/8 bg-zinc-900/50 p-6 space-y-3"
+                            className="rounded-2xl border border-border bg-card p-6 space-y-3"
                         >
-                            <div className="w-9 h-9 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center">
-                                <Icon className="w-4 h-4 text-zinc-300" />
+                            <div className="w-9 h-9 rounded-xl bg-secondary border border-border flex items-center justify-center">
+                                <Icon className="w-4 h-4 text-muted-foreground" />
                             </div>
-                            <h3 className="text-sm font-bold text-white">{title}</h3>
-                            <p className="text-sm text-zinc-400 leading-relaxed">{body}</p>
+                            <h3 className="text-sm font-bold text-foreground">{title}</h3>
+                            <p className="text-sm text-muted-foreground leading-relaxed">{body}</p>
                         </motion.div>
                     ))}
                 </div>
@@ -536,12 +536,12 @@ export default function AiLabPage() {
                         <div className="pt-4 space-y-2">
                             <p>
                                 The model was trained in Python using Keras (TensorFlow 2.x). After training,
-                                the model was exported with <code className="text-indigo-400 bg-white/5 px-1 rounded">tensorflowjs_converter</code> to
-                                produce a <code className="text-indigo-400 bg-white/5 px-1 rounded">model.json</code> topology file alongside binary weight shards.
+                                the model was exported with <code className="text-indigo-400 bg-secondary px-1 rounded">tensorflowjs_converter</code> to
+                                produce a <code className="text-indigo-400 bg-secondary px-1 rounded">model.json</code> topology file alongside binary weight shards.
                             </p>
                             <p>
-                                These files are served statically from <code className="text-indigo-400 bg-white/5 px-1 rounded">/public/models/</code> and loaded at runtime with{" "}
-                                <code className="text-indigo-400 bg-white/5 px-1 rounded">tf.loadLayersModel()</code>. The model is cached in memory after the first load
+                                These files are served statically from <code className="text-indigo-400 bg-secondary px-1 rounded">/public/models/</code> and loaded at runtime with{" "}
+                                <code className="text-indigo-400 bg-secondary px-1 rounded">tf.loadLayersModel()</code>. The model is cached in memory after the first load
                                 and reused across prediction calls.
                             </p>
                         </div>
@@ -556,7 +556,7 @@ export default function AiLabPage() {
                             </p>
                             <p>
                                 For a Conv1D model with 3,892 parameters, the performance difference is negligible.
-                                TF.js's <code className="text-indigo-400 bg-white/5 px-1 rounded">tf.tidy()</code> API also provides automatic memory cleanup,
+                                TF.js's <code className="text-indigo-400 bg-secondary px-1 rounded">tf.tidy()</code> API also provides automatic memory cleanup,
                                 preventing WebGL texture leaks.
                             </p>
                         </div>
@@ -565,9 +565,9 @@ export default function AiLabPage() {
                     <ExpandableNote title="Handling Next.js SSR with TensorFlow.js and canvas-heavy components">
                         <div className="pt-4 space-y-2">
                             <p>
-                                TF.js accesses <code className="text-indigo-400 bg-white/5 px-1 rounded">window</code> and WebGL APIs during initialization — both unavailable
+                                TF.js accesses <code className="text-indigo-400 bg-secondary px-1 rounded">window</code> and WebGL APIs during initialization — both unavailable
                                 in the Node.js SSR environment. Using{" "}
-                                <code className="text-indigo-400 bg-white/5 px-1 rounded">{"dynamic(() => import(...), { ssr: false })"}</code>{" "}
+                                <code className="text-indigo-400 bg-secondary px-1 rounded">{"dynamic(() => import(...), { ssr: false })"}</code>{" "}
                                 ensures these components are only evaluated in the browser after hydration.
                             </p>
                             <p>
@@ -581,9 +581,9 @@ export default function AiLabPage() {
                         <div className="pt-4 space-y-2">
                             <p>
                                 The Apriori algorithm was run in Python using the{" "}
-                                <code className="text-indigo-400 bg-white/5 px-1 rounded">mlxtend</code> library on a deforestation transaction dataset.
-                                Rules were mined with <code className="text-indigo-400 bg-white/5 px-1 rounded">min_support=0.1</code> and{" "}
-                                <code className="text-indigo-400 bg-white/5 px-1 rounded">min_confidence=0.5</code>, yielding 42 high-lift association rules.
+                                <code className="text-indigo-400 bg-secondary px-1 rounded">mlxtend</code> library on a deforestation transaction dataset.
+                                Rules were mined with <code className="text-indigo-400 bg-secondary px-1 rounded">min_support=0.1</code> and{" "}
+                                <code className="text-indigo-400 bg-secondary px-1 rounded">min_confidence=0.5</code>, yielding 42 high-lift association rules.
                             </p>
                             <p>
                                 The resulting rule set is embedded as static JSON in the client and rendered as a
@@ -597,7 +597,7 @@ export default function AiLabPage() {
             {/* ═══════════════════════════════════
                 FOOTER CTA
             ═══════════════════════════════════ */}
-            <div className="border-t border-white/5 py-16 md:py-20">
+            <div className="border-t border-border py-16 md:py-20">
                 <div className="max-w-6xl mx-auto px-4 sm:px-6">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -607,17 +607,17 @@ export default function AiLabPage() {
                         className="flex flex-col md:flex-row items-center justify-between gap-8"
                     >
                         <div className="text-center md:text-left space-y-2">
-                            <h2 className="text-2xl sm:text-3xl font-black text-white">
+                            <h2 className="text-2xl sm:text-3xl font-black text-foreground">
                                 Want to work together?
                             </h2>
-                            <p className="text-zinc-400 text-base max-w-lg">
+                            <p className="text-muted-foreground text-base max-w-lg">
                                 I'm actively looking for ML engineering and software engineering roles. Let's talk.
                             </p>
                         </div>
                         <div className="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-3 w-full md:w-auto mt-6 md:mt-0">
                             <a
                                 href="/resume"
-                                className="w-full sm:w-auto inline-flex justify-center items-center gap-2 px-5 py-2.5 rounded-xl bg-white text-zinc-900 text-sm font-bold hover:bg-zinc-100 transition-colors"
+                                className="w-full sm:w-auto inline-flex justify-center items-center gap-2 px-5 py-2.5 rounded-xl bg-foreground text-background text-sm font-bold hover:bg-foreground/90 transition-colors"
                             >
                                 <FileText className="w-4 h-4" />
                                 View Resume
@@ -626,14 +626,14 @@ export default function AiLabPage() {
                                 href="https://github.com"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="w-full sm:w-auto inline-flex justify-center items-center gap-2 px-5 py-2.5 rounded-xl border border-white/10 bg-white/5 text-zinc-300 text-sm font-semibold hover:bg-white/10 hover:text-white transition-colors"
+                                className="w-full sm:w-auto inline-flex justify-center items-center gap-2 px-5 py-2.5 rounded-xl border border-border bg-secondary text-muted-foreground text-sm font-semibold hover:bg-secondary hover:text-foreground transition-colors"
                             >
                                 <Github className="w-4 h-4" />
                                 GitHub Profile
                             </a>
                             <a
                                 href="/#contact"
-                                className="w-full sm:w-auto inline-flex justify-center items-center gap-2 px-5 py-2.5 rounded-xl border border-white/10 bg-white/5 text-zinc-300 text-sm font-semibold hover:bg-white/10 hover:text-white transition-colors"
+                                className="w-full sm:w-auto inline-flex justify-center items-center gap-2 px-5 py-2.5 rounded-xl border border-border bg-secondary text-muted-foreground text-sm font-semibold hover:bg-secondary hover:text-foreground transition-colors"
                             >
                                 Contact Me
                                 <ArrowRight className="w-4 h-4" />

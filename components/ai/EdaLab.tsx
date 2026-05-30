@@ -71,7 +71,7 @@ export const EdaLab = () => {
     return (
         <div className="flex flex-col gap-6">
             {/* Header with quick sub-navigation */}
-            <div className="flex items-center justify-between border-b border-white/5 pb-4 flex-wrap gap-4">
+            <div className="flex items-center justify-between border-b border-border pb-4 flex-wrap gap-4">
                 <div className="flex items-center gap-2">
                     <Activity className="w-5 h-5 text-red-400" />
                     <h4 className="text-sm font-extrabold text-foreground uppercase tracking-wider">
@@ -87,7 +87,7 @@ export const EdaLab = () => {
                             className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all uppercase tracking-wider ${
                                 edaTab === tab
                                     ? "bg-red-500/10 border border-red-500/30 text-red-300"
-                                    : "bg-transparent text-zinc-500 hover:text-zinc-300"
+                                    : "bg-transparent text-muted-foreground hover:text-muted-foreground"
                             }`}
                         >
                             {tab === "scatter" && "Scatter Plot"}
@@ -101,7 +101,7 @@ export const EdaLab = () => {
             {/* Main Interactive Stage */}
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
                 {/* Visualizer Frame */}
-                <div className="lg:col-span-8 p-6 rounded-2xl bg-zinc-900/60 border border-white/5 flex items-center justify-center min-h-[350px] relative backdrop-blur-md">
+                <div className="lg:col-span-8 p-6 rounded-2xl bg-card border border-border flex items-center justify-center min-h-[350px] relative backdrop-blur-md">
                     <AnimatePresence mode="wait">
                         {edaTab === "scatter" && (
                             <motion.div
@@ -112,7 +112,7 @@ export const EdaLab = () => {
                                 className="w-full h-full flex flex-col justify-between"
                             >
                                 <div className="text-center mb-2">
-                                    <p className="text-[10px] text-zinc-500 font-extrabold uppercase tracking-widest">
+                                    <p className="text-[10px] text-muted-foreground font-extrabold uppercase tracking-widest">
                                         Patient Cholesterol vs Age Index
                                     </p>
                                 </div>
@@ -165,7 +165,7 @@ export const EdaLab = () => {
                                 className="w-full h-full flex flex-col justify-between"
                             >
                                 <div className="text-center mb-2">
-                                    <p className="text-[10px] text-zinc-500 font-extrabold uppercase tracking-widest">
+                                    <p className="text-[10px] text-muted-foreground font-extrabold uppercase tracking-widest">
                                         Chest Pain Type vs Heart Attack Risk Ratio
                                     </p>
                                 </div>
@@ -173,17 +173,17 @@ export const EdaLab = () => {
                                     {CP_TYPES.map((cp, idx) => (
                                         <div key={idx} className="space-y-1.5">
                                             <div className="flex justify-between text-xs">
-                                                <span className="font-semibold text-zinc-300">{cp.label}</span>
+                                                <span className="font-semibold text-muted-foreground">{cp.label}</span>
                                                 <span className="font-mono text-red-400 font-extrabold">{cp.risk}% Risk Probability</span>
                                             </div>
-                                            <div className="w-full bg-black/40 h-4 rounded-lg overflow-hidden border border-white/5 flex items-center relative">
+                                            <div className="w-full bg-muted h-4 rounded-lg overflow-hidden border border-border flex items-center relative">
                                                 <motion.div
                                                     className="h-full bg-linear-to-r from-red-500/20 to-red-500"
                                                     initial={{ width: 0 }}
                                                     animate={{ width: `${cp.risk}%` }}
                                                     transition={{ duration: 0.8, ease: "easeOut" }}
                                                 />
-                                                <span className="absolute right-3 font-mono text-[9px] text-zinc-500">
+                                                <span className="absolute right-3 font-mono text-[9px] text-muted-foreground">
                                                     N={cp.count} cases
                                                 </span>
                                             </div>
@@ -201,7 +201,7 @@ export const EdaLab = () => {
                                 exit={{ opacity: 0, scale: 0.98 }}
                                 className="w-full h-full flex flex-col items-center justify-center gap-4"
                             >
-                                <p className="text-[10px] text-zinc-500 font-extrabold uppercase tracking-widest text-center">
+                                <p className="text-[10px] text-muted-foreground font-extrabold uppercase tracking-widest text-center">
                                     Clinical Indicators Correlation Matrix
                                 </p>
                                 <div className="grid grid-cols-5 gap-1.5 w-full max-w-sm aspect-square">
@@ -210,7 +210,7 @@ export const EdaLab = () => {
                                             // correlation color scaling
                                             // 1.0 = solid red, -0.4 = blueish, 0 = transparent
                                             let bgStyle = "";
-                                            let textStyle = "text-white";
+                                            let textStyle = "text-foreground";
                                             if (val > 0.8) {
                                                 bgStyle = "bg-red-500/80 border-red-400/40";
                                             } else if (val > 0.3) {
@@ -246,37 +246,37 @@ export const EdaLab = () => {
                 </div>
 
                 {/* Information / Inspector Deck */}
-                <div className="lg:col-span-4 p-6 rounded-2xl bg-zinc-900/60 border border-white/5 flex flex-col justify-between backdrop-blur-md min-h-[300px] gap-6">
+                <div className="lg:col-span-4 p-6 rounded-2xl bg-card border border-border flex flex-col justify-between backdrop-blur-md min-h-[300px] gap-6">
                     {edaTab === "scatter" && (
                         <div className="space-y-4">
-                            <h5 className="text-xs uppercase tracking-wider text-zinc-400 font-extrabold">
+                            <h5 className="text-xs uppercase tracking-wider text-muted-foreground font-extrabold">
                                 Patient Inspector
                             </h5>
                             {hoveredPoint ? (
                                 <motion.div 
                                     initial={{ opacity: 0, y: 5 }}
                                     animate={{ opacity: 1, y: 0 }}
-                                    className="space-y-2.5 font-mono text-[11px] text-zinc-300"
+                                    className="space-y-2.5 font-mono text-[11px] text-muted-foreground"
                                 >
-                                    <div className="p-3 bg-black/40 rounded-xl border border-white/5 space-y-2">
+                                    <div className="p-3 bg-muted rounded-xl border border-border space-y-2">
                                         <div className="flex justify-between">
-                                            <span className="text-zinc-500">AGE:</span>
+                                            <span className="text-muted-foreground">AGE:</span>
                                             <span className="text-foreground font-bold">{hoveredPoint.age} Years</span>
                                         </div>
                                         <div className="flex justify-between">
-                                            <span className="text-zinc-500">CHOLESTEROL:</span>
+                                            <span className="text-muted-foreground">CHOLESTEROL:</span>
                                             <span className="text-foreground font-bold">{hoveredPoint.chol} mg/dl</span>
                                         </div>
                                         <div className="flex justify-between">
-                                            <span className="text-zinc-500">MAX HEART RATE:</span>
+                                            <span className="text-muted-foreground">MAX HEART RATE:</span>
                                             <span className="text-foreground font-bold">{hoveredPoint.thalach} bpm</span>
                                         </div>
                                         <div className="flex justify-between">
-                                            <span className="text-zinc-500">CHEST PAIN:</span>
+                                            <span className="text-muted-foreground">CHEST PAIN:</span>
                                             <span className="text-foreground font-bold">Type {hoveredPoint.cp}</span>
                                         </div>
-                                        <div className="flex justify-between border-t border-white/5 pt-2 mt-2">
-                                            <span className="text-zinc-500">RISK CLASS:</span>
+                                        <div className="flex justify-between border-t border-border pt-2 mt-2">
+                                            <span className="text-muted-foreground">RISK CLASS:</span>
                                             <span className={`font-bold uppercase ${
                                                 hoveredPoint.risk === "high" ? "text-red-400" : "text-blue-400"
                                             }`}>
@@ -286,7 +286,7 @@ export const EdaLab = () => {
                                     </div>
                                 </motion.div>
                             ) : (
-                                <p className="text-xs text-zinc-500 leading-relaxed font-medium">
+                                <p className="text-xs text-muted-foreground leading-relaxed font-medium">
                                     Hover over any individual patient circle in the scatter plot to inspect telemetry features. Red represents high clinical heart attack risk, Blue represents low risk.
                                 </p>
                             )}
@@ -295,10 +295,10 @@ export const EdaLab = () => {
 
                     {edaTab === "cp" && (
                         <div className="space-y-4">
-                            <h5 className="text-xs uppercase tracking-wider text-zinc-400 font-extrabold">
+                            <h5 className="text-xs uppercase tracking-wider text-muted-foreground font-extrabold">
                                 Clinical Distribution
                             </h5>
-                            <p className="text-xs text-zinc-500 leading-relaxed font-medium">
+                            <p className="text-xs text-muted-foreground leading-relaxed font-medium">
                                 The dataset demonstrates a clear correlation: patients displaying Type 1 (Atypical Angina) or Type 2 (Non-anginal) chest pain experience significantly higher risk coefficients (exceeding 75%) compared to Type 0 (Typical Angina) which only features a 27% clinical risk rate.
                             </p>
                         </div>
@@ -306,23 +306,23 @@ export const EdaLab = () => {
 
                     {edaTab === "heatmap" && (
                         <div className="space-y-4">
-                            <h5 className="text-xs uppercase tracking-wider text-zinc-400 font-extrabold">
+                            <h5 className="text-xs uppercase tracking-wider text-muted-foreground font-extrabold">
                                 Feature Correlation Inspector
                             </h5>
                             {hoveredCell ? (
                                 <motion.div
                                     initial={{ opacity: 0, y: 5 }}
                                     animate={{ opacity: 1, y: 0 }}
-                                    className="p-3 bg-black/40 rounded-xl border border-white/5 text-[11px] font-mono text-zinc-300 space-y-1.5"
+                                    className="p-3 bg-muted rounded-xl border border-border text-[11px] font-mono text-muted-foreground space-y-1.5"
                                 >
-                                    <p className="text-[10px] text-zinc-500 uppercase font-bold">Indicator Relationship</p>
+                                    <p className="text-[10px] text-muted-foreground uppercase font-bold">Indicator Relationship</p>
                                     <div className="flex justify-between">
-                                        <span className="text-zinc-400 truncate max-w-[100px]">{CORRELATION_MATRIX.features[hoveredCell.r]}</span>
-                                        <span className="text-zinc-500 font-extrabold flex items-center"><ArrowRight className="w-3 h-3 mx-1" /></span>
-                                        <span className="text-zinc-400 truncate max-w-[100px]">{CORRELATION_MATRIX.features[hoveredCell.c]}</span>
+                                        <span className="text-muted-foreground truncate max-w-[100px]">{CORRELATION_MATRIX.features[hoveredCell.r]}</span>
+                                        <span className="text-muted-foreground font-extrabold flex items-center"><ArrowRight className="w-3 h-3 mx-1" /></span>
+                                        <span className="text-muted-foreground truncate max-w-[100px]">{CORRELATION_MATRIX.features[hoveredCell.c]}</span>
                                     </div>
-                                    <div className="flex justify-between border-t border-white/5 pt-1.5 mt-1.5">
-                                        <span className="text-zinc-500">COEFFICIENT (R):</span>
+                                    <div className="flex justify-between border-t border-border pt-1.5 mt-1.5">
+                                        <span className="text-muted-foreground">COEFFICIENT (R):</span>
                                         <span className={`font-bold ${
                                             CORRELATION_MATRIX.matrix[hoveredCell.r][hoveredCell.c] > 0 ? "text-red-400" : "text-blue-400"
                                         }`}>
@@ -331,7 +331,7 @@ export const EdaLab = () => {
                                     </div>
                                 </motion.div>
                             ) : (
-                                <p className="text-xs text-zinc-500 leading-relaxed font-medium">
+                                <p className="text-xs text-muted-foreground leading-relaxed font-medium">
                                     Hover over any cell block in the correlation grid. R-values closer to +1.0 represent strong positive correlation, while values closer to -1.0 signify a strong negative correlation (e.g. Max Heart Rate decreases as Age increases: r = -0.40).
                                 </p>
                             )}
@@ -344,7 +344,7 @@ export const EdaLab = () => {
                             <p className="text-[10px] text-red-300 font-extrabold uppercase tracking-wide">
                                 Cardiology EDA Insight
                             </p>
-                            <p className="text-[11px] text-zinc-500 leading-relaxed font-medium">
+                            <p className="text-[11px] text-muted-foreground leading-relaxed font-medium">
                                 Heart attack risk demonstrates a positive correlation with Max Heart Rate (+0.42) and chest pain type indices, and negative correlation with patient age (-0.23).
                             </p>
                         </div>

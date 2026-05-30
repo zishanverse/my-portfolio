@@ -44,7 +44,7 @@ const AiConversationalAgent = ({ onStatusChange }: AiConversationalAgentProps) =
     }, [conversation, isConnected]);
 
     return (
-        <div className="flex flex-col items-center gap-5 sm:gap-6 w-full max-w-md mx-auto p-4 sm:p-7 rounded-3xl bg-card/70 dark:bg-zinc-950/50 backdrop-blur-2xl border border-border dark:border-white/10 shadow-2xl relative overflow-hidden group">
+        <div className="flex flex-col items-center gap-5 sm:gap-6 w-full max-w-md mx-auto p-4 sm:p-7 rounded-3xl bg-card/70 dark:bg-background/50 backdrop-blur-2xl border border-border dark:border-border shadow-2xl relative overflow-hidden group">
             {/* Background Glow */}
             <div className={cn(
                 "absolute inset-0 bg-linear-to-b from-indigo-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500",
@@ -54,7 +54,7 @@ const AiConversationalAgent = ({ onStatusChange }: AiConversationalAgentProps) =
             {/* Agent Identity Row */}
             <div className="relative z-10 flex items-center gap-3 sm:gap-4 w-full">
                 <div className={cn(
-                    "p-3 sm:p-4 rounded-2xl bg-background/80 dark:bg-zinc-900 border border-border dark:border-white/5 relative shrink-0",
+                    "p-3 sm:p-4 rounded-2xl bg-background/80 dark:bg-card border border-border dark:border-border relative shrink-0",
                     isConnected && "bg-violet-500/10 border-violet-500/50 shadow-[0_0_30px_rgba(139,92,246,0.3)]",
                     conversation.isSpeaking && "animate-pulse shadow-[0_0_50px_rgba(139,92,246,0.5)]"
                 )}>
@@ -63,7 +63,7 @@ const AiConversationalAgent = ({ onStatusChange }: AiConversationalAgentProps) =
                     ) : isConnected ? (
                         <Volume2 className={cn("w-7 h-7 sm:w-9 sm:h-9 text-violet-400", conversation.isSpeaking && "text-purple-300")} />
                     ) : (
-                        <Bot className="w-7 h-7 sm:w-9 sm:h-9 text-zinc-500" />
+                        <Bot className="w-7 h-7 sm:w-9 sm:h-9 text-muted-foreground" />
                     )}
 
                     {isConnected && (
@@ -117,7 +117,7 @@ const AiConversationalAgent = ({ onStatusChange }: AiConversationalAgentProps) =
                     "relative z-10 w-full py-5 sm:py-6 text-sm sm:text-base font-bold rounded-2xl transition-all duration-300 shadow-xl",
                     isConnected
                         ? "bg-rose-500/10 hover:bg-rose-500/20 text-rose-400 border border-rose-500/20 hover:border-rose-500/40"
-                        : "bg-violet-600 hover:bg-violet-500 text-white shadow-violet-500/25"
+                        : "bg-violet-600 hover:bg-violet-500 text-foreground shadow-violet-500/25"
                 )}
             >
                 {isConnecting ? (

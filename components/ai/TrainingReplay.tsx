@@ -137,23 +137,23 @@ export const TrainingReplay = () => {
     return (
         <div className="flex flex-col gap-8 select-none">
             {/* Control Bar */}
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 bg-white/3 dark:bg-white/5 p-4 rounded-2xl border border-white/5 shrink-0">
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 bg-secondary/50 dark:bg-secondary p-4 rounded-2xl border border-border shrink-0">
                 <div className="flex items-center gap-3 w-full sm:w-auto">
                     <Button
                         onClick={handlePlayPause}
-                        className="px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl text-xs font-bold shadow-md shadow-indigo-500/10 flex items-center gap-1.5 cursor-pointer shrink-0"
+                        className="px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-foreground rounded-xl text-xs font-bold shadow-md shadow-indigo-500/10 flex items-center gap-1.5 cursor-pointer shrink-0"
                     >
                         {isPlaying ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5" />}
                         {isPlaying ? "Pause" : "Play Replay"}
                     </Button>
                     <button
                         onClick={handleReset}
-                        className="p-2 rounded-xl bg-white/5 border border-white/10 text-zinc-300 hover:bg-white/10 hover:text-white cursor-pointer transition-colors"
+                        className="p-2 rounded-xl bg-secondary border border-border text-muted-foreground hover:bg-secondary hover:text-foreground cursor-pointer transition-colors"
                         aria-label="Reset training logs"
                     >
                         <RotateCcw className="w-4 h-4" />
                     </button>
-                    <div className="flex items-center gap-2 border-l border-white/10 pl-3">
+                    <div className="flex items-center gap-2 border-l border-border pl-3">
                         <Activity className="w-4 h-4 text-indigo-400 animate-pulse" />
                         <span className="text-xs font-bold text-foreground">
                             EPOCH {currentEpoch + 1} / {history.length}
@@ -163,7 +163,7 @@ export const TrainingReplay = () => {
 
                 {/* Scrubber slider */}
                 <div className="flex items-center gap-3 w-full sm:w-1/2">
-                    <span className="text-[10px] text-zinc-500 font-mono">E1</span>
+                    <span className="text-[10px] text-muted-foreground font-mono">E1</span>
                     <input
                         type="range"
                         min="0"
@@ -173,24 +173,24 @@ export const TrainingReplay = () => {
                             setIsPlaying(false);
                             setCurrentEpoch(Number(e.target.value));
                         }}
-                        className="flex-1 accent-indigo-500 bg-white/10 rounded-lg h-1.5 cursor-pointer"
+                        className="flex-1 accent-indigo-500 bg-secondary rounded-lg h-1.5 cursor-pointer"
                     />
-                    <span className="text-[10px] text-zinc-500 font-mono">E{history.length}</span>
+                    <span className="text-[10px] text-muted-foreground font-mono">E{history.length}</span>
                 </div>
             </div>
 
             {/* Metrics Visualization Panels */}
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                 {/* 1. Accuracy Plot */}
-                <div className="p-5 rounded-2xl bg-zinc-900/60 border border-white/5 flex flex-col gap-4">
+                <div className="p-5 rounded-2xl bg-card border border-border flex flex-col gap-4">
                     <div className="flex items-center justify-between">
-                        <h5 className="text-xs font-extrabold uppercase text-zinc-300 tracking-wider">Accuracy Curves</h5>
+                        <h5 className="text-xs font-extrabold uppercase text-muted-foreground tracking-wider">Accuracy Curves</h5>
                         <span className="text-xs font-mono text-indigo-300 font-bold">
                             VAL ACC: {(currentMetrics.val_accuracy * 100).toFixed(1)}%
                         </span>
                     </div>
                     
-                    <div className="relative h-44 w-full bg-black/40 border border-white/5 rounded-xl overflow-hidden p-2">
+                    <div className="relative h-44 w-full bg-muted border border-border rounded-xl overflow-hidden p-2">
                         {/* Custom SVG line chart */}
                         <svg className="w-full h-full" viewBox="0 0 380 180" preserveAspectRatio="none">
                             {/* Gridlines */}
@@ -219,7 +219,7 @@ export const TrainingReplay = () => {
                             />
                         </svg>
                     </div>
-                    <div className="flex items-center gap-4 text-[10px] font-bold text-zinc-500 justify-center">
+                    <div className="flex items-center gap-4 text-[10px] font-bold text-muted-foreground justify-center">
                         <div className="flex items-center gap-1.5">
                             <div className="w-3 h-0.5 bg-indigo-500" />
                             <span>TRAINING ACC</span>
@@ -232,15 +232,15 @@ export const TrainingReplay = () => {
                 </div>
 
                 {/* 2. Loss Plot */}
-                <div className="p-5 rounded-2xl bg-zinc-900/60 border border-white/5 flex flex-col gap-4">
+                <div className="p-5 rounded-2xl bg-card border border-border flex flex-col gap-4">
                     <div className="flex items-center justify-between">
-                        <h5 className="text-xs font-extrabold uppercase text-zinc-300 tracking-wider">Loss Curves</h5>
+                        <h5 className="text-xs font-extrabold uppercase text-muted-foreground tracking-wider">Loss Curves</h5>
                         <span className="text-xs font-mono text-purple-300 font-bold">
                             VAL LOSS: {currentMetrics.val_loss.toFixed(4)}
                         </span>
                     </div>
 
-                    <div className="relative h-44 w-full bg-black/40 border border-white/5 rounded-xl overflow-hidden p-2">
+                    <div className="relative h-44 w-full bg-muted border border-border rounded-xl overflow-hidden p-2">
                         {/* Custom SVG line chart */}
                         <svg className="w-full h-full" viewBox="0 0 380 180" preserveAspectRatio="none">
                             {/* Gridlines */}
@@ -269,7 +269,7 @@ export const TrainingReplay = () => {
                             />
                         </svg>
                     </div>
-                    <div className="flex items-center gap-4 text-[10px] font-bold text-zinc-500 justify-center">
+                    <div className="flex items-center gap-4 text-[10px] font-bold text-muted-foreground justify-center">
                         <div className="flex items-center gap-1.5">
                             <div className="w-3 h-0.5 bg-purple-500" />
                             <span>TRAINING LOSS</span>
@@ -282,32 +282,32 @@ export const TrainingReplay = () => {
                 </div>
 
                 {/* 3. Confusion Matrix */}
-                <div className="p-5 rounded-2xl bg-zinc-900/60 border border-white/5 flex flex-col gap-4">
-                    <h5 className="text-xs font-extrabold uppercase text-zinc-300 tracking-wider">Confusion Matrix (Validation)</h5>
+                <div className="p-5 rounded-2xl bg-card border border-border flex flex-col gap-4">
+                    <h5 className="text-xs font-extrabold uppercase text-muted-foreground tracking-wider">Confusion Matrix (Validation)</h5>
                     
                     <div className="grid grid-cols-2 gap-2 h-44 relative">
                         {/* TN */}
                         <div className="flex flex-col items-center justify-center bg-indigo-500/10 hover:bg-indigo-500/15 border border-indigo-500/20 rounded-xl transition-all duration-300">
                             <span className="text-lg font-black text-indigo-300">{cm.tn}</span>
-                            <span className="text-[9px] uppercase tracking-wider text-zinc-500 font-bold mt-1">True Negative</span>
+                            <span className="text-[9px] uppercase tracking-wider text-muted-foreground font-bold mt-1">True Negative</span>
                         </div>
                         {/* FP */}
                         <div className="flex flex-col items-center justify-center bg-red-500/5 hover:bg-red-500/10 border border-red-500/10 rounded-xl transition-all duration-300">
                             <span className="text-lg font-black text-red-400">{cm.fp}</span>
-                            <span className="text-[9px] uppercase tracking-wider text-zinc-500 font-bold mt-1">False Positive</span>
+                            <span className="text-[9px] uppercase tracking-wider text-muted-foreground font-bold mt-1">False Positive</span>
                         </div>
                         {/* FN */}
                         <div className="flex flex-col items-center justify-center bg-red-500/5 hover:bg-red-500/10 border border-red-500/10 rounded-xl transition-all duration-300">
                             <span className="text-lg font-black text-red-400">{cm.fn}</span>
-                            <span className="text-[9px] uppercase tracking-wider text-zinc-500 font-bold mt-1">False Negative</span>
+                            <span className="text-[9px] uppercase tracking-wider text-muted-foreground font-bold mt-1">False Negative</span>
                         </div>
                         {/* TP */}
                         <div className="flex flex-col items-center justify-center bg-indigo-500/20 hover:bg-indigo-500/25 border border-indigo-500/30 rounded-xl transition-all duration-300">
                             <span className="text-lg font-black text-indigo-200">{cm.tp}</span>
-                            <span className="text-[9px] uppercase tracking-wider text-zinc-500 font-bold mt-1">True Positive</span>
+                            <span className="text-[9px] uppercase tracking-wider text-muted-foreground font-bold mt-1">True Positive</span>
                         </div>
                     </div>
-                    <div className="flex justify-between text-[10px] text-zinc-500 font-bold px-2">
+                    <div className="flex justify-between text-[10px] text-muted-foreground font-bold px-2">
                         <span>ACCURACY: {((cm.tn + cm.tp) / (cm.tn + cm.fp + cm.fn + cm.tp) * 100).toFixed(1)}%</span>
                         <span>SAMPLES: 160</span>
                     </div>

@@ -20,13 +20,13 @@ export const PredictionCard: React.FC<PredictionCardProps> = ({ probability, isC
             animate={{ opacity: 1, scale: 1 }}
             className="space-y-6 w-full max-w-sm mx-auto select-none"
         >
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] font-bold text-indigo-300 uppercase tracking-widest">
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-secondary border border-border rounded-full text-[10px] font-bold text-indigo-300 uppercase tracking-widest">
                 <Sparkles className="w-3.5 h-3.5" />
                 Inference Result Mapped
             </div>
 
             <div className="space-y-1.5">
-                <h5 className="text-[10px] text-zinc-500 font-bold uppercase tracking-wider">
+                <h5 className="text-[10px] text-muted-foreground font-bold uppercase tracking-wider">
                     Pollution Risk Probability
                 </h5>
                 <span className={`text-5xl font-black tracking-tight ${isHighRisk ? "text-red-400" : "text-indigo-400"}`}>
@@ -35,7 +35,7 @@ export const PredictionCard: React.FC<PredictionCardProps> = ({ probability, isC
             </div>
 
             <div className="space-y-2">
-                <div className="w-full bg-white/5 border border-white/10 rounded-full h-3 overflow-hidden p-0.5">
+                <div className="w-full bg-secondary border border-border rounded-full h-3 overflow-hidden p-0.5">
                     <motion.div 
                         className={`h-full rounded-full ${isHighRisk ? "bg-red-500" : "bg-indigo-500"}`}
                         initial={{ width: 0 }}
@@ -43,7 +43,7 @@ export const PredictionCard: React.FC<PredictionCardProps> = ({ probability, isC
                         transition={{ duration: 0.5, ease: "easeOut" }}
                     />
                 </div>
-                <p className="text-[10px] uppercase text-zinc-500 tracking-wider font-bold">
+                <p className="text-[10px] uppercase text-muted-foreground tracking-wider font-bold">
                     Status: {isHighRisk ? "High Pollution Threat Level" : "Eco-Stable Threat Level"}
                 </p>
             </div>

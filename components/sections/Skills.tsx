@@ -40,8 +40,6 @@ const softSkills = [
 const Skills = () => {
     return (
         <section id="skills" className="py-20 md:py-24 w-full bg-transparent dark:bg-transparent relative overflow-hidden">
-            {/* Background gradient blob */}
-            <div className="absolute top-1/4 right-0 w-125 h-125 bg-indigo-500/10 rounded-full blur-[100px] -z-10" />
 
             <div className="container mx-auto px-4 sm:px-6 relative z-20">
                 <div className="mb-12 md:mb-16 text-center md:text-left">

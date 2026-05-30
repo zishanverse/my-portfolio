@@ -85,13 +85,13 @@ export const CnnArchitecture = () => {
                         1D CNN Model Architecture Explorer
                     </h4>
                 </div>
-                <span className="px-2.5 py-1 bg-white/5 border border-white/10 rounded-lg text-[10px] sm:text-xs font-mono text-indigo-300">
+                <span className="px-2.5 py-1 bg-secondary border border-border rounded-lg text-[10px] sm:text-xs font-mono text-indigo-300">
                     TOTAL PARAMS: {totalParams.toLocaleString()}
                 </span>
             </div>
 
             {/* Architecture Node Flow */}
-            <div className="flex flex-col lg:flex-row items-center justify-between gap-3 lg:gap-4 p-4 rounded-2xl bg-black/40 border border-white/5 overflow-x-auto no-visible-scrollbar">
+            <div className="flex flex-col lg:flex-row items-center justify-between gap-3 lg:gap-4 p-4 rounded-2xl bg-muted border border-border overflow-x-auto no-visible-scrollbar">
                 {layers.map((layer, idx) => (
                     <React.Fragment key={idx}>
                         {/* Layer Block */}
@@ -111,22 +111,22 @@ export const CnnArchitecture = () => {
                             <p className="text-[10px] uppercase tracking-widest text-muted-foreground font-bold">{layer.type}</p>
                             <h5 className="text-sm font-extrabold text-foreground truncate mt-1">{layer.name}</h5>
                             
-                            <div className="mt-3 flex items-center justify-between border-t border-white/5 pt-2">
-                                <span className="text-[10px] text-zinc-500 font-mono">SHAPE:</span>
+                            <div className="mt-3 flex items-center justify-between border-t border-border pt-2">
+                                <span className="text-[10px] text-muted-foreground font-mono">SHAPE:</span>
                                 <span className="text-[10px] text-foreground font-mono font-bold">{layer.shape}</span>
                             </div>
                         </motion.div>
 
                         {/* Arrow separator */}
                         {idx < layers.length - 1 && (
-                            <ArrowRight className="w-5 h-5 text-zinc-600 shrink-0 rotate-90 lg:rotate-0" />
+                            <ArrowRight className="w-5 h-5 text-muted-foreground shrink-0 rotate-90 lg:rotate-0" />
                         )}
                     </React.Fragment>
                 ))}
             </div>
 
             {/* Dynamic Description Box */}
-            <div className="p-5 rounded-2xl bg-zinc-900/80 border border-white/5 min-h-[100px] flex items-center">
+            <div className="p-5 rounded-2xl bg-card/80 border border-border min-h-[100px] flex items-center">
                 {hoveredLayer !== null ? (
                     <motion.div 
                         initial={{ opacity: 0, y: 5 }}
@@ -137,10 +137,10 @@ export const CnnArchitecture = () => {
                             <span className="text-sm font-extrabold text-foreground uppercase tracking-wide">
                                 {layers[hoveredLayer].name} ({layers[hoveredLayer].type})
                             </span>
-                            <span className="px-2 py-0.5 rounded-sm bg-white/5 text-[9px] font-mono text-zinc-400">
+                            <span className="px-2 py-0.5 rounded-sm bg-secondary text-[9px] font-mono text-muted-foreground">
                                 ACTIVATION: {layers[hoveredLayer].activation}
                             </span>
-                            <span className="px-2 py-0.5 rounded-sm bg-white/5 text-[9px] font-mono text-zinc-400">
+                            <span className="px-2 py-0.5 rounded-sm bg-secondary text-[9px] font-mono text-muted-foreground">
                                 PARAMETERS: {layers[hoveredLayer].params}
                             </span>
                         </div>
@@ -149,7 +149,7 @@ export const CnnArchitecture = () => {
                         </p>
                     </motion.div>
                 ) : (
-                    <div className="text-center w-full py-4 text-zinc-500 font-medium text-xs sm:text-sm">
+                    <div className="text-center w-full py-4 text-muted-foreground font-medium text-xs sm:text-sm">
                         Hover over any architectural layer block to inspect shapes, parameters, and operations.
                     </div>
                 )}

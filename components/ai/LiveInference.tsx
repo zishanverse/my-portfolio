@@ -146,7 +146,7 @@ export const LiveInference = () => {
     return (
         <div className="flex flex-col gap-6 select-none">
             {/* Tab header selector */}
-            <div className="flex items-center gap-2 border-b border-white/5 pb-2">
+            <div className="flex items-center gap-2 border-b border-border pb-2">
                 <button
                     onClick={() => setActiveTab("ui")}
                     className={`px-4 py-2 text-xs font-bold uppercase tracking-wider border-b-2 transition-all cursor-pointer ${
@@ -171,7 +171,7 @@ export const LiveInference = () => {
                     <div className="space-y-6">
                         {/* Preset Buttons */}
                         <div className="space-y-2">
-                            <label className="text-[10px] text-zinc-500 font-bold uppercase tracking-wider">
+                            <label className="text-[10px] text-muted-foreground font-bold uppercase tracking-wider">
                                 Load Environment Presets
                             </label>
                             <div className="flex flex-wrap gap-2">
@@ -179,7 +179,7 @@ export const LiveInference = () => {
                                     <button
                                         key={idx}
                                         onClick={() => applyPreset(preset)}
-                                        className="px-3 py-1.5 rounded-xl bg-white/3 border border-white/5 hover:border-indigo-500/30 hover:bg-white/5 text-[11px] font-bold text-zinc-300 transition-all cursor-pointer"
+                                        className="px-3 py-1.5 rounded-xl bg-secondary/50 border border-border hover:border-indigo-500/30 hover:bg-secondary text-[11px] font-bold text-muted-foreground transition-all cursor-pointer"
                                     >
                                         {preset.name}
                                     </button>
@@ -190,9 +190,9 @@ export const LiveInference = () => {
                         {/* Sliders Grid */}
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             {/* CO2 Slider */}
-                            <div className="space-y-2 p-4 rounded-xl bg-white/2 border border-white/5">
+                            <div className="space-y-2 p-4 rounded-xl bg-white/2 border border-border">
                                 <div className="flex justify-between items-center text-xs font-bold">
-                                    <span className="text-zinc-400">CO2 Emissions</span>
+                                    <span className="text-muted-foreground">CO2 Emissions</span>
                                     <span className="text-indigo-400 font-mono">{co2.toFixed(2)} MT</span>
                                 </div>
                                 <input
@@ -202,14 +202,14 @@ export const LiveInference = () => {
                                     step="0.1"
                                     value={co2}
                                     onChange={(e) => { setCo2(Number(e.target.value)); setProbability(null); }}
-                                    className="w-full accent-indigo-500 bg-white/10 rounded-lg h-1"
+                                    className="w-full accent-indigo-500 bg-secondary rounded-lg h-1"
                                 />
                             </div>
 
                             {/* Industrial Waste Slider */}
-                            <div className="space-y-2 p-4 rounded-xl bg-white/2 border border-white/5">
+                            <div className="space-y-2 p-4 rounded-xl bg-white/2 border border-border">
                                 <div className="flex justify-between items-center text-xs font-bold">
-                                    <span className="text-zinc-400">Industrial Waste</span>
+                                    <span className="text-muted-foreground">Industrial Waste</span>
                                     <span className="text-indigo-400 font-mono">{waste.toFixed(2)} tons</span>
                                 </div>
                                 <input
@@ -219,14 +219,14 @@ export const LiveInference = () => {
                                     step="0.05"
                                     value={waste}
                                     onChange={(e) => { setWaste(Number(e.target.value)); setProbability(null); }}
-                                    className="w-full accent-indigo-500 bg-white/10 rounded-lg h-1"
+                                    className="w-full accent-indigo-500 bg-secondary rounded-lg h-1"
                                 />
                             </div>
 
                             {/* Plastic Waste Slider */}
-                            <div className="space-y-2 p-4 rounded-xl bg-white/2 border border-white/5">
+                            <div className="space-y-2 p-4 rounded-xl bg-white/2 border border-border">
                                 <div className="flex justify-between items-center text-xs font-bold">
-                                    <span className="text-zinc-400">Plastic Waste Produced</span>
+                                    <span className="text-muted-foreground">Plastic Waste Produced</span>
                                     <span className="text-indigo-400 font-mono">{plastic.toFixed(1)} tons</span>
                                 </div>
                                 <input
@@ -236,14 +236,14 @@ export const LiveInference = () => {
                                     step="0.2"
                                     value={plastic}
                                     onChange={(e) => { setPlastic(Number(e.target.value)); setProbability(null); }}
-                                    className="w-full accent-indigo-500 bg-white/10 rounded-lg h-1"
+                                    className="w-full accent-indigo-500 bg-secondary rounded-lg h-1"
                                 />
                             </div>
 
                             {/* Renewable Energy Slider */}
-                            <div className="space-y-2 p-4 rounded-xl bg-white/2 border border-white/5">
+                            <div className="space-y-2 p-4 rounded-xl bg-white/2 border border-border">
                                 <div className="flex justify-between items-center text-xs font-bold">
-                                    <span className="text-zinc-400">Renewable Energy</span>
+                                    <span className="text-muted-foreground">Renewable Energy</span>
                                     <span className="text-indigo-400 font-mono">{renewable}%</span>
                                 </div>
                                 <input
@@ -253,16 +253,16 @@ export const LiveInference = () => {
                                     step="1"
                                     value={renewable}
                                     onChange={(e) => { setRenewable(Number(e.target.value)); setProbability(null); }}
-                                    className="w-full accent-indigo-500 bg-white/10 rounded-lg h-1"
+                                    className="w-full accent-indigo-500 bg-secondary rounded-lg h-1"
                                 />
                             </div>
                         </div>
 
                         {/* Collapsible Advanced Parameters */}
-                        <div className="border border-white/5 rounded-xl overflow-hidden bg-white/1">
+                        <div className="border border-border rounded-xl overflow-hidden bg-white/1">
                             <button
                                 onClick={() => setIsAdvancedOpen(!isAdvancedOpen)}
-                                className="w-full px-4 py-3 flex items-center justify-between text-xs font-bold text-zinc-400 hover:text-white hover:bg-white/3 transition-colors cursor-pointer"
+                                className="w-full px-4 py-3 flex items-center justify-between text-xs font-bold text-muted-foreground hover:text-foreground hover:bg-secondary/50 transition-colors cursor-pointer"
                             >
                                 <span className="uppercase tracking-wider">Advanced Telemetry features</span>
                                 {isAdvancedOpen ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
@@ -273,12 +273,12 @@ export const LiveInference = () => {
                                         initial={{ height: 0 }}
                                         animate={{ height: "auto" }}
                                         exit={{ height: 0 }}
-                                        className="overflow-hidden border-t border-white/5 p-4 grid grid-cols-1 sm:grid-cols-2 gap-4 bg-black/20"
+                                        className="overflow-hidden border-t border-border p-4 grid grid-cols-1 sm:grid-cols-2 gap-4 bg-black/20"
                                     >
                                         <div className="space-y-2">
-                                            <div className="flex justify-between items-center text-[11px] font-bold text-zinc-500">
+                                            <div className="flex justify-between items-center text-[11px] font-bold text-muted-foreground">
                                                 <span>ENERGY CONSUMPTION</span>
-                                                <span className="font-mono text-zinc-300">{energy.toFixed(2)} MWh</span>
+                                                <span className="font-mono text-muted-foreground">{energy.toFixed(2)} MWh</span>
                                             </div>
                                             <input
                                                 type="range"
@@ -287,14 +287,14 @@ export const LiveInference = () => {
                                                 step="0.05"
                                                 value={energy}
                                                 onChange={(e) => { setEnergy(Number(e.target.value)); setProbability(null); }}
-                                                className="w-full accent-indigo-500 bg-white/10 rounded-lg h-1"
+                                                className="w-full accent-indigo-500 bg-secondary rounded-lg h-1"
                                             />
                                         </div>
 
                                         <div className="space-y-2">
-                                            <div className="flex justify-between items-center text-[11px] font-bold text-zinc-500">
+                                            <div className="flex justify-between items-center text-[11px] font-bold text-muted-foreground">
                                                 <span>GDP PER CAPITA</span>
-                                                <span className="font-mono text-zinc-300">${gdp.toLocaleString()}</span>
+                                                <span className="font-mono text-muted-foreground">${gdp.toLocaleString()}</span>
                                             </div>
                                             <input
                                                 type="range"
@@ -303,7 +303,7 @@ export const LiveInference = () => {
                                                 step="500"
                                                 value={gdp}
                                                 onChange={(e) => { setGdp(Number(e.target.value)); setProbability(null); }}
-                                                className="w-full accent-indigo-500 bg-white/10 rounded-lg h-1"
+                                                className="w-full accent-indigo-500 bg-secondary rounded-lg h-1"
                                             />
                                         </div>
                                     </motion.div>
@@ -315,7 +315,7 @@ export const LiveInference = () => {
                         <Button
                             onClick={runInference}
                             disabled={isCalculating || !tfModel}
-                            className="w-full py-6 rounded-2xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold tracking-tight shadow-[0_0_20px_rgba(79,70,229,0.2)] transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
+                            className="w-full py-6 rounded-2xl bg-indigo-600 hover:bg-indigo-500 text-foreground font-bold tracking-tight shadow-[0_0_20px_rgba(79,70,229,0.2)] transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
                         >
                             {isCalculating ? (
                                 <>
@@ -332,7 +332,7 @@ export const LiveInference = () => {
                     </div>
 
                     {/* Results panel */}
-                    <div className="flex flex-col items-center justify-center p-6 rounded-3xl bg-black/40 border border-white/5 min-h-[300px] text-center relative overflow-hidden">
+                    <div className="flex flex-col items-center justify-center p-6 rounded-3xl bg-muted border border-border min-h-[300px] text-center relative overflow-hidden">
                         {loadProgress < 100 || loadError ? (
                             <ModelLoader
                                 progress={loadProgress}
@@ -357,7 +357,7 @@ export const LiveInference = () => {
                             </div>
                         ) : (
                             <div className="space-y-3 p-8 max-w-sm">
-                                <Cpu className="w-12 h-12 text-zinc-600 animate-pulse mx-auto" />
+                                <Cpu className="w-12 h-12 text-muted-foreground animate-pulse mx-auto" />
                                 <h5 className="text-sm font-extrabold uppercase text-foreground">Waiting for Inference</h5>
                                 <p className="text-xs text-muted-foreground leading-relaxed font-medium">
                                     Adjust features sliders on the left and click "Compute Predictive Risk" to query the client-side neural classifier.
@@ -375,15 +375,15 @@ export const LiveInference = () => {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         {/* cURL console */}
-                        <div className="bg-zinc-950 border border-white/5 rounded-2xl p-5 font-mono text-[11px] sm:text-xs text-zinc-300 relative flex flex-col justify-between min-h-[180px]">
-                            <div className="flex items-center justify-between border-b border-white/5 pb-3 mb-3 text-zinc-500">
+                        <div className="bg-background border border-border rounded-2xl p-5 font-mono text-[11px] sm:text-xs text-muted-foreground relative flex flex-col justify-between min-h-[180px]">
+                            <div className="flex items-center justify-between border-b border-border pb-3 mb-3 text-muted-foreground">
                                 <div className="flex items-center gap-1.5">
                                     <Terminal className="w-3.5 h-3.5" />
                                     <span className="text-[10px] uppercase font-bold tracking-wider">Execute Client Request</span>
                                 </div>
                                 <button
                                     onClick={copyToClipboard}
-                                    className="p-1.5 rounded-lg hover:bg-white/5 hover:text-white transition-colors cursor-pointer"
+                                    className="p-1.5 rounded-lg hover:bg-secondary hover:text-foreground transition-colors cursor-pointer"
                                     aria-label="Copy request command"
                                 >
                                     {isCopied ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
@@ -402,8 +402,8 @@ export const LiveInference = () => {
                         </div>
 
                         {/* JSON Response console */}
-                        <div className="bg-zinc-950 border border-white/5 rounded-2xl p-5 font-mono text-[11px] sm:text-xs text-zinc-300 relative flex flex-col justify-between min-h-[180px]">
-                            <div className="flex items-center gap-1.5 border-b border-white/5 pb-3 mb-3 text-zinc-500">
+                        <div className="bg-background border border-border rounded-2xl p-5 font-mono text-[11px] sm:text-xs text-muted-foreground relative flex flex-col justify-between min-h-[180px]">
+                            <div className="flex items-center gap-1.5 border-b border-border pb-3 mb-3 text-muted-foreground">
                                 <Terminal className="w-3.5 h-3.5" />
                                 <span className="text-[10px] uppercase font-bold tracking-wider">JSON Response Payload</span>
                             </div>

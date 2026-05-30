@@ -3,7 +3,7 @@ import { Cpu } from "lucide-react";
 
 export default function Loading() {
     return (
-        <div className="min-h-screen bg-zinc-950 flex flex-col items-center justify-center gap-6 p-4">
+        <div className="min-h-screen bg-background flex flex-col items-center justify-center gap-6 p-4">
             {/* Pulsing glow background */}
             <div className="absolute w-96 h-96 bg-indigo-500/10 rounded-full blur-[100px] pointer-events-none" />
             

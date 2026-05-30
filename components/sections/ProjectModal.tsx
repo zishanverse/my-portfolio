@@ -8,8 +8,6 @@ import { useRouter } from "next/navigation";
 import { ProjectData } from "./ProjectCard";
 import { Button } from "@/components/ui/Button";
 
-import Project3DBackground from "../3d/Project3DBackground";
-
 interface ProjectModalProps {
     project: ProjectData;
     onClose: () => void;
@@ -114,16 +112,9 @@ const ProjectModal = ({ project, onClose }: ProjectModalProps) => {
                 role="dialog"
                 aria-modal="true"
                 aria-labelledby="project-modal-title"
-                className="relative z-10 w-full max-w-4xl bg-zinc-950/40 backdrop-blur-2xl border border-white/10 rounded-2xl sm:rounded-3xl shadow-[0_0_50px_-12px_rgba(0,0,0,0.5)] overflow-hidden max-h-[92vh] sm:max-h-full flex flex-col perspective-1000"
+                className="relative z-10 w-full max-w-4xl bg-zinc-950/40 backdrop-blur-2xl border border-white/10 rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden max-h-[92vh] sm:max-h-full flex flex-col perspective-1000"
             >
-                {/* 3D Background Scene */}
-                <div className="absolute inset-0 z-0 opacity-40">
-                    <Project3DBackground colorPrimary={colorPrimary} colorSecondary={colorSecondary} />
-                </div>
-
                 <div className={`h-32 sm:h-40 md:h-56 w-full bg-linear-to-r ${project.imageColor} relative z-10 overflow-hidden`}>
-                    {/* Animated shine over header */}
-                    <div className="absolute inset-0 bg-white/10 animate-shimmer-slide" />
                     
                     <button
                         onClick={handleClose}
@@ -186,7 +177,7 @@ const ProjectModal = ({ project, onClose }: ProjectModalProps) => {
 
                     <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 mt-10 sm:mt-16 pt-6 sm:pt-10 border-t border-white/10">
                         <Button 
-                            className="flex-1 py-6 sm:py-8 text-base sm:text-lg font-bold rounded-2xl bg-indigo-600 hover:bg-indigo-500 shadow-[0_0_20px_rgba(79,70,229,0.3)] transition-all"
+                            className="flex-1 py-6 sm:py-8 text-base sm:text-lg font-bold rounded-2xl bg-indigo-600 hover:bg-indigo-500 transition-all"
                             onClick={() => {
                                 if (project.link?.startsWith("/")) {
                                     onClose();

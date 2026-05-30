@@ -830,12 +830,12 @@ class Snake:
     return (
         <div className="flex flex-col gap-8">
             {/* Crew Pipeline Flow Chart */}
-            <div className="p-6 rounded-2xl bg-zinc-900/60 border border-white/5 relative overflow-hidden backdrop-blur-md">
+            <div className="p-6 rounded-2xl bg-card border border-border relative overflow-hidden backdrop-blur-md">
                 <div className="absolute top-0 right-0 p-4 opacity-5 pointer-events-none">
                     <Brain className="w-40 h-40 text-purple-400" />
                 </div>
                 
-                <h4 className="text-xs uppercase tracking-widest text-zinc-500 font-bold mb-6">
+                <h4 className="text-xs uppercase tracking-widest text-muted-foreground font-bold mb-6">
                     Multi-Agent Crew Orchestration Pipeline
                 </h4>
 
@@ -846,9 +846,9 @@ class Snake:
                         
                         return (
                             <React.Fragment key={agent.id}>
-                                <div className={`flex-1 w-full p-4 rounded-xl border transition-all duration-500 bg-black/40 ${
-                                    isActive ? `${agent.borderColor} bg-white/5 ring-1 ring-purple-500/20 scale-[1.02]` : 
-                                    isDone ? "border-emerald-500/20 opacity-80" : "border-white/5 opacity-60"
+                                <div className={`flex-1 w-full p-4 rounded-xl border transition-all duration-500 bg-muted ${
+                                    isActive ? `${agent.borderColor} bg-secondary ring-1 ring-purple-500/20 scale-[1.02]` : 
+                                    isDone ? "border-emerald-500/20 opacity-80" : "border-border opacity-60"
                                 }`}>
                                     <div className="flex items-center gap-3">
                                         <div className={`p-2 rounded-lg ${agent.color}`}>
@@ -856,14 +856,14 @@ class Snake:
                                         </div>
                                         <div>
                                             <h5 className="text-xs font-extrabold text-foreground tracking-wide">{agent.name}</h5>
-                                            <p className="text-[10px] text-zinc-400 uppercase font-mono">{agent.role}</p>
+                                            <p className="text-[10px] text-muted-foreground uppercase font-mono">{agent.role}</p>
                                         </div>
                                     </div>
-                                    <div className="mt-3 text-[11px] text-zinc-400 leading-relaxed font-medium">
-                                        <span className="text-zinc-500 font-bold">Task:</span> {agent.task}
+                                    <div className="mt-3 text-[11px] text-muted-foreground leading-relaxed font-medium">
+                                        <span className="text-muted-foreground font-bold">Task:</span> {agent.task}
                                     </div>
                                     {isActive && (
-                                        <div className="mt-3 w-full bg-white/5 h-1 rounded-full overflow-hidden">
+                                        <div className="mt-3 w-full bg-secondary h-1 rounded-full overflow-hidden">
                                             <motion.div 
                                                 className="bg-purple-500 h-full"
                                                 animate={{ width: ["0%", "100%"] }}
@@ -873,7 +873,7 @@ class Snake:
                                     )}
                                 </div>
                                 {idx < AGENTS.length - 1 && (
-                                    <ChevronRight className={`w-5 h-5 text-zinc-600 hidden md:block shrink-0 ${
+                                    <ChevronRight className={`w-5 h-5 text-muted-foreground hidden md:block shrink-0 ${
                                         simulationStep > idx ? "text-emerald-500/40" : ""
                                     }`} />
                                 )}
@@ -886,15 +886,15 @@ class Snake:
             {/* Prompt Controller */}
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                 {/* Control Panel Card */}
-                <div className="lg:col-span-1 p-6 rounded-2xl bg-zinc-900/60 border border-white/5 flex flex-col justify-between backdrop-blur-md gap-6">
+                <div className="lg:col-span-1 p-6 rounded-2xl bg-card border border-border flex flex-col justify-between backdrop-blur-md gap-6">
                     <div className="space-y-4">
-                        <h4 className="text-xs font-bold uppercase tracking-wider text-zinc-400">
+                        <h4 className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
                             Crew prompt settings
                         </h4>
                         
                         {/* Selector presets */}
                         <div className="space-y-2">
-                            <label className="text-[10px] text-zinc-500 uppercase tracking-widest font-extrabold">
+                            <label className="text-[10px] text-muted-foreground uppercase tracking-widest font-extrabold">
                                 Game Presets
                             </label>
                             <div className="grid grid-cols-1 gap-2">
@@ -906,7 +906,7 @@ class Snake:
                                         className={`px-3 py-2.5 rounded-xl border text-left text-xs font-semibold transition-all flex items-center justify-between ${
                                             selectedGameId === preset.id
                                                 ? "bg-purple-500/10 border-purple-500/40 text-purple-200"
-                                                : "bg-black/30 border-white/5 hover:border-white/10 text-zinc-400 disabled:opacity-50"
+                                                : "bg-black/30 border-border hover:border-border text-muted-foreground disabled:opacity-50"
                                         }`}
                                     >
                                         <span>{preset.name}</span>
@@ -918,7 +918,7 @@ class Snake:
 
                         {/* Text Prompt Area */}
                         <div className="space-y-2">
-                            <label className="text-[10px] text-zinc-500 uppercase tracking-widest font-extrabold">
+                            <label className="text-[10px] text-muted-foreground uppercase tracking-widest font-extrabold">
                                 Prompt for Crew
                             </label>
                             <textarea
@@ -926,7 +926,7 @@ class Snake:
                                 onChange={(e) => setPrompt(e.target.value)}
                                 disabled={isSimulating}
                                 rows={3}
-                                className="w-full px-3 py-2 rounded-xl bg-black/40 border border-white/5 text-xs text-zinc-200 font-medium placeholder-zinc-600 focus:outline-hidden focus:border-purple-500/30 transition-all resize-none disabled:opacity-50"
+                                className="w-full px-3 py-2 rounded-xl bg-muted border border-border text-xs text-foreground font-medium placeholder-zinc-600 focus:outline-hidden focus:border-purple-500/30 transition-all resize-none disabled:opacity-50"
                             />
                         </div>
                     </div>
@@ -934,7 +934,7 @@ class Snake:
                     <button
                         onClick={runSimulation}
                         disabled={isSimulating}
-                        className="w-full py-3 px-4 bg-linear-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white font-extrabold text-xs sm:text-sm uppercase tracking-wider rounded-xl transition-all flex items-center justify-center gap-2 shadow-lg disabled:opacity-50"
+                        className="w-full py-3 px-4 bg-linear-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-foreground font-extrabold text-xs sm:text-sm uppercase tracking-wider rounded-xl transition-all flex items-center justify-center gap-2 shadow-lg disabled:opacity-50"
                     >
                         {isSimulating ? (
                             <>
@@ -951,23 +951,23 @@ class Snake:
                 </div>
 
                 {/* Simulated Logs Terminal */}
-                <div className="lg:col-span-2 p-6 rounded-2xl bg-black/90 border border-white/5 flex flex-col h-[320px] backdrop-blur-md">
-                    <div className="flex items-center justify-between border-b border-white/5 pb-3 mb-3">
+                <div className="lg:col-span-2 p-6 rounded-2xl bg-black/90 border border-border flex flex-col h-[320px] backdrop-blur-md">
+                    <div className="flex items-center justify-between border-b border-border pb-3 mb-3">
                         <div className="flex items-center gap-2">
                             <TerminalIcon className="w-4 h-4 text-purple-400" />
-                            <span className="text-xs font-bold uppercase tracking-wider text-zinc-400">
+                            <span className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
                                 CrewAI Log Terminal
                             </span>
                         </div>
-                        <span className="px-2 py-0.5 rounded bg-zinc-900 text-[10px] font-mono text-zinc-500">
+                        <span className="px-2 py-0.5 rounded bg-card text-[10px] font-mono text-muted-foreground">
                             model: gemini-2.5-flash
                         </span>
                     </div>
 
-                    <div className="flex-1 overflow-y-auto font-mono text-xs text-zinc-300 space-y-3 pr-2 scrollbar-thin select-text">
+                    <div className="flex-1 overflow-y-auto font-mono text-xs text-muted-foreground space-y-3 pr-2 scrollbar-thin select-text">
                         {logs.length === 0 ? (
-                            <div className="h-full flex flex-col items-center justify-center text-zinc-500 text-center gap-2">
-                                <AlertCircle className="w-6 h-6 text-zinc-600" />
+                            <div className="h-full flex flex-col items-center justify-center text-muted-foreground text-center gap-2">
+                                <AlertCircle className="w-6 h-6 text-muted-foreground" />
                                 <p className="text-[11px] leading-relaxed max-w-xs">
                                     Awaiting execution sequence... Click "Initiate CrewAI Agents" to trigger pipeline output.
                                 </p>
@@ -975,17 +975,17 @@ class Snake:
                         ) : (
                             logs.map((log, index) => (
                                 <div key={index} className="space-y-1">
-                                    <div className="flex items-center gap-2 text-[10px] text-zinc-500">
+                                    <div className="flex items-center gap-2 text-[10px] text-muted-foreground">
                                         <span>[{log.timestamp}]</span>
                                         <span className="font-bold text-purple-400/80">{log.agentName}</span>
                                     </div>
                                     {log.type === "code" ? (
-                                        <pre className="p-3 bg-zinc-900/60 rounded-lg text-emerald-400 border border-white/5 overflow-x-auto text-[11px]">
+                                        <pre className="p-3 bg-card rounded-lg text-emerald-400 border border-border overflow-x-auto text-[11px]">
                                             <code>{log.text}</code>
                                         </pre>
                                     ) : (
                                         <p className={`whitespace-pre-wrap text-[11px] leading-relaxed ${
-                                            log.type === "success" ? "text-emerald-400" : "text-zinc-300"
+                                            log.type === "success" ? "text-emerald-400" : "text-muted-foreground"
                                         }`}>
                                             {log.text}
                                         </p>
@@ -1005,10 +1005,10 @@ class Snake:
                         initial={{ opacity: 0, y: 15 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -15 }}
-                        className="rounded-2xl border border-white/5 bg-zinc-900/60 backdrop-blur-md overflow-hidden"
+                        className="rounded-2xl border border-border bg-card backdrop-blur-md overflow-hidden"
                     >
                         {/* Tab header */}
-                        <div className="flex items-center justify-between bg-black/40 border-b border-white/5 px-6 py-4">
+                        <div className="flex items-center justify-between bg-muted border-b border-border px-6 py-4">
                             <div className="flex items-center gap-2">
                                 <Gamepad2 className="w-5 h-5 text-indigo-400" />
                                 <h4 className="text-sm font-extrabold text-foreground uppercase tracking-wide">
@@ -1022,7 +1022,7 @@ class Snake:
                                     className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 ${
                                         activeStudioTab === "runtime"
                                             ? "bg-indigo-500/15 border border-indigo-500/30 text-indigo-300"
-                                            : "bg-transparent border border-transparent text-zinc-500 hover:text-zinc-300"
+                                            : "bg-transparent border border-transparent text-muted-foreground hover:text-muted-foreground"
                                     }`}
                                 >
                                     <Gamepad2 className="w-3.5 h-3.5" />
@@ -1033,7 +1033,7 @@ class Snake:
                                     className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 ${
                                         activeStudioTab === "code"
                                             ? "bg-indigo-500/15 border border-indigo-500/30 text-indigo-300"
-                                            : "bg-transparent border border-transparent text-zinc-500 hover:text-zinc-300"
+                                            : "bg-transparent border border-transparent text-muted-foreground hover:text-muted-foreground"
                                     }`}
                                 >
                                     <Code className="w-3.5 h-3.5" />
@@ -1047,40 +1047,40 @@ class Snake:
                             {activeStudioTab === "runtime" ? (
                                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                                     {/* Game Console Stage */}
-                                    <div className="lg:col-span-2 flex flex-col items-center justify-center p-4 rounded-xl bg-black border border-white/5 relative">
+                                    <div className="lg:col-span-2 flex flex-col items-center justify-center p-4 rounded-xl bg-black border border-border relative">
                                         <canvas
                                             ref={canvasRef}
                                             width={500}
                                             height={375}
-                                            className="max-w-full rounded-lg shadow-2xl border border-white/5 aspect-[4/3] bg-zinc-950"
+                                            className="max-w-full rounded-lg shadow-2xl border border-border aspect-[4/3] bg-background"
                                         />
                                     </div>
 
                                     {/* Controller deck */}
-                                    <div className="lg:col-span-1 flex flex-col justify-between p-6 rounded-xl bg-black/40 border border-white/5 gap-6">
+                                    <div className="lg:col-span-1 flex flex-col justify-between p-6 rounded-xl bg-muted border border-border gap-6">
                                         <div className="space-y-4">
                                             <div className="flex items-center justify-between">
-                                                <span className="text-[10px] text-zinc-500 uppercase tracking-widest font-extrabold">Active Simulator</span>
+                                                <span className="text-[10px] text-muted-foreground uppercase tracking-widest font-extrabold">Active Simulator</span>
                                                 <span className="text-xs font-bold text-indigo-400 uppercase tracking-wide">{selectedGameId.replace("-", " ")}</span>
                                             </div>
 
                                             <div className="grid grid-cols-2 gap-4">
-                                                <div className="p-3 bg-zinc-900/60 border border-white/5 rounded-xl text-center">
-                                                    <p className="text-[10px] text-zinc-500 uppercase font-bold">SCORE</p>
+                                                <div className="p-3 bg-card border border-border rounded-xl text-center">
+                                                    <p className="text-[10px] text-muted-foreground uppercase font-bold">SCORE</p>
                                                     <p className="text-lg font-mono font-extrabold text-emerald-400 mt-1">
                                                         {gameEngineState.current.score}
                                                     </p>
                                                 </div>
-                                                <div className="p-3 bg-zinc-900/60 border border-white/5 rounded-xl text-center">
-                                                    <p className="text-[10px] text-zinc-500 uppercase font-bold">HIGH SCORE</p>
+                                                <div className="p-3 bg-card border border-border rounded-xl text-center">
+                                                    <p className="text-[10px] text-muted-foreground uppercase font-bold">HIGH SCORE</p>
                                                     <p className="text-lg font-mono font-extrabold text-indigo-400 mt-1">
                                                         {gameEngineState.current.highScore || 120}
                                                     </p>
                                                 </div>
                                             </div>
 
-                                            <div className="space-y-2 p-3 bg-zinc-900/30 border border-white/5 rounded-xl text-zinc-400 text-xs">
-                                                <p className="font-bold text-zinc-300 uppercase tracking-wider text-[10px]">Controls:</p>
+                                            <div className="space-y-2 p-3 bg-card/30 border border-border rounded-xl text-muted-foreground text-xs">
+                                                <p className="font-bold text-muted-foreground uppercase tracking-wider text-[10px]">Controls:</p>
                                                 {selectedGameId === "space-invaders" && (
                                                     <p className="font-mono leading-relaxed text-[11px]">
                                                         ← / → : Move ship<br />
@@ -1103,7 +1103,7 @@ class Snake:
 
                                         <button
                                             onClick={() => initGameEngine(selectedGameId)}
-                                            className="w-full py-2.5 bg-zinc-800 hover:bg-zinc-700 text-zinc-200 border border-white/5 text-xs font-bold uppercase tracking-wider rounded-xl transition-colors flex items-center justify-center gap-1.5"
+                                            className="w-full py-2.5 bg-zinc-800 hover:bg-zinc-700 text-foreground border border-border text-xs font-bold uppercase tracking-wider rounded-xl transition-colors flex items-center justify-center gap-1.5"
                                         >
                                             <RefreshCw className="w-3.5 h-3.5" />
                                             <span>Restart Simulation</span>
@@ -1111,7 +1111,7 @@ class Snake:
                                     </div>
                                 </div>
                             ) : (
-                                <div className="p-4 rounded-xl bg-black border border-white/5 max-h-[400px] overflow-y-auto font-mono text-xs text-zinc-400 select-text pr-2 scrollbar-thin">
+                                <div className="p-4 rounded-xl bg-black border border-border max-h-[400px] overflow-y-auto font-mono text-xs text-muted-foreground select-text pr-2 scrollbar-thin">
                                     <pre className="text-emerald-400">
                                         <code>{pythonPresets[selectedGameId]}</code>
                                     </pre>

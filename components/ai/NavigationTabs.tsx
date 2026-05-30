@@ -44,7 +44,7 @@ export const NavigationTabs = () => {
     };
 
     return (
-        <div className="sticky top-[72px] z-40 w-full border-b border-white/5 bg-zinc-950/80 backdrop-blur-xl">
+        <div className="sticky top-[72px] z-40 w-full border-b border-border bg-background/80 backdrop-blur-xl">
             <div className="max-w-6xl mx-auto px-4 sm:px-6 flex items-center overflow-x-auto no-visible-scrollbar gap-0.5 py-0">
                 {TABS.map((tab) => (
                     <button
@@ -53,8 +53,8 @@ export const NavigationTabs = () => {
                         className={cn(
                             "whitespace-nowrap px-4 py-3.5 text-xs font-semibold tracking-wide transition-all duration-200 border-b-2 cursor-pointer",
                             activeTab === tab.id
-                                ? "border-white text-white"
-                                : "border-transparent text-zinc-500 hover:text-zinc-300"
+                                ? "border-white text-foreground"
+                                : "border-transparent text-muted-foreground hover:text-muted-foreground"
                         )}
                     >
                         {tab.name}

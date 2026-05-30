@@ -76,22 +76,8 @@ const ProjectCard = ({ project, onClick }: ProjectCardProps) => {
             className="group relative h-97.5 sm:h-112.5 w-full cursor-pointer perspective-1000"
         >
             {/* Outer Container for Glassmorphism & Shadow */}
-            <div className="absolute inset-0 bg-white/3 dark:bg-zinc-900/40 backdrop-blur-xl border border-white/10 rounded-3xl overflow-hidden transition-all duration-500 group-hover:border-indigo-500/50 group-hover:shadow-[0_0_50px_-12px_rgba(79,70,229,0.3)] shadow-2xl">
+            <div className="absolute inset-0 bg-white/3 dark:bg-zinc-900/40 backdrop-blur-xl border border-white/10 rounded-3xl overflow-hidden transition-all duration-500 group-hover:border-indigo-500/50 shadow-sm group-hover:shadow-lg">
                 
-                {/* Mouse-following Glow Effect */}
-                <motion.div
-                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-                    style={{
-                        background: useTransform(
-                            [mouseXSpring, mouseYSpring],
-                            ([latestX, latestY]) => 
-                                `radial-gradient(600px circle at ${(Number(latestX) + 0.5) * 100}% ${(Number(latestY) + 0.5) * 100}%, rgba(99, 102, 241, 0.15), transparent 40%)`
-                        )
-                    }}
-                />
-
-                {/* Decorative Pattern / Lighting */}
-                <div className={`absolute top-0 right-0 w-64 h-64 bg-linear-to-br ${project.imageColor} opacity-[0.05] group-hover:opacity-20 rounded-bl-full -mr-24 -mt-24 transition-all duration-700 blur-3xl`} />
 
                 {/* Content Section */}
                 <div 

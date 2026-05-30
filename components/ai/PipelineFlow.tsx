@@ -103,19 +103,19 @@ export const PipelineFlow = () => {
     return (
         <div className="flex flex-col gap-6 select-none">
             {/* Visual scrolling flow map container */}
-            <div className="p-6 rounded-2xl bg-zinc-900/60 border border-white/5 relative overflow-hidden backdrop-blur-md">
+            <div className="p-6 rounded-2xl bg-card border border-border relative overflow-hidden backdrop-blur-md">
                 <div className="absolute top-0 right-0 p-4 opacity-5 pointer-events-none">
                     <Share2 className="w-40 h-40 text-blue-400 animate-pulse" />
                 </div>
 
-                <div className="flex items-center justify-between pb-3 border-b border-white/5 mb-6 text-xs text-zinc-500">
+                <div className="flex items-center justify-between pb-3 border-b border-border mb-6 text-xs text-muted-foreground">
                     <div className="flex items-center gap-2">
                         <Share2 className="w-4 h-4 text-blue-400" />
-                        <span className="font-bold uppercase tracking-wider text-zinc-400">
+                        <span className="font-bold uppercase tracking-wider text-muted-foreground">
                             7-Stage ML Pipeline Lifecycle
                         </span>
                     </div>
-                    <span className="px-2 py-0.5 rounded bg-zinc-950 font-mono text-[9px]">
+                    <span className="px-2 py-0.5 rounded bg-background font-mono text-[9px]">
                         scroll activated flowchart
                     </span>
                 </div>
@@ -130,10 +130,10 @@ export const PipelineFlow = () => {
                                 <motion.div
                                     onMouseEnter={() => setHoveredNodeId(node.id)}
                                     onMouseLeave={() => setHoveredNodeId(null)}
-                                    className={`w-full xl:w-44 p-4 rounded-xl border transition-all duration-300 bg-black/40 backdrop-blur-xs cursor-default relative overflow-hidden shrink-0 ${
+                                    className={`w-full xl:w-44 p-4 rounded-xl border transition-all duration-300 bg-muted backdrop-blur-xs cursor-default relative overflow-hidden shrink-0 ${
                                         isHovered 
                                             ? `${node.borderColor} ring-1 ring-white/10 scale-[1.03]` 
-                                            : "border-white/5 opacity-80"
+                                            : "border-border opacity-80"
                                     }`}
                                     style={{
                                         boxShadow: isHovered ? `0 0 25px ${node.glowingColor}` : "none"
@@ -147,7 +147,7 @@ export const PipelineFlow = () => {
                                     <div className="absolute inset-0 bg-linear-to-r from-transparent via-white/5 to-transparent -skew-x-12 translate-x-[-200%] hover:translate-x-[200%] transition-transform duration-1000" />
 
                                     <div className="flex items-center gap-2">
-                                        <div className={`p-2 rounded-lg ${node.color} border border-white/5 shrink-0`}>
+                                        <div className={`p-2 rounded-lg ${node.color} border border-border shrink-0`}>
                                             {node.icon}
                                         </div>
                                         <h5 className="text-[11px] font-extrabold text-foreground tracking-wide truncate max-w-[100px]">
@@ -155,11 +155,11 @@ export const PipelineFlow = () => {
                                         </h5>
                                     </div>
 
-                                    <p className="mt-2 text-[10px] text-zinc-400 leading-relaxed font-medium min-h-[40px]">
+                                    <p className="mt-2 text-[10px] text-muted-foreground leading-relaxed font-medium min-h-[40px]">
                                         {node.description}
                                     </p>
 
-                                    <div className="mt-3 pt-2 border-t border-white/5 text-[9px] font-mono text-zinc-500 truncate">
+                                    <div className="mt-3 pt-2 border-t border-border text-[9px] font-mono text-muted-foreground truncate">
                                         {node.subtext}
                                     </div>
                                 </motion.div>
@@ -184,17 +184,17 @@ export const PipelineFlow = () => {
             </div>
 
             {/* Dynamic Pipeline Stage Status Inspector */}
-            <div className="p-5 rounded-2xl bg-zinc-950/80 border border-white/5 min-h-[90px] flex items-center">
+            <div className="p-5 rounded-2xl bg-background/80 border border-border min-h-[90px] flex items-center">
                 {hoveredNodeId ? (
                     <motion.div 
                         initial={{ opacity: 0, y: 5 }}
                         animate={{ opacity: 1, y: 0 }}
                         className="space-y-1 w-full"
                     >
-                        <span className="text-[10px] font-bold text-zinc-500 uppercase tracking-widest">
+                        <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest">
                             Pipeline Stage Description
                         </span>
-                        <p className="text-xs sm:text-sm text-zinc-300 leading-relaxed font-medium">
+                        <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed font-medium">
                             {hoveredNodeId === "dataset" && "Dataset collection handles raw telemetry gathering from CSV files. It reads 15 input columns representing features like CO2 index, waste, and energy consumption."}
                             {hoveredNodeId === "preprocess" && "Preprocessing sweeps rows with null values and encodes chest pain nominal factors. This cleans standard features before scaling routines."}
                             {hoveredNodeId === "feature" && "Feature Engineering scales inputs between 0 and 1 using MinMaxScaler and PCA columns reductions to balance backprop evaluations."}
@@ -205,7 +205,7 @@ export const PipelineFlow = () => {
                         </p>
                     </motion.div>
                 ) : (
-                    <div className="text-center w-full py-2 text-zinc-500 font-medium text-xs sm:text-sm">
+                    <div className="text-center w-full py-2 text-muted-foreground font-medium text-xs sm:text-sm">
                         Hover over any ML pipeline Lifecycle card to focus stage parameters, scaler layers, and deployment configurations.
                     </div>
                 )}

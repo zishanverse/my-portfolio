@@ -12,7 +12,7 @@ interface ModelLoaderProps {
 
 export const ModelLoader: React.FC<ModelLoaderProps> = ({ progress, stage, error, onRetry }) => {
     return (
-        <div className="w-full p-6 rounded-2xl bg-zinc-900/40 border border-white/5 flex flex-col items-center justify-center text-center gap-4 min-h-[160px] backdrop-blur-md relative overflow-hidden select-none">
+        <div className="w-full p-6 rounded-2xl bg-card border border-border flex flex-col items-center justify-center text-center gap-4 min-h-[160px] backdrop-blur-md relative overflow-hidden select-none">
             {error ? (
                 <div className="space-y-4">
                     <div className="p-3 bg-red-500/10 rounded-full w-12 h-12 flex items-center justify-center border border-red-500/20 mx-auto">
@@ -36,14 +36,14 @@ export const ModelLoader: React.FC<ModelLoaderProps> = ({ progress, stage, error
                         <Cpu className="w-6 h-6 text-indigo-400 animate-pulse" />
                     </div>
                     <div className="space-y-2">
-                        <h5 className="text-xs font-extrabold uppercase text-zinc-400 tracking-wider">
+                        <h5 className="text-xs font-extrabold uppercase text-muted-foreground tracking-wider">
                             Loading AI Runtime ({progress}%)
                         </h5>
-                        <p className="text-[10px] text-zinc-500 font-mono tracking-wide">
+                        <p className="text-[10px] text-muted-foreground font-mono tracking-wide">
                             {stage}
                         </p>
                     </div>
-                    <div className="w-full bg-black/40 h-1.5 rounded-full overflow-hidden border border-white/5">
+                    <div className="w-full bg-muted h-1.5 rounded-full overflow-hidden border border-border">
                         <div 
                             className="bg-indigo-500 h-full transition-all duration-300"
                             style={{ width: `${progress}%` }}

@@ -93,14 +93,14 @@ export const TabularIntelligence = () => {
     return (
         <div className="flex flex-col gap-6">
             {/* Header sub-tabs selector */}
-            <div className="flex justify-center border-b border-white/5 pb-1">
-                <div className="flex gap-2 p-1 bg-black/40 border border-white/5 rounded-2xl">
+            <div className="flex justify-center border-b border-border pb-1">
+                <div className="flex gap-2 p-1 bg-muted border border-border rounded-2xl">
                     <button
                         onClick={() => setActiveSubTab("delivery")}
                         className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
                             activeSubTab === "delivery"
                                 ? "bg-indigo-500/20 text-indigo-300 border border-indigo-500/30"
-                                : "bg-transparent text-zinc-500 hover:text-zinc-300 border border-transparent"
+                                : "bg-transparent text-muted-foreground hover:text-muted-foreground border border-transparent"
                         }`}
                     >
                         <Truck className="w-4 h-4" />
@@ -111,7 +111,7 @@ export const TabularIntelligence = () => {
                         className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
                             activeSubTab === "california"
                                 ? "bg-indigo-500/20 text-indigo-300 border border-indigo-500/30"
-                                : "bg-transparent text-zinc-500 hover:text-zinc-300 border border-transparent"
+                                : "bg-transparent text-muted-foreground hover:text-muted-foreground border border-transparent"
                         }`}
                     >
                         <Home className="w-4 h-4" />
@@ -124,10 +124,10 @@ export const TabularIntelligence = () => {
             {activeSubTab === "delivery" ? (
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
                     {/* Sliders Deck */}
-                    <div className="lg:col-span-5 p-6 rounded-2xl bg-zinc-900/60 border border-white/5 space-y-6 backdrop-blur-md">
-                        <div className="flex items-center gap-2 pb-2 border-b border-white/5">
+                    <div className="lg:col-span-5 p-6 rounded-2xl bg-card border border-border space-y-6 backdrop-blur-md">
+                        <div className="flex items-center gap-2 pb-2 border-b border-border">
                             <Sliders className="w-4 h-4 text-indigo-400" />
-                            <h4 className="text-xs font-bold uppercase tracking-wider text-zinc-400">
+                            <h4 className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
                                 Marketplace Telemetry Inputs
                             </h4>
                         </div>
@@ -135,9 +135,9 @@ export const TabularIntelligence = () => {
                         {/* Slider 1: Dashers Busy Ratio */}
                         <div className="space-y-2">
                             <div className="flex items-center justify-between text-xs">
-                                <span className="font-semibold text-zinc-400 flex items-center gap-1" title="Proportion of online couriers currently delivering orders.">
+                                <span className="font-semibold text-muted-foreground flex items-center gap-1" title="Proportion of online couriers currently delivering orders.">
                                     Busy Dashers Ratio
-                                    <HelpCircle className="w-3 h-3 text-zinc-600" />
+                                    <HelpCircle className="w-3 h-3 text-muted-foreground" />
                                 </span>
                                 <span className="font-mono text-indigo-300 font-bold">{Math.round(dashersBusyRatio * 100)}%</span>
                             </div>
@@ -155,7 +155,7 @@ export const TabularIntelligence = () => {
                         {/* Slider 2: Subtotal */}
                         <div className="space-y-2">
                             <div className="flex items-center justify-between text-xs">
-                                <span className="font-semibold text-zinc-400">Subtotal ($)</span>
+                                <span className="font-semibold text-muted-foreground">Subtotal ($)</span>
                                 <span className="font-mono text-indigo-300 font-bold">${subtotal}</span>
                             </div>
                             <input
@@ -172,7 +172,7 @@ export const TabularIntelligence = () => {
                         {/* Slider 3: Number of Items */}
                         <div className="space-y-2">
                             <div className="flex items-center justify-between text-xs">
-                                <span className="font-semibold text-zinc-400">Items Ordered</span>
+                                <span className="font-semibold text-muted-foreground">Items Ordered</span>
                                 <span className="font-mono text-indigo-300 font-bold">{items} items</span>
                             </div>
                             <input
@@ -189,7 +189,7 @@ export const TabularIntelligence = () => {
                         {/* Slider 4: Outstanding Orders */}
                         <div className="space-y-2">
                             <div className="flex items-center justify-between text-xs">
-                                <span className="font-semibold text-zinc-400">Outstanding Partner Orders</span>
+                                <span className="font-semibold text-muted-foreground">Outstanding Partner Orders</span>
                                 <span className="font-mono text-indigo-300 font-bold">{outstandingOrders} orders</span>
                             </div>
                             <input
@@ -205,15 +205,15 @@ export const TabularIntelligence = () => {
                     </div>
 
                     {/* Chart panel */}
-                    <div className="lg:col-span-7 p-6 rounded-2xl bg-zinc-900/60 border border-white/5 flex flex-col justify-between backdrop-blur-md gap-6">
-                        <div className="flex items-center justify-between pb-2 border-b border-white/5">
+                    <div className="lg:col-span-7 p-6 rounded-2xl bg-card border border-border flex flex-col justify-between backdrop-blur-md gap-6">
+                        <div className="flex items-center justify-between pb-2 border-b border-border">
                             <div className="flex items-center gap-2">
                                 <BarChart3 className="w-4 h-4 text-emerald-400" />
-                                <h4 className="text-xs font-bold uppercase tracking-wider text-zinc-400">
+                                <h4 className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
                                     Model Comparison Predictions
                                 </h4>
                             </div>
-                            <span className="px-2 py-0.5 rounded bg-zinc-950 font-mono text-[9px] text-zinc-500">
+                            <span className="px-2 py-0.5 rounded bg-background font-mono text-[9px] text-muted-foreground">
                                 unit: Minutes
                             </span>
                         </div>
@@ -223,12 +223,12 @@ export const TabularIntelligence = () => {
                             {deliveryPredictions.map((model, idx) => (
                                 <div key={idx} className="space-y-1">
                                     <div className="flex items-center justify-between text-xs">
-                                        <span className="font-bold text-zinc-300">{model.name}</span>
-                                        <span className="font-mono font-extrabold text-white">
+                                        <span className="font-bold text-muted-foreground">{model.name}</span>
+                                        <span className="font-mono font-extrabold text-foreground">
                                             {model.prediction.toFixed(1)} mins
                                         </span>
                                     </div>
-                                    <div className="w-full bg-black/40 h-3 rounded-md overflow-hidden border border-white/5">
+                                    <div className="w-full bg-muted h-3 rounded-md overflow-hidden border border-border">
                                         <motion.div
                                             className={`h-full ${model.color}`}
                                             initial={{ width: "0%" }}
@@ -241,13 +241,13 @@ export const TabularIntelligence = () => {
                         </div>
 
                         {/* Pipeline Insight */}
-                        <div className="p-4 rounded-xl bg-black/30 border border-white/5 flex gap-3 items-start">
+                        <div className="p-4 rounded-xl bg-black/30 border border-border flex gap-3 items-start">
                             <Database className="w-5 h-5 text-indigo-400 shrink-0 mt-0.5" />
                             <div className="space-y-1">
-                                <p className="text-[10px] text-zinc-400 font-extrabold uppercase tracking-wide">
+                                <p className="text-[10px] text-muted-foreground font-extrabold uppercase tracking-wide">
                                     Telemetry Capstone Stats
                                 </p>
-                                <p className="text-xs text-zinc-500 leading-relaxed font-medium">
+                                <p className="text-xs text-muted-foreground leading-relaxed font-medium">
                                     Trained on 10,000+ delivery records. SVR handles extreme spikes (highly busy dashers) with non-linear kernel boundaries, while Random Forest enforces decision tree bins.
                                 </p>
                             </div>
@@ -257,10 +257,10 @@ export const TabularIntelligence = () => {
             ) : (
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
                     {/* Sliders Deck */}
-                    <div className="lg:col-span-5 p-6 rounded-2xl bg-zinc-900/60 border border-white/5 space-y-6 backdrop-blur-md">
-                        <div className="flex items-center gap-2 pb-2 border-b border-white/5">
+                    <div className="lg:col-span-5 p-6 rounded-2xl bg-card border border-border space-y-6 backdrop-blur-md">
+                        <div className="flex items-center gap-2 pb-2 border-b border-border">
                             <Sliders className="w-4 h-4 text-pink-400" />
-                            <h4 className="text-xs font-bold uppercase tracking-wider text-zinc-400">
+                            <h4 className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
                                 California District Parameters
                             </h4>
                         </div>
@@ -268,9 +268,9 @@ export const TabularIntelligence = () => {
                         {/* Slider 1: Median Income */}
                         <div className="space-y-2">
                             <div className="flex items-center justify-between text-xs">
-                                <span className="font-semibold text-zinc-400 flex items-center gap-1" title="Median household income in block group (in tens of thousands).">
+                                <span className="font-semibold text-muted-foreground flex items-center gap-1" title="Median household income in block group (in tens of thousands).">
                                     Median Income ($)
-                                    <HelpCircle className="w-3 h-3 text-zinc-600" />
+                                    <HelpCircle className="w-3 h-3 text-muted-foreground" />
                                 </span>
                                 <span className="font-mono text-pink-300 font-bold">${(medianIncome * 10000).toLocaleString()}</span>
                             </div>
@@ -288,7 +288,7 @@ export const TabularIntelligence = () => {
                         {/* Slider 2: Latitude */}
                         <div className="space-y-2">
                             <div className="flex items-center justify-between text-xs">
-                                <span className="font-semibold text-zinc-400">Latitude</span>
+                                <span className="font-semibold text-muted-foreground">Latitude</span>
                                 <span className="font-mono text-pink-300 font-bold">{latitude}° N ({latitude > 36 ? "NorCal" : "SoCal"})</span>
                             </div>
                             <input
@@ -305,7 +305,7 @@ export const TabularIntelligence = () => {
                         {/* Slider 3: Households */}
                         <div className="space-y-2">
                             <div className="flex items-center justify-between text-xs">
-                                <span className="font-semibold text-zinc-400">Block Households count</span>
+                                <span className="font-semibold text-muted-foreground">Block Households count</span>
                                 <span className="font-mono text-pink-300 font-bold">{households.toLocaleString()} families</span>
                             </div>
                             <input
@@ -321,15 +321,15 @@ export const TabularIntelligence = () => {
                     </div>
 
                     {/* Chart panel */}
-                    <div className="lg:col-span-7 p-6 rounded-2xl bg-zinc-900/60 border border-white/5 flex flex-col justify-between backdrop-blur-md gap-6">
-                        <div className="flex items-center justify-between pb-2 border-b border-white/5">
+                    <div className="lg:col-span-7 p-6 rounded-2xl bg-card border border-border flex flex-col justify-between backdrop-blur-md gap-6">
+                        <div className="flex items-center justify-between pb-2 border-b border-border">
                             <div className="flex items-center gap-2">
                                 <BarChart3 className="w-4 h-4 text-violet-400" />
-                                <h4 className="text-xs font-bold uppercase tracking-wider text-zinc-400">
+                                <h4 className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
                                     Model Comparison Predictions
                                 </h4>
                             </div>
-                            <span className="px-2 py-0.5 rounded bg-zinc-950 font-mono text-[9px] text-zinc-500">
+                            <span className="px-2 py-0.5 rounded bg-background font-mono text-[9px] text-muted-foreground">
                                 unit: Median House Value ($)
                             </span>
                         </div>
@@ -339,12 +339,12 @@ export const TabularIntelligence = () => {
                             {californiaPredictions.map((model, idx) => (
                                 <div key={idx} className="space-y-1">
                                     <div className="flex items-center justify-between text-xs">
-                                        <span className="font-bold text-zinc-300">{model.name}</span>
-                                        <span className="font-mono font-extrabold text-white">
+                                        <span className="font-bold text-muted-foreground">{model.name}</span>
+                                        <span className="font-mono font-extrabold text-foreground">
                                             ${Math.round(model.prediction).toLocaleString()}
                                         </span>
                                     </div>
-                                    <div className="w-full bg-black/40 h-3 rounded-md overflow-hidden border border-white/5">
+                                    <div className="w-full bg-muted h-3 rounded-md overflow-hidden border border-border">
                                         <motion.div
                                             className={`h-full ${model.color}`}
                                             initial={{ width: "0%" }}
@@ -357,13 +357,13 @@ export const TabularIntelligence = () => {
                         </div>
 
                         {/* Pipeline Insight */}
-                        <div className="p-4 rounded-xl bg-black/30 border border-white/5 flex gap-3 items-start">
+                        <div className="p-4 rounded-xl bg-black/30 border border-border flex gap-3 items-start">
                             <Database className="w-5 h-5 text-pink-400 shrink-0 mt-0.5" />
                             <div className="space-y-1">
-                                <p className="text-[10px] text-zinc-400 font-extrabold uppercase tracking-wide">
+                                <p className="text-[10px] text-muted-foreground font-extrabold uppercase tracking-wide">
                                     KNN vs Decision Tree Estimation
                                 </p>
-                                <p className="text-xs text-zinc-500 leading-relaxed font-medium">
+                                <p className="text-xs text-muted-foreground leading-relaxed font-medium">
                                     KNN computes weights based on proximity in Latitude/Income dimensions. The Decision Tree fits hard horizontal segments, producing step-like pricing jumps at split thresholds.
                                 </p>
                             </div>

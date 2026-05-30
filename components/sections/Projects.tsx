@@ -92,9 +92,7 @@ const Projects = () => {
 
     return (
         <section id="projects" className="py-20 md:py-32 lg:py-48 bg-transparent dark:bg-transparent w-full relative overflow-hidden">
-            {/* Background decorative elements */}
-            <div className="absolute top-0 left-1/4 w-64 h-64 bg-indigo-500/5 blur-[120px] rounded-full pointer-events-none" />
-            <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/5 blur-[150px] rounded-full pointer-events-none" />
+
 
             <div className="container mx-auto px-4 sm:px-6 relative z-20">
                 <div className="mb-12 md:mb-20 max-w-2xl">

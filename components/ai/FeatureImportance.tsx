@@ -37,14 +37,14 @@ export const FeatureImportance: React.FC<FeatureImportanceProps> = ({
     ];
 
     return (
-        <div className="border-t border-white/5 pt-4 text-left space-y-2.5 w-full select-none">
-            <span className="text-[10px] text-zinc-500 font-bold uppercase tracking-wider">
+        <div className="border-t border-border pt-4 text-left space-y-2.5 w-full select-none">
+            <span className="text-[10px] text-muted-foreground font-bold uppercase tracking-wider">
                 Feature Impact Analysis
             </span>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                 {items.map((imp, idx) => (
-                    <div key={idx} className="flex justify-between items-center text-xs p-2 bg-white/2 border border-white/5 rounded-lg">
-                        <span className="text-zinc-400 font-medium text-[11px]">{imp.label}</span>
+                    <div key={idx} className="flex justify-between items-center text-xs p-2 bg-white/2 border border-border rounded-lg">
+                        <span className="text-muted-foreground font-medium text-[11px]">{imp.label}</span>
                         <span className={`font-mono font-bold text-[11px] ${imp.pos ? "text-red-400" : "text-emerald-400"}`}>
                             {imp.value}
                         </span>

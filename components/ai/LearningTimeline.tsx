@@ -93,14 +93,14 @@ export const LearningTimeline = () => {
 
     return (
         <div className="space-y-4 max-w-4xl mx-auto select-none">
-            <div className="flex items-center justify-between pb-3 border-b border-white/5 mb-6">
+            <div className="flex items-center justify-between pb-3 border-b border-border mb-6">
                 <div className="flex items-center gap-2">
                     <BookOpen className="w-4 h-4 text-amber-400" />
-                    <span className="text-xs font-bold uppercase tracking-wider text-zinc-400">
+                    <span className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
                         Jupyter Notebooks Timeline Tree (18 Projects)
                     </span>
                 </div>
-                <span className="px-2 py-0.5 rounded bg-zinc-950 font-mono text-[9px] text-zinc-500">
+                <span className="px-2 py-0.5 rounded bg-background font-mono text-[9px] text-muted-foreground">
                     total curriculum: 5 phases
                 </span>
             </div>
@@ -111,8 +111,8 @@ export const LearningTimeline = () => {
                 return (
                     <div
                         key={idx}
-                        className={`rounded-2xl border transition-all duration-300 overflow-hidden bg-black/40 backdrop-blur-md ${
-                            isOpen ? "border-amber-500/20" : "border-white/5"
+                        className={`rounded-2xl border transition-all duration-300 overflow-hidden bg-muted backdrop-blur-md ${
+                            isOpen ? "border-amber-500/20" : "border-border"
                         }`}
                     >
                         {/* Accordion Header */}
@@ -129,17 +129,17 @@ export const LearningTimeline = () => {
                                         <h4 className="text-xs sm:text-sm font-extrabold text-foreground tracking-wide">
                                             {milestone.title}
                                         </h4>
-                                        <span className="px-2 py-0.5 bg-white/5 border border-white/10 rounded-md text-[9px] font-mono text-zinc-400">
+                                        <span className="px-2 py-0.5 bg-secondary border border-border rounded-md text-[9px] font-mono text-muted-foreground">
                                             {milestone.tag}
                                         </span>
                                     </div>
-                                    <p className="text-[11px] text-zinc-500 leading-relaxed font-medium">
+                                    <p className="text-[11px] text-muted-foreground leading-relaxed font-medium">
                                         {milestone.description}
                                     </p>
                                 </div>
                             </div>
                             
-                            <div className="text-zinc-500">
+                            <div className="text-muted-foreground">
                                 {isOpen ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
                             </div>
                         </div>
@@ -152,13 +152,13 @@ export const LearningTimeline = () => {
                                     animate={{ height: "auto" }}
                                     exit={{ height: 0 }}
                                     transition={{ duration: 0.25, ease: "easeInOut" }}
-                                    className="border-t border-white/5 bg-zinc-900/10"
+                                    className="border-t border-border bg-card/10"
                                 >
                                     <div className="p-5 space-y-4">
                                         {milestone.notebooks.map((nb, nIdx) => (
                                             <div
                                                 key={nIdx}
-                                                className="p-4 rounded-xl bg-zinc-950/40 border border-white/5 hover:border-zinc-800 transition-colors flex flex-col sm:flex-row sm:items-center justify-between gap-4"
+                                                className="p-4 rounded-xl bg-background/40 border border-border hover:border-zinc-800 transition-colors flex flex-col sm:flex-row sm:items-center justify-between gap-4"
                                             >
                                                 <div className="space-y-2">
                                                     <div className="flex items-center gap-2">
@@ -166,16 +166,16 @@ export const LearningTimeline = () => {
                                                         <h5 className="text-xs font-bold text-foreground tracking-wide">
                                                             {nb.name}.ipynb
                                                         </h5>
-                                                        <span className="text-[9px] text-zinc-600 font-mono">({nb.fileSize})</span>
+                                                        <span className="text-[9px] text-muted-foreground font-mono">({nb.fileSize})</span>
                                                     </div>
-                                                    <p className="text-xs text-zinc-400 leading-relaxed font-medium max-w-xl">
+                                                    <p className="text-xs text-muted-foreground leading-relaxed font-medium max-w-xl">
                                                         {nb.description}
                                                     </p>
                                                     <div className="flex flex-wrap gap-1.5 pt-1">
                                                         {nb.skills.map((skill, sIdx) => (
                                                             <span
                                                                 key={sIdx}
-                                                                className="px-2 py-0.5 rounded-sm bg-white/5 text-[9px] font-mono text-zinc-500"
+                                                                className="px-2 py-0.5 rounded-sm bg-secondary text-[9px] font-mono text-muted-foreground"
                                                             >
                                                                 {skill}
                                                             </span>
@@ -184,7 +184,7 @@ export const LearningTimeline = () => {
                                                 </div>
 
                                                 <div className="flex items-center shrink-0">
-                                                    <span className="px-3 py-1 bg-white/5 border border-white/5 hover:bg-white/10 rounded-xl text-[10px] font-bold text-zinc-300 uppercase tracking-wide cursor-pointer transition-colors">
+                                                    <span className="px-3 py-1 bg-secondary border border-border hover:bg-secondary rounded-xl text-[10px] font-bold text-muted-foreground uppercase tracking-wide cursor-pointer transition-colors">
                                                         Source Code
                                                     </span>
                                                 </div>

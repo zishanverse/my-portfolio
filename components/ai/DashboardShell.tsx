@@ -32,17 +32,16 @@ export const DashboardShell = ({
     return (
         <div 
             className={cn(
-                "relative bg-white/3 dark:bg-zinc-900/40 backdrop-blur-xl border border-white/10 rounded-3xl overflow-hidden shadow-2xl p-5 sm:p-8 md:p-10 flex flex-col gap-6",
+                "relative bg-card border border-border rounded-3xl overflow-hidden shadow-sm p-5 sm:p-8 md:p-10 flex flex-col gap-6",
                 className
             )}
             {...props}
         >
-            {/* Spotlight shimmer at the top */}
-            <div className="absolute top-0 left-0 right-0 h-[1px] bg-linear-to-r from-transparent via-white/20 to-transparent pointer-events-none" />
+
 
             {/* Header portion */}
             {(title || subtitle || action || statusText) && (
-                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-white/10 pb-6">
+                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-border pb-6">
                     <div className="space-y-1">
                         {title && (
                             <h3 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground flex items-center gap-3">
@@ -59,7 +58,7 @@ export const DashboardShell = ({
                     <div className="flex items-center gap-3 self-stretch sm:self-auto justify-between sm:justify-end">
                         {statusText && (
                             <div className={cn(
-                                "flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border text-[11px] font-bold uppercase tracking-wider",
+                                "flex items-center gap-2 px-3 py-1.5 rounded-full bg-secondary border text-[11px] font-bold uppercase tracking-wider",
                                 statusColorClasses[statusColor]
                             )}>
                                 <span className={cn("w-1.5 h-1.5 rounded-full animate-pulse", 

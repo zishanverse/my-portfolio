@@ -19,10 +19,10 @@ export const MetricsDashboard = () => {
                 {stats.map((stat, i) => {
                     const Icon = stat.icon;
                     return (
-                        <div key={i} className="p-5 rounded-2xl bg-white/2 border border-white/5 flex flex-col justify-between gap-4">
+                        <div key={i} className="p-5 rounded-2xl bg-white/2 border border-border flex flex-col justify-between gap-4">
                             <div className="flex items-start justify-between">
                                 <div className="space-y-1">
-                                    <p className="text-[10px] text-zinc-500 font-bold uppercase tracking-wider">{stat.label}</p>
+                                    <p className="text-[10px] text-muted-foreground font-bold uppercase tracking-wider">{stat.label}</p>
                                     <h5 className="text-2xl font-black text-foreground">{stat.value}</h5>
                                 </div>
                                 <div className={`p-2.5 rounded-xl border ${stat.color} shrink-0`}>
@@ -40,13 +40,13 @@ export const MetricsDashboard = () => {
             {/* ROC Curve & Performance Explainer */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 {/* ROC AUC Plot */}
-                <div className="p-5 rounded-2xl bg-zinc-900/60 border border-white/5 flex flex-col gap-4">
+                <div className="p-5 rounded-2xl bg-card border border-border flex flex-col gap-4">
                     <div className="flex justify-between items-center">
-                        <h6 className="text-xs font-extrabold uppercase text-zinc-300 tracking-wider">ROC-AUC Curve (Area Under Curve)</h6>
+                        <h6 className="text-xs font-extrabold uppercase text-muted-foreground tracking-wider">ROC-AUC Curve (Area Under Curve)</h6>
                         <span className="text-xs font-mono text-indigo-300 font-bold">AUC: 0.942</span>
                     </div>
 
-                    <div className="relative h-60 w-full bg-black/40 border border-white/5 rounded-xl p-4 overflow-hidden">
+                    <div className="relative h-60 w-full bg-muted border border-border rounded-xl p-4 overflow-hidden">
                         {/* Custom SVG ROC curve */}
                         <svg className="w-full h-full" viewBox="0 0 200 200" preserveAspectRatio="none">
                             {/* Gridlines */}
@@ -78,15 +78,15 @@ export const MetricsDashboard = () => {
                         </svg>
                         
                         {/* Axes Labels */}
-                        <div className="absolute bottom-1 right-2 text-[8px] font-mono text-zinc-600 uppercase">False Positive Rate</div>
-                        <div className="absolute top-2 left-1 text-[8px] font-mono text-zinc-600 uppercase origin-left rotate-90 translate-x-1.5 translate-y-3">True Positive Rate</div>
+                        <div className="absolute bottom-1 right-2 text-[8px] font-mono text-muted-foreground uppercase">False Positive Rate</div>
+                        <div className="absolute top-2 left-1 text-[8px] font-mono text-muted-foreground uppercase origin-left rotate-90 translate-x-1.5 translate-y-3">True Positive Rate</div>
                     </div>
                 </div>
 
                 {/* Explainer Block */}
-                <div className="p-5 rounded-2xl bg-zinc-900/60 border border-white/5 flex flex-col gap-6 justify-center">
-                    <h6 className="text-xs font-extrabold uppercase text-zinc-300 tracking-wider">Evaluation Diagnostics Methodology</h6>
-                    <div className="space-y-4 text-xs sm:text-sm leading-relaxed text-zinc-400 font-medium">
+                <div className="p-5 rounded-2xl bg-card border border-border flex flex-col gap-6 justify-center">
+                    <h6 className="text-xs font-extrabold uppercase text-muted-foreground tracking-wider">Evaluation Diagnostics Methodology</h6>
+                    <div className="space-y-4 text-xs sm:text-sm leading-relaxed text-muted-foreground font-medium">
                         <p>
                             To evaluate the model, the dataset was split into **80% training** and **20% validation** (random seed = 42). Metrics were measured using standard scikit-learn statistical classification matrices.
                         </p>

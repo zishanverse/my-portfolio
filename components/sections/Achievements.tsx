@@ -109,7 +109,7 @@ const Achievements = () => {
                                     className="w-full text-left bg-white dark:bg-zinc-900/80 border border-gray-200 dark:border-zinc-800 rounded-2xl overflow-hidden group h-full flex flex-col shadow-sm hover:shadow-md transition-all"
                                 >
                                     <div className="relative aspect-[4/3] w-full overflow-hidden">
-                                        <div className="absolute inset-0 bg-indigo-500/10 group-hover:bg-indigo-500/0 transition-colors z-10" />
+                                        {/* Removed tint overlay */}
                                         <Image
                                             src={achievement.image}
                                             alt={achievement.title}

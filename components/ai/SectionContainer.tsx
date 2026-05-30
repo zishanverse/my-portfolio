@@ -24,7 +24,7 @@ export const SectionContainer = ({
         <section
             id={id}
             className={cn(
-                "py-20 md:py-28 border-b border-white/5 scroll-mt-24",
+                "py-20 md:py-28 border-b border-border scroll-mt-24",
                 className
             )}
             {...props}
@@ -39,17 +39,17 @@ export const SectionContainer = ({
                         className="mb-12 md:mb-16"
                     >
                         {label && (
-                            <p className="text-[11px] font-bold text-zinc-500 uppercase tracking-widest mb-3">
+                            <p className="text-[11px] font-bold text-muted-foreground uppercase tracking-widest mb-3">
                                 {label}
                             </p>
                         )}
                         {title && (
-                            <h2 className="text-3xl sm:text-4xl font-black text-white tracking-tight mb-4">
+                            <h2 className="text-3xl sm:text-4xl font-black text-foreground tracking-tight mb-4">
                                 {title}
                             </h2>
                         )}
                         {description && (
-                            <p className="text-zinc-400 text-base sm:text-lg leading-relaxed max-w-2xl">
+                            <p className="text-muted-foreground text-base sm:text-lg leading-relaxed max-w-2xl">
                                 {description}
                             </p>
                         )}
