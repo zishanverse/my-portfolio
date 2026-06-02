@@ -36,7 +36,7 @@ const projectsData: ProjectData[] = [
         ],
         tags: ["Next.js", "pgvector", "PostgreSQL", "Docker", "Prometheus", "Grafana", "LLM", "RAG", "LangGraph"],
         imageColor: "from-orange-500 to-rose-600",
-        link: "https://haannaa.in/",
+        link: "https://haannaa.com/",
         github: "#" // Request private access
     },
     {
