@@ -6,6 +6,7 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Loader2 } from 'lucide-react';
+import { usePreloader } from '@/components/providers/PreloaderProvider';
 
 // Dynamic import with custom loader to improve perceived performance
 const Spline = dynamic(() => import('@splinetool/react-spline'), {
@@ -22,8 +23,8 @@ gsap.registerPlugin(ScrollTrigger);
 export default function HeroScene() {
     const containerRef = useRef<HTMLDivElement>(null);
     const splineRef = useRef<HTMLDivElement>(null);
+    const { isSplineLoaded, setSplineLoaded } = usePreloader();
     const [isDesktop, setIsDesktop] = useState(false);
-    const [isLoaded, setIsLoaded] = useState(false);
 
     useEffect(() => {
         const checkWidth = () => {
@@ -96,12 +97,12 @@ export default function HeroScene() {
             */}
             <div 
                 ref={splineRef} 
-                className={`w-[1000px] h-[600px] pointer-events-auto relative overflow-hidden transition-opacity duration-1000 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
+                className={`w-[1000px] h-[600px] pointer-events-auto relative overflow-hidden transition-opacity duration-1000 ${isSplineLoaded ? 'opacity-100' : 'opacity-0'}`}
             >
                 <div className="absolute left-0 w-full h-[calc(100%+200px)] -top-[100px]">
                     <Spline
                         scene="https://prod.spline.design/KP4hwDFoEbQT1Utk/scene.splinecode"
-                        onLoad={() => setIsLoaded(true)}
+                        onLoad={() => setSplineLoaded(true)}
                     />
                 </div>
             </div>
