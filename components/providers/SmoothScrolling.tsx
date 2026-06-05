@@ -14,9 +14,6 @@ export function SmoothScrolling({ children }: { children: React.ReactNode }) {
             autoRaf: false, // We'll manage RAF with GSAP
             duration: 1.2,
             easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-            direction: "vertical",
-            gestureDirection: "vertical",
-            smoothWheel: true,
         });
 
         lenisRef.current = lenis;
