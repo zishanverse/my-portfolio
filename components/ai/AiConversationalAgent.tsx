@@ -32,8 +32,9 @@ const AiConversationalAgent = ({ onStatusChange }: AiConversationalAgentProps) =
         } else {
             try {
                 await navigator.mediaDevices.getUserMedia({ audio: true });
+                const agentId = process.env.NEXT_PUBLIC_ELEVENLABS_AGENT_ID || "agent_9201k6t5a2v0ezfs9kjqjzcna23w";
                 await conversation.startSession({
-                    agentId: "agent_6701k6t2xyyzf4wbmep6xpkv93ae",
+                    agentId,
                     connectionType: "webrtc",
                 });
             } catch (err) {
