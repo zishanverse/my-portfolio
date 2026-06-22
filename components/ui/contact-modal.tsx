@@ -46,6 +46,10 @@ const ContactModal = ({ onClose }: ContactModalProps) => {
         const modal = modalRef.current;
         if (!modal) return;
 
+        // Lock body scroll when modal is open
+        const originalOverflow = document.body.style.overflow;
+        document.body.style.overflow = "hidden";
+
         const getFocusableElements = () => {
             return modal.querySelectorAll<HTMLElement>(
                 'button:not([disabled]), [href], input:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
@@ -82,6 +86,8 @@ const ContactModal = ({ onClose }: ContactModalProps) => {
         document.addEventListener("keydown", handleKeyDown);
 
         return () => {
+            // Restore body scroll when modal closes
+            document.body.style.overflow = originalOverflow;
             document.removeEventListener("keydown", handleKeyDown);
             previouslyFocusedElementRef.current?.focus();
         };
@@ -162,7 +168,8 @@ const ContactModal = ({ onClose }: ContactModalProps) => {
                 role="dialog"
                 aria-modal="true"
                 aria-labelledby="contact-modal-title"
-                className="relative z-10 w-full max-w-lg bg-white dark:bg-zinc-900 border border-neutral-200 dark:border-zinc-800 rounded-2xl shadow-2xl overflow-hidden flex flex-col"
+                data-lenis-prevent
+                className="relative z-10 w-full max-w-lg bg-white dark:bg-zinc-900 border border-neutral-200 dark:border-zinc-800 rounded-2xl shadow-2xl overflow-hidden max-h-[90vh] flex flex-col"
             >
                 <div className="p-6 border-b border-neutral-100 dark:border-zinc-800 flex justify-between items-center bg-gray-50/50 dark:bg-zinc-900/50">
                     <h2 id="contact-modal-title" className="text-xl font-bold text-neutral-900 dark:text-white">Let's Work Together</h2>
@@ -175,7 +182,7 @@ const ContactModal = ({ onClose }: ContactModalProps) => {
                     </button>
                 </div>
 
-                <div ref={contentRef} className="p-6 md:p-8">
+                <div ref={contentRef} className="p-6 md:p-8 flex-1 overflow-y-auto">
                     <form onSubmit={handleSubmit} className="space-y-4">
                         {submissionMessage && (
                             <div

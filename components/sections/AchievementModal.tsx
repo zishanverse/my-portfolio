@@ -53,6 +53,10 @@ const AchievementModal = ({ achievement, onClose }: AchievementModalProps) => {
         const modal = modalRef.current;
         if (!modal) return;
 
+        // Lock body scroll when modal is open
+        const originalOverflow = document.body.style.overflow;
+        document.body.style.overflow = "hidden";
+
         const getFocusableElements = () => {
             return modal.querySelectorAll<HTMLElement>(
                 'button:not([disabled]), [href], input:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
@@ -89,6 +93,8 @@ const AchievementModal = ({ achievement, onClose }: AchievementModalProps) => {
         document.addEventListener("keydown", handleKeyDown);
 
         return () => {
+            // Restore body scroll when modal closes
+            document.body.style.overflow = originalOverflow;
             document.removeEventListener("keydown", handleKeyDown);
             previouslyFocusedElementRef.current?.focus();
         };
@@ -107,6 +113,7 @@ const AchievementModal = ({ achievement, onClose }: AchievementModalProps) => {
                 role="dialog"
                 aria-modal="true"
                 aria-labelledby="achievement-modal-title"
+                data-lenis-prevent
                 className="relative z-10 w-full max-w-2xl bg-zinc-900 border border-zinc-800 rounded-2xl shadow-2xl overflow-hidden max-h-[90vh] flex flex-col"
             >
                 <div className="relative h-48 w-full overflow-hidden">

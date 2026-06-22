@@ -73,15 +73,15 @@ const ProjectCard = ({ project, onClick }: ProjectCardProps) => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            className="group relative h-97.5 sm:h-112.5 w-full cursor-pointer perspective-1000"
+            className="group relative min-h-[24rem] sm:min-h-[28rem] flex w-full cursor-pointer perspective-1000"
         >
             {/* Outer Container for Glassmorphism & Shadow */}
-            <div className="absolute inset-0 bg-white/3 dark:bg-zinc-900/40 backdrop-blur-xl border border-white/10 rounded-3xl overflow-hidden transition-all duration-500 group-hover:border-indigo-500/50 shadow-sm group-hover:shadow-lg">
+            <div className="flex flex-col w-full bg-white/3 dark:bg-zinc-900/40 backdrop-blur-xl border border-white/10 rounded-3xl overflow-hidden transition-all duration-500 group-hover:border-indigo-500/50 shadow-sm group-hover:shadow-lg">
                 
 
                 {/* Content Section */}
                 <div 
-                    className="relative z-10 flex flex-col h-full p-5 sm:p-8 md:p-10 justify-between"
+                    className="relative z-10 flex flex-col flex-1 p-5 sm:p-8 md:p-10 justify-between"
                     style={{ transform: "translateZ(50px)" }} // Pop out content
                 >
                     <div>

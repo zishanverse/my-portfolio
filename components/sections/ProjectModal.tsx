@@ -58,6 +58,10 @@ const ProjectModal = ({ project, onClose }: ProjectModalProps) => {
         const modal = modalRef.current;
         if (!modal) return;
 
+        // Lock body scroll when modal is open
+        const originalOverflow = document.body.style.overflow;
+        document.body.style.overflow = "hidden";
+
         const getFocusableElements = () => {
             return modal.querySelectorAll<HTMLElement>(
                 'button:not([disabled]), [href], input:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
@@ -94,6 +98,8 @@ const ProjectModal = ({ project, onClose }: ProjectModalProps) => {
         document.addEventListener("keydown", handleKeyDown);
 
         return () => {
+            // Restore body scroll when modal closes
+            document.body.style.overflow = originalOverflow;
             document.removeEventListener("keydown", handleKeyDown);
             previouslyFocusedElementRef.current?.focus();
         };
@@ -112,9 +118,10 @@ const ProjectModal = ({ project, onClose }: ProjectModalProps) => {
                 role="dialog"
                 aria-modal="true"
                 aria-labelledby="project-modal-title"
+                data-lenis-prevent
                 className="relative z-10 w-full max-w-4xl bg-zinc-950/40 backdrop-blur-2xl border border-white/10 rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden max-h-[92vh] sm:max-h-full flex flex-col perspective-1000"
             >
-                <div className={`h-32 sm:h-40 md:h-56 w-full bg-linear-to-r ${project.imageColor} relative z-10 overflow-hidden`}>
+                <div className={`min-h-[11rem] sm:min-h-[12rem] md:min-h-[14rem] w-full bg-linear-to-r ${project.imageColor} relative z-10 overflow-hidden flex flex-col justify-end p-5 sm:p-8 md:p-10 pt-16 sm:pt-20 shrink-0`}>
                     
                     <button
                         onClick={handleClose}
@@ -124,13 +131,13 @@ const ProjectModal = ({ project, onClose }: ProjectModalProps) => {
                         <X className="w-5 h-5 sm:w-6 sm:h-6 group-hover:rotate-90 transition-transform" />
                     </button>
                     
-                    <div className="absolute bottom-5 left-5 sm:bottom-10 sm:left-10">
-                        <div className="flex items-center gap-3 mb-3">
-                            <span className="px-3 py-1 bg-white/20 backdrop-blur-md rounded-full text-xs font-bold text-white border border-white/20 uppercase tracking-widest">
+                    <div className="relative z-10 mt-auto pr-8 sm:pr-12">
+                        <div className="flex items-center gap-3 mb-2 sm:mb-3">
+                            <span className="px-3 py-1 bg-white/20 backdrop-blur-md rounded-full text-[10px] sm:text-xs font-bold text-white border border-white/20 uppercase tracking-widest">
                                 Featured Project
                             </span>
                         </div>
-                        <h2 id="project-modal-title" className="text-2xl sm:text-4xl md:text-5xl font-black text-white drop-shadow-2xl tracking-tight pr-12">
+                        <h2 id="project-modal-title" className="text-xl sm:text-4xl md:text-5xl font-black text-white drop-shadow-2xl tracking-tight break-words">
                             {project.title}
                         </h2>
                     </div>

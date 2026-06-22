@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState, useId } from 'react';
+import { useTheme } from 'next-themes';
 
 export interface GlassSurfaceProps {
     children?: React.ReactNode;
@@ -42,20 +43,14 @@ export interface GlassSurfaceProps {
 }
 
 const useDarkMode = () => {
-    const [isDark, setIsDark] = useState(false);
+    const { resolvedTheme } = useTheme();
+    const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
-        if (typeof window === 'undefined') return;
-
-        const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-        setIsDark(mediaQuery.matches);
-
-        const handler = (e: MediaQueryListEvent) => setIsDark(e.matches);
-        mediaQuery.addEventListener('change', handler);
-        return () => mediaQuery.removeEventListener('change', handler);
+        setMounted(true);
     }, []);
 
-    return isDark;
+    return mounted ? resolvedTheme === 'dark' : false;
 };
 
 const GlassSurface: React.FC<GlassSurfaceProps> = ({
