@@ -103,7 +103,7 @@ export default function ContactPage() {
     };
 
     return (
-        <div className="min-h-screen bg-background text-foreground pt-32 pb-20 selection:bg-indigo-500/30 transition-colors duration-300">
+        <div className="min-h-screen relative text-foreground pt-32 pb-20 selection:bg-indigo-500/30 transition-colors duration-300">
             {/* Background elements */}
             <div className="absolute top-0 left-0 w-full h-[500px] bg-linear-to-b from-indigo-500/10 to-transparent pointer-events-none -z-10 blur-3xl" />
             
