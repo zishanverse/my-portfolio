@@ -11,7 +11,7 @@ const SOCIAL_LINKS = [
         icon: Github,
         url: "https://github.com/zishanverse/",
         username: "@zishanverse",
-        color: "hover:text-white hover:border-white/20 hover:bg-white/5",
+        color: "hover:text-foreground hover:border-foreground/20 hover:bg-foreground/5",
     },
     {
         name: "LinkedIn",
@@ -32,7 +32,7 @@ const SOCIAL_LINKS = [
         icon: Mail,
         url: "mailto:zishanverse@gmail.com",
         username: "zishanverse@gmail.com",
-        color: "hover:text-emerald-400 hover:border-emerald-400/30 hover:bg-emerald-400/10",
+        color: "hover:text-emerald-500 hover:border-emerald-500/30 hover:bg-emerald-500/10",
     },
 ];
 
@@ -103,7 +103,7 @@ export default function ContactPage() {
     };
 
     return (
-        <div className="min-h-screen bg-zinc-950 text-white pt-32 pb-20 selection:bg-indigo-500/30">
+        <div className="min-h-screen bg-background text-foreground pt-32 pb-20 selection:bg-indigo-500/30 transition-colors duration-300">
             {/* Background elements */}
             <div className="absolute top-0 left-0 w-full h-[500px] bg-linear-to-b from-indigo-500/10 to-transparent pointer-events-none -z-10 blur-3xl" />
             
@@ -114,10 +114,10 @@ export default function ContactPage() {
                     transition={{ duration: 0.5 }}
                     className="mb-16 md:mb-24 text-center md:text-left"
                 >
-                    <h1 className="text-4xl md:text-6xl font-black tracking-tight text-white mb-4">
-                        Let's work <span className="text-zinc-500">together.</span>
+                    <h1 className="text-4xl md:text-6xl font-black tracking-tight text-foreground mb-4">
+                        Let's work <span className="text-muted-foreground">together.</span>
                     </h1>
-                    <p className="text-lg text-zinc-400 max-w-2xl font-medium">
+                    <p className="text-lg text-muted-foreground max-w-2xl font-medium">
                         I'm currently open for new opportunities. Whether you have a specific project in mind, 
                         or just want to explore possibilities, feel free to reach out.
                     </p>
@@ -131,7 +131,7 @@ export default function ContactPage() {
                         transition={{ duration: 0.5, delay: 0.1 }}
                         className="lg:col-span-7"
                     >
-                        <div className="bg-zinc-900/50 border border-white/10 rounded-3xl p-6 md:p-10 backdrop-blur-xl">
+                        <div className="bg-card/50 border border-border rounded-3xl p-6 md:p-10 backdrop-blur-xl">
                             <h2 className="text-xl font-bold mb-8 flex items-center gap-2">
                                 <Send className="w-5 h-5 text-indigo-400" />
                                 Send a Message
@@ -142,8 +142,8 @@ export default function ContactPage() {
                                     <div
                                         className={`rounded-xl px-4 py-3 text-sm font-medium border ${
                                             submissionMessage.type === "success"
-                                                ? "bg-emerald-500/10 border-emerald-500/20 text-emerald-400"
-                                                : "bg-rose-500/10 border-rose-500/20 text-rose-400"
+                                                ? "bg-emerald-500/10 border-emerald-500/20 text-emerald-600 dark:text-emerald-400"
+                                                : "bg-rose-500/10 border-rose-500/20 text-rose-600 dark:text-rose-400"
                                         }`}
                                     >
                                         {submissionMessage.text}
@@ -152,11 +152,11 @@ export default function ContactPage() {
 
                                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                                     <div className="space-y-2">
-                                        <label htmlFor="name" className="text-sm font-semibold text-zinc-300">Name</label>
+                                        <label htmlFor="name" className="text-sm font-semibold text-foreground/80">Name</label>
                                         <input
                                             id="name"
                                             type="text"
-                                            className="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/10 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all outline-none text-white placeholder:text-zinc-600"
+                                            className="w-full px-4 py-3 rounded-xl bg-background/50 border border-border focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all outline-none text-foreground placeholder:text-muted-foreground"
                                             placeholder="John Doe"
                                             value={formData.name}
                                             onChange={(e) => {
@@ -167,11 +167,11 @@ export default function ContactPage() {
                                         {formErrors.name && <p className="text-xs text-rose-400 mt-1">{formErrors.name}</p>}
                                     </div>
                                     <div className="space-y-2">
-                                        <label htmlFor="email" className="text-sm font-semibold text-zinc-300">Email</label>
+                                        <label htmlFor="email" className="text-sm font-semibold text-foreground/80">Email</label>
                                         <input
                                             id="email"
                                             type="email"
-                                            className="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/10 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all outline-none text-white placeholder:text-zinc-600"
+                                            className="w-full px-4 py-3 rounded-xl bg-background/50 border border-border focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all outline-none text-foreground placeholder:text-muted-foreground"
                                             placeholder="john@example.com"
                                             value={formData.email}
                                             onChange={(e) => {
@@ -184,11 +184,11 @@ export default function ContactPage() {
                                 </div>
 
                                 <div className="space-y-2">
-                                    <label htmlFor="message" className="text-sm font-semibold text-zinc-300">Project Details</label>
+                                    <label htmlFor="message" className="text-sm font-semibold text-foreground/80">Project Details</label>
                                     <textarea
                                         id="message"
                                         rows={5}
-                                        className="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/10 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all outline-none resize-none text-white placeholder:text-zinc-600"
+                                        className="w-full px-4 py-3 rounded-xl bg-background/50 border border-border focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all outline-none resize-none text-foreground placeholder:text-muted-foreground"
                                         placeholder="Tell me about your project, timeline, or just say hi..."
                                         value={formData.message}
                                         onChange={(e) => {
@@ -202,10 +202,10 @@ export default function ContactPage() {
                                 <Button 
                                     type="submit" 
                                     disabled={isLoading}
-                                    className="w-full sm:w-auto px-8 py-6 rounded-xl bg-white text-black font-bold hover:bg-zinc-200 transition-colors flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
+                                    className="w-full sm:w-auto px-8 py-6 rounded-xl bg-foreground text-background font-bold hover:bg-foreground/90 transition-colors flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
                                 >
                                     {isLoading ? (
-                                        <span className="w-4 h-4 border-2 border-black/30 border-t-black rounded-full animate-spin" />
+                                        <span className="w-4 h-4 border-2 border-background/30 border-t-background rounded-full animate-spin" />
                                     ) : (
                                         <Send className="w-4 h-4" />
                                     )}
@@ -222,7 +222,7 @@ export default function ContactPage() {
                         transition={{ duration: 0.5, delay: 0.2 }}
                         className="lg:col-span-5 space-y-6"
                     >
-                        <div className="bg-zinc-900/30 border border-white/5 rounded-3xl p-6 md:p-8 backdrop-blur-xl h-full flex flex-col">
+                        <div className="bg-card/30 border border-border rounded-3xl p-6 md:p-8 backdrop-blur-xl h-full flex flex-col">
                             <h2 className="text-xl font-bold mb-8">Direct Connections</h2>
                             
                             <div className="flex flex-col gap-3 flex-1">
@@ -234,25 +234,25 @@ export default function ContactPage() {
                                             href={link.url}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className={`group flex items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/5 transition-all duration-300 ${link.color}`}
+                                            className={`group flex items-center justify-between p-4 rounded-2xl bg-foreground/5 border border-border transition-all duration-300 ${link.color}`}
                                         >
                                             <div className="flex items-center gap-4">
-                                                <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                                                <div className="w-10 h-10 rounded-full bg-foreground/5 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                                                     <Icon className="w-5 h-5" />
                                                 </div>
                                                 <div className="flex flex-col">
-                                                    <span className="text-sm font-bold text-white">{link.name}</span>
-                                                    <span className="text-xs text-zinc-500 font-mono mt-0.5">{link.username}</span>
+                                                    <span className="text-sm font-bold text-foreground">{link.name}</span>
+                                                    <span className="text-xs text-muted-foreground font-mono mt-0.5">{link.username}</span>
                                                 </div>
                                             </div>
-                                            <ArrowRight className="w-4 h-4 text-zinc-600 group-hover:text-current group-hover:-rotate-45 transition-all duration-300" />
+                                            <ArrowRight className="w-4 h-4 text-muted-foreground group-hover:text-current group-hover:-rotate-45 transition-all duration-300" />
                                         </a>
                                     );
                                 })}
                             </div>
 
-                            <div className="mt-8 pt-8 border-t border-white/5">
-                                <p className="text-xs text-zinc-500 leading-relaxed">
+                            <div className="mt-8 pt-8 border-t border-border">
+                                <p className="text-xs text-muted-foreground leading-relaxed">
                                     Based in India. Available for remote work worldwide. 
                                     Typical response time is within 24 hours.
                                 </p>
