@@ -16,7 +16,7 @@ const SOCIAL_LINKS = [
     {
         name: "LinkedIn",
         icon: Linkedin,
-        url: "https://linkedin.com/in/zishan-khan-",
+        url: "https://www.linkedin.com/in/zishan-khan-/",
         username: "Zishan Khan",
         color: "hover:text-[#0A66C2] hover:border-[#0A66C2]/30 hover:bg-[#0A66C2]/10",
     },

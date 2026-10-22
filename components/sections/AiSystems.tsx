@@ -25,18 +25,18 @@ import {
 gsap.registerPlugin(ScrollTrigger);
 
 const aiSkills = [
-    { icon: GitBranch, label: "Agentic Workflows", desc: "LangGraph · CrewAI" },
-    { icon: Database, label: "RAG Memory", desc: "pgvector · Pinecone" },
-    { icon: Brain, label: "LLM Orchestration", desc: "GPT-4 · Claude · Gemini" },
-    { icon: MessageSquare, label: "Multimodal AI", desc: "Vision · Audio · Text" },
-    { icon: Search, label: "Semantic Search", desc: "Hybrid Retrieval" },
-    { icon: Workflow, label: "AI Automation", desc: "N8n · Make · Zapier" },
-    { icon: Layers, label: "Prompt Engineering", desc: "Chain-of-Thought · ReAct" },
-    { icon: Network, label: "Multi-Agent Systems", desc: "Supervisor · Critic" },
-    { icon: Shield, label: "AI Safety", desc: "Validation · Guardrails" },
-    { icon: Cpu, label: "Model Fine-tuning", desc: "LoRA · QLoRA" },
-    { icon: Bot, label: "Tool-Use", desc: "APIs · Code Exec" },
-    { icon: Zap, label: "Real-time Inference", desc: "Streaming · WebSockets" },
+    { icon: GitBranch, label: "Agentic Workflows", desc: "LangGraph · LangChain" },
+    { icon: Database, label: "Advanced RAG", desc: "pgvector · Hybrid Retrieval" },
+    { icon: Brain, label: "Context Engineering", desc: "Stateful Dynamic Assembly" },
+    { icon: Layers, label: "LLM Evals", desc: "Benchmarking · Metric Scores" },
+    { icon: Zap, label: "AI Observability", desc: "Prometheus · MLflow · Grafana" },
+    { icon: Shield, label: "Guardrails & Safety", desc: "Schema Validation · NeMo" },
+    { icon: MessageSquare, label: "Voice AI & Telephony", desc: "Twilio · ElevenLabs · Audio ASR" },
+    { icon: Search, label: "Semantic Search", desc: "Embeddings · Cross-Encoder" },
+    { icon: Workflow, label: "AI Task Queues", desc: "Redis · BullMQ Workers" },
+    { icon: Network, label: "Multi-Agent Systems", desc: "Supervisor · Worker DAGs" },
+    { icon: Cpu, label: "Model Fine-tuning", desc: "LoRA · PyTorch Pipelines" },
+    { icon: Bot, label: "Tool-Use & MCP", desc: "Model Context Protocol · APIs" },
 ];
 
 const SkillCard = ({ skill, index }: { skill: typeof aiSkills[0]; index: number }) => {
@@ -90,13 +90,13 @@ const AiSystems = () => {
             {/* Section Header */}
             <div ref={textRef} className="text-center space-y-4 mb-16 md:mb-24 z-10 px-4">
                 <TextHighlight className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-foreground uppercase">
-                    Agentic Ecosystem
+                    Agentic & Telephony Ecosystem
                 </TextHighlight>
                 <p className="text-muted-foreground font-medium text-sm tracking-widest uppercase mt-2">
-                    Systems Architecture
+                    Event-Driven AI Runtimes
                 </p>
                 <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto mt-6 font-medium leading-relaxed">
-                    Spanning the full AI stack — from conversational agents and multi-step workflows to RAG, fine-tuning, and real-time inference.
+                    Production multi-agent architectures, real-time Voice AI runtimes, and high-throughput vector retrieval pipelines engineered for autonomous decision-making and low-latency execution.
                 </p>
             </div>
 
@@ -113,21 +113,20 @@ const AiSystems = () => {
                     <div className="space-y-4">
                         <div className="flex items-center gap-3 mb-2">
                             <div className="w-2 h-6 bg-foreground/20 rounded-full" />
-                            <h3 className="text-2xl font-bold text-foreground tracking-tight">Autonomous Operations</h3>
+                            <h3 className="text-2xl font-bold text-foreground tracking-tight">Autonomous Voice & Multi-Agent Workflows</h3>
                         </div>
                         <p className="text-muted-foreground text-base leading-relaxed max-w-lg">
-                            My AI systems leverage agentic workflows, RAG, and multimodal models to automate complex
-                            decision-making processes. These agents operate effectively at the edge of possibility.
+                            Building production telephony and agentic pipelines that integrate Twilio streaming ASR, LangGraph state machines, and ElevenLabs neural TTS. Backed by Redis/BullMQ task queues and pgvector memory, these systems handle live calls, interruption events, and structured tool execution.
                         </p>
                     </div>
 
                     {/* Quick-stat pills - Clean style */}
                     <div className="grid grid-cols-2 gap-3 max-w-lg">
                         {[
-                            { label: "Memory", value: "Vector RAG" },
-                            { label: "Flows", value: "Multi-Step Logic" },
-                            { label: "Tools", value: "LangGraph" },
-                            { label: "Orchestration", value: "N8N & Make" },
+                            { label: "Vector Search", value: "pgvector + Redis" },
+                            { label: "Task Queues", value: "Redis + BullMQ" },
+                            { label: "Voice Telephony", value: "Twilio + ElevenLabs" },
+                            { label: "Orchestration", value: "LangGraph State" },
                         ].map((stat, i) => (
                             <div key={i} className="px-4 py-3 rounded-xl bg-card border border-border flex flex-col justify-center">
                                 <p className="text-[10px] uppercase tracking-widest text-muted-foreground font-bold mb-1">{stat.label}</p>

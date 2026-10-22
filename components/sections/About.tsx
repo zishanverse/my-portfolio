@@ -47,10 +47,10 @@ const About = () => {
                     {/* Header */}
                     <div className="space-y-4 flex flex-col items-center">
                         <TextHighlight className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-foreground uppercase">
-                            Code & Cognition
+                            Architecture & Engineering
                         </TextHighlight>
                         <p className="text-muted-foreground font-semibold text-sm md:text-base tracking-widest uppercase mt-4">
-                            Bridging Software Engineering and AI
+                            Production Backends · Multi-Agent AI · Real-Time Systems
                         </p>
                         <div className="w-16 h-1.5 bg-foreground/20 rounded-full mt-6" />
                     </div>
@@ -58,10 +58,10 @@ const About = () => {
                     {/* Main Text */}
                     <div className="text-lg md:text-xl text-muted-foreground leading-relaxed font-medium max-w-3xl">
                         <p>
-                            I am an <span className="text-foreground font-bold">AI Engineer and Full-Stack Developer</span> specialized in building intelligent applications powered by RAG pipelines, LLM integrations, and scalable backend systems. 
+                            I am a <span className="text-foreground font-bold">Backend and AI Systems Engineer</span> focused on building production multi-agent architectures, real-time Voice AI runtimes, and high-throughput vector search pipelines.
                         </p>
                         <p className="mt-4">
-                            From architecting high-performance Next.js platforms to developing proactive AI workflows, vector-memory systems, and automation-driven experiences, I bridge the gap between human intent and production-grade AI execution.
+                            From deploying mission-critical government infrastructure at THDC India across 9 modules and 91 source files to engineering autonomous Voice AI telephony runtimes with sub-second interruption handling, I design software that is resilient, audited, and optimized for real-world production workloads.
                         </p>
                     </div>
 
@@ -70,23 +70,23 @@ const About = () => {
                         {[
                             { 
                                 icon: Brain, 
-                                title: "AI Native", 
-                                desc: "LLMs, RAG, and Agentic workflows integrated seamlessly."
+                                title: "Multi-Agent Systems", 
+                                desc: "LangGraph orchestration, BullMQ queues, and autonomous supervisor-critic loops."
                             },
                             { 
                                 icon: Code2, 
-                                title: "Modern Stack", 
-                                desc: "TypeScript, Next.js, and high-performance system design."
+                                title: "Voice AI & Telephony", 
+                                desc: "Twilio streaming ASR, ElevenLabs neural TTS, and sub-second interruption handling."
                             },
                             { 
                                 icon: Rocket, 
-                                title: "Scalable", 
-                                desc: "Cloud-native deployments and optimized data pipelines."
+                                title: "Vector & RAG Memory", 
+                                desc: "PostgreSQL + pgvector, Redis intent caching, and verified sub-150ms p95 latency."
                             },
                             { 
                                 icon: Share2, 
-                                title: "Connected", 
-                                desc: "Building intuitive integrations and real-time experiences."
+                                title: "Production Backends", 
+                                desc: "Node.js, TypeScript, Express, Fastify, multi-tier RBAC, and Docker deployments."
                             }
                         ].map((pillar, i) => (
                             <div 

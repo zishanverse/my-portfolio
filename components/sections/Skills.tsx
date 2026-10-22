@@ -32,9 +32,9 @@ const techLogos = [
 ];
 
 const softSkills = [
-    "Problem Solving", "Team Leading", "Logical Thinking",
-    "Adaptability", "Attention to Detail", "Agentic AI",
-    "Prompt Engineering", "RAG", "CI/CD", "Communication"
+    "Advanced RAG", "Context Engineering", "LLM Evals", "AI Observability",
+    "Guardrails & Safety", "Multi-Agent AI", "Agent Orchestration",
+    "Problem Solving", "System Architecture", "CI/CD & DevOps"
 ];
 
 const Skills = () => {

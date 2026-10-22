@@ -7,6 +7,7 @@ import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import { InkCursor } from "@/components/ui/ink-cursor";
 import ThemeAwareParticles from "@/components/ui/ThemeAwareParticles";
 import { SmoothScrolling } from "@/components/providers/SmoothScrolling";
+import { Analytics } from "@vercel/analytics/next";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -50,6 +51,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
+        suppressHydrationWarning
         className={`${inter.variable} antialiased min-h-screen flex flex-col transition-colors duration-300 dark:bg-transparent`}
       >
         <ThemeProvider
@@ -75,6 +77,7 @@ export default function RootLayout({
             </main>
             <Footer />
           </SmoothScrolling>
+          <Analytics />
         </ThemeProvider>
       </body>
     </html>

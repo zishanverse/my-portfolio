@@ -2,87 +2,90 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import Link from "next/link";
 import { ProjectCard, ProjectData } from "./ProjectCard";
 import { ProjectModal } from "./ProjectModal";
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
+import { ArrowRight, Play } from "lucide-react";
 
 const projectsData: ProjectData[] = [
     {
-        id: "5",
-        title: "Interactive AI/ML Lab",
-        description: "High-fidelity interactive machine learning workspace showcasing Deep Learning telemetry classification (1D CNN), Association Rules (Apriori graph networks), and curriculum timelines.",
-        longDescription: "An interactive, browser-based AI/ML engineering environment converting Python Jupyter notebook algorithms into client-side JS runtime models. Features real training metric replays, D3-style SVG rule graphs, active input sliders, and software engineering API endpoints.",
-        features: [
-            "Real client-side 1D CNN inference",
-            "Interactive SVG force-directed node graphs",
-            "Saved metrics epoch playback simulator",
-            "Production REST API integration (/api/predict)"
-        ],
-        tags: ["Next.js", "ONNX Web", "Apriori Mining", "TensorFlow.js", "SVG Graphs"],
-        imageColor: "from-emerald-500 to-indigo-600",
-        link: "/ai-lab",
-        github: "https://github.com/zishanverse/my-portfolio/tree/main/aiml%20course"
-    },
-    {
         id: "4",
-        title: "Haanna - AI-Powered RAG Platform",
-        description: "Production-ready AI chat platform with RAG-based persistent memory using pgvector and structured prompt assembly.",
-        longDescription: "Built production-ready AI chat platform with RAG-based persistent memory using pgvector and structured prompt assembly. Containerized full-stack architecture using Docker with Prometheus & Grafana monitoring to track LLM latency.",
+        title: "Haanna – Production RAG Platform",
+        description: "Production RAG companion platform serving 200+ concurrent users with pgvector persistent semantic memory and sub-150ms p95 latency.",
+        longDescription: "Architected and deployed a production-grade AI platform using a Cognitive Graph architecture (LangGraph) and Next.js with multi-LLM fallback orchestration (Hugging Face, Azure OpenAI, Groq). Built dual-vector Semantic Memory (RAG) using PostgreSQL with pgvector and Redis intent caching, sustaining <150ms p95 inference latency. Containerized with Docker and monitored via Prometheus, Grafana, and MLflow.",
         features: [
-            "RAG-based persistent memory (pgvector)",
-            "Structured prompt assembly engine",
-            "Dockerized full-stack architecture",
-            "Prometheus & Grafana latency tracking"
+            "Dual-vector Semantic Memory (pgvector + Redis intent caching)",
+            "Multi-LLM fallback orchestration (Azure OpenAI, Groq, HuggingFace)",
+            "Containerized full-stack deployment with Docker & Prometheus monitoring",
+            "Sub-150ms p95 inference latency for 200+ concurrent users"
         ],
-        tags: ["Next.js", "pgvector", "PostgreSQL", "Docker", "Prometheus", "Grafana", "LLM", "RAG", "LangGraph"],
+        tags: ["Next.js", "TypeScript", "LangGraph", "pgvector", "Docker", "Prometheus", "Redis"],
         imageColor: "from-orange-500 to-rose-600",
         link: "https://haannaa.com/",
-        github: "#" // Request private access
+        github: "https://github.com/zishanverse/haannaa-platform"
+    },
+    {
+        id: "6",
+        title: "Platform.voice – Autonomous Voice AI & Business Agents",
+        description: "Real-time autonomous Voice AI telephony platform integrating Twilio, streaming ASR, LangGraph multi-agent orchestration, and ElevenLabs neural TTS.",
+        longDescription: "Engineered an event-driven Voice AI and telephony runtime integrating Twilio, streaming speech recognition (ASR), LangGraph-based agent orchestration, and ElevenLabs neural TTS for human-like inbound and outbound calling. Built with Redis/BullMQ task queues, WebSockets, PostgreSQL with pgvector, and persistent call state machines supporting live interruption handling, concurrent dialing campaigns, and automated CRM lead qualification.",
+        features: [
+            "Autonomous inbound & outbound voice calling (Twilio + ElevenLabs)",
+            "Event-driven multi-agent runtime with Redis/BullMQ & WebSockets",
+            "Persistent call state machines with sub-second interruption handling",
+            "RAG-based business knowledge retrieval & structured CRM lead extraction"
+        ],
+        tags: ["Node.js", "TypeScript", "Fastify", "Twilio", "ElevenLabs", "LangGraph", "Redis", "pgvector"],
+        imageColor: "from-violet-600 to-indigo-600",
+        link: "https://github.com/zishanverse/business-agents",
+        github: "https://github.com/zishanverse/business-agents"
+    },
+    {
+        id: "3",
+        title: "AI Learning Path Generator – Agentic System",
+        description: "Production agentic learning platform orchestrating Composio OAuth tools to auto-generate day-wise curriculums and write to external productivity suites.",
+        longDescription: "Engineered a production-grade AI learning platform using Next.js and LangChain.js to generate structured, day-wise learning paths with Zod-validated LLM outputs. Integrated Composio OAuth to write directly into users' YouTube (playlist creation), Google Drive (document upload), and Notion (page creation) with per-user credential isolation.",
+        features: [
+            "Autonomous agent orchestration with Composio OAuth integration",
+            "Direct write integrations for YouTube, Google Drive, and Notion",
+            "Zod-validated streaming generation overcoming context window limits",
+            "Persistent learning history using Prisma ORM with PostgreSQL"
+        ],
+        tags: ["Next.js", "LangChain.js", "Composio", "Gemini", "Prisma", "PostgreSQL"],
+        imageColor: "from-emerald-500 to-teal-500",
+        link: "https://mcp-learning-path-generator-owktou3mrkax6fdj7bhpgg.streamlit.app/",
+        github: "https://github.com/zishanverse/mcp-learning-path-generator"
     },
     {
         id: "1",
-        title: "Intelligent DCRM Diagnostics",
-        description: "Real-time analytics engine processing telemetry data for automated fault detection.",
-        longDescription: "Engineered a real-time analytics engine processing widely varying telemetry data. Reduced manual analysis time by replacing legacy workflows with automated, AI-driven fault detection and reporting pipelines.",
+        title: "Intelligent DCRM Diagnostics & Telemetry Pipeline",
+        description: "Real-time analytics engine processing telemetry streams for automated fault detection and diagnostic reporting.",
+        longDescription: "Engineered an automated diagnostic pipeline processing multi-sensor telemetry data. Replaced legacy manual analysis workflows with automated AI-driven fault detection and structured reporting pipelines for industrial equipment.",
         features: [
-            "Real-time telemetry data processing",
-            "Automated AI fault detection logic",
-            "Scalable data reporting pipelines",
+            "Real-time sensor telemetry processing",
+            "Automated AI fault classification logic",
+            "Scalable data reporting & alert pipelines",
             "Cross-platform diagnostic dashboard"
         ],
-        tags: ["Next.js", "Python", "FastAPI", "Gemini LLM"],
+        tags: ["Next.js", "Python", "FastAPI", "PostgreSQL", "Gemini LLM"],
         imageColor: "from-blue-600 to-indigo-600",
         link: "https://ai-based-dcrm-analysis.vercel.app/"
     },
     {
         id: "2",
         title: "adClickMagnet",
-        description: "Comprehensive platform for digital marketing, SEO, and web development services.",
-        longDescription: "Implemented adClickmagnet application. A one-stop platform for digital marketing, SEO, web dev, graphic design. Features include Preloader (3D model), SEO analyzer, and complex animations using GSAP and Three.js.",
+        description: "Interactive marketing and web engineering platform featuring 3D Spline experiences and high-performance GSAP animations.",
+        longDescription: "Engineered a high-performance web platform for digital marketing, SEO analytics, and creative engineering. Built interactive 3D Spline preloaders, diagnostic SEO auditing tools, and smooth GSAP animation choreography.",
         features: [
-            "Interactive 3D Spline preloader",
+            "Interactive 3D Spline experience",
             "In-built SEO diagnostic analyzer",
-            "High-performance GSAP animations",
-            "Full-service marketing dashboard"
+            "High-performance GSAP animation pipeline",
+            "Lighthouse-optimized responsive design"
         ],
-        tags: ["Next.js", "Three.js", "Spline", "GSAP"],
+        tags: ["Next.js", "Three.js", "Spline", "GSAP", "Tailwind CSS"],
         imageColor: "from-purple-500 to-pink-500",
         link: "https://adclickmagnet.com/"
-    },
-    {
-        id: "3",
-        title: "AI Learning Path Generator",
-        description: "Agentic application generating personalized learning curriculums using MCP.",
-        longDescription: "Developed an AI-powered agentic application that auto-generates personalized learning curriculums by orchestrating autonomous agents to aggregate video content, organize documents, and schedule tasks using the Model Context Protocol (MCP).",
-        features: [
-            "Autonomous agent orchestration (MCP)",
-            "Dynamic video content aggregation",
-            "Personalized learning path logic",
-            "Integrated task scheduling system"
-        ],
-        tags: ["Python", "LangChain", "MCP", "Agentic AI"],
-        imageColor: "from-emerald-500 to-teal-500",
-        link: "https://mcp-learning-path-generator-owktou3mrkax6fdj7bhpgg.streamlit.app/"
     },
 ];
 
@@ -104,6 +107,46 @@ const Projects = () => {
                         A curation of my professional work and personal experiments, focusing on AI systems and high-performance web applications.
                     </p>
                 </div>
+
+                {/* AI Lab Featured Hero Spotlight */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5 }}
+                    className="mb-12 relative overflow-hidden rounded-3xl border border-indigo-500/30 bg-gradient-to-r from-indigo-950/40 via-purple-950/20 to-card p-6 sm:p-8 backdrop-blur-xl shadow-xl group hover:border-indigo-500/50 transition-all"
+                >
+                    <div className="absolute top-0 right-0 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none -z-10 group-hover:bg-indigo-500/15 transition-all" />
+                    <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
+                        <div className="space-y-3 max-w-2xl">
+                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs font-semibold uppercase tracking-wider">
+                                <span className="w-2 h-2 rounded-full bg-indigo-500 animate-pulse" />
+                                Flagship Engineering Demo
+                            </div>
+                            <h3 className="text-2xl sm:text-3xl font-bold text-foreground">
+                                Interactive AI / ML Workspace & Neural Lab
+                            </h3>
+                            <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+                                Experience client-side deep learning in action: Run real-time 1D CNN telemetry classification, explore Apriori association graphs, and simulate epoch training directly in your browser.
+                            </p>
+                            <div className="flex flex-wrap gap-2 pt-1">
+                                {["Client-Side Inference", "1D CNN", "Apriori Graphs", "Training Replay", "REST API"].map((tag) => (
+                                    <span key={tag} className="text-xs px-2.5 py-1 rounded-lg bg-card/80 border border-border text-foreground/80 font-medium">
+                                        {tag}
+                                    </span>
+                                ))}
+                            </div>
+                        </div>
+                        <Link
+                            href="/ai-lab"
+                            className="inline-flex items-center gap-2 px-6 py-3.5 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white font-semibold shadow-lg shadow-indigo-600/20 hover:shadow-indigo-600/30 transition-all shrink-0 group-hover:scale-105"
+                        >
+                            <Play className="w-4 h-4 fill-current" />
+                            Launch AI Lab
+                            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                        </Link>
+                    </div>
+                </motion.div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
                     {projectsData.map((project) => (

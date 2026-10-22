@@ -46,5 +46,21 @@ EXTENSION_GUIDE.md
 RESUME_GENERATED.md
 
 
+# python bytecode & caches
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# serena
+.serena/
+
+# resumes & local docs
+new zishan resume.pdf
+*.pdf
+
+# raw root uploads
+WhatsApp Image*
+
 #model
 silver_tiling.glb

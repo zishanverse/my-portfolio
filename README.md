@@ -76,40 +76,44 @@ Implementation details:
 
 ### 5) Featured Projects
 
-- Responsive project card grid.
-- Each card includes short summary and tags.
-- Clicking opens detailed modal with expanded context and external project links.
-- Current projects include AI diagnostics, digital platform engineering, and MCP-based learning path generation.
+- Responsive project card grid with dedicated spotlight callout for the **Interactive AI/ML Lab**.
+- Ranked by architectural impact:
+  - **Flagship Spotlight**: **Interactive AI/ML Lab**: In-browser 1D CNN telemetry inference, Apriori association networks, and training replay.
+  - **Grid Card #1**: **Haanna – Production RAG Platform**: Multi-LLM fallback orchestration, dual-vector pgvector memory (<150ms p95 latency) for 200+ concurrent users.
+  - **Grid Card #2**: **Platform.voice – Autonomous Voice AI & Business Agents**: Production Twilio telephony, streaming ASR, LangGraph multi-agent orchestration, and ElevenLabs neural TTS.
+  - **Grid Card #3**: **AI Learning Path Generator**: Agentic Composio OAuth automation with YouTube, Google Drive, and Notion integrations.
+  - **Grid Card #4**: **Intelligent DCRM Diagnostics**: Real-time telemetry processing and automated fault detection pipelines.
+  - **Grid Card #5**: **adClickMagnet**: Interactive marketing and web engineering platform with 3D Spline experiences and GSAP animations.
+- Clicking opens a detailed modal with architecture details, key engineering highlights, and live/source links.
 
 ### 6) Experience & Education Timeline
 
 - Center-line vertical timeline with alternating left/right cards on desktop.
 - Motion-based reveal for each item as it enters viewport.
-- Covers professional roles and education milestones.
+- Covers production backend engineering at THDC India Limited, freelance RAG platform development, and educational milestones.
 
 ### 7) Awards & Recognition
 
 - Animated card stagger on scroll.
 - Rich visual cards with image banners and achievement tags.
-- Clickable modal for full details and external proof links.
-- Designed to communicate credibility and real-world impact quickly.
+- Highlighting 2x National Winner at Smart India Hackathon (SIH 2024 & 2025) and Nxtwave Mega Challenge 1st Prize.
 
 ### 8) Contact Section
 
-- Clear hiring CTA and direct email action.
+- Clear hiring CTA and direct email action with one-click copy feedback.
 - Resume shortcut.
 - Interactive social dock for GitHub, LinkedIn, LeetCode, and email.
-- Additional Hire Me modal from the navbar with form fields:
-  - Name
-  - Email
-  - Project details
+- Additional Hire Me modal from the navbar with form fields.
 
 ## Main Routes
 
-- `/` - Main portfolio landing page.
-- `/resume` - Detailed, animated resume page with print/download workflow.
+- `/` - Main portfolio landing page with interactive 3D scrollytelling.
+- `/ai-lab` - Interactive AI/ML Engineering Workspace with client-side 1D CNN inference, association graphs, and epoch simulator.
+- `/resume` - Detailed, animated resume page with print/download workflow and complete verified achievements.
+- `/contact` - Direct contact and project inquiry page with client-side validation.
 - `/design-system` - Internal design token and component showcase page.
-- `/api/contact` - API endpoint used by the contact modal form.
+- `/api/predict` - Real-time model inference endpoint.
+- `/api/contact` - API endpoint used by the contact form.
 
 ## Complete Tech Stack
 

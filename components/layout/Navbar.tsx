@@ -35,6 +35,8 @@ export const Navbar = () => {
         { name: "Home", link: "/" },
         { name: "About", link: "/#about" },
         { name: "Projects", link: "/#projects" },
+        { name: "AI Lab", link: "/ai-lab" },
+        { name: "Resume", link: "/resume" },
         { name: "Contact", link: "/contact" },
     ];
 
@@ -68,22 +70,27 @@ export const Navbar = () => {
                     </Link>
 
                     {/* Desktop Menu */}
-                    <div className="hidden md:flex items-center gap-8 relative z-20">
+                    <div className="hidden md:flex items-center gap-6 lg:gap-8 relative z-20">
                         {navItems.map((item) => (
                             <Link
                                 key={item.name}
                                 href={item.link}
-                                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+                                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1.5"
                             >
                                 {item.name}
+                                {item.name === "AI Lab" && (
+                                    <span className="text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full bg-indigo-500/10 text-indigo-500 border border-indigo-500/20">
+                                        Live
+                                    </span>
+                                )}
                             </Link>
                         ))}
                         <div className="flex items-center gap-4">
                             <ThemeToggle />
-                            <div >
+                            <div>
                                 <Link
                                     href="/contact"
-                                    className="inline-flex items-center justify-center relative z-50 px-4 py-2 bg-white text-black text-sm font-semibold rounded-full hover:bg-gray-200 transition-colors"
+                                    className="inline-flex items-center justify-center relative z-50 px-4 py-2 bg-foreground text-background text-sm font-semibold rounded-full hover:opacity-90 transition-all shadow-sm border border-border/60"
                                 >
                                     Hire Me
                                 </Link>
@@ -95,9 +102,9 @@ export const Navbar = () => {
                         <ThemeToggle />
                         <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} aria-label="Toggle mobile menu">
                             {isMobileMenuOpen ? (
-                                <X className="!text-black dark:!text-white" />
+                                <X className="!text-foreground" />
                             ) : (
-                                <Menu className="!text-black dark:!text-white" />
+                                <Menu className="!text-foreground" />
                             )}
                         </button>
                     </div>
@@ -109,22 +116,27 @@ export const Navbar = () => {
                         initial={{ opacity: 0, y: -20, scale: 0.95 }}
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: -20, scale: 0.95 }}
-                        className="absolute top-full left-0 mt-2 w-full bg-black/80 backdrop-blur-xl border border-white/10 rounded-2xl p-6 md:hidden flex flex-col gap-4 shadow-xl"
+                        className="absolute top-full left-0 mt-2 w-full bg-background/95 dark:bg-zinc-950/95 backdrop-blur-2xl border border-border rounded-2xl p-6 md:hidden flex flex-col gap-4 shadow-2xl"
                     >
                         {navItems.map((item) => (
                             <Link
                                 key={item.name}
                                 href={item.link}
-                                className="text-lg font-medium text-gray-300 hover:text-white transition-colors"
+                                className="text-base font-medium text-muted-foreground hover:text-foreground transition-colors flex items-center justify-between py-1"
                                 onClick={() => setIsMobileMenuOpen(false)}
                             >
-                                {item.name}
+                                <span>{item.name}</span>
+                                {item.name === "AI Lab" && (
+                                    <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-indigo-500/10 text-indigo-500 border border-indigo-500/20">
+                                        Interactive
+                                    </span>
+                                )}
                             </Link>
                         ))}
                         <Link
                             href="/contact"
                             onClick={() => setIsMobileMenuOpen(false)}
-                            className="w-full py-3 mt-2 text-center bg-indigo-600 text-white font-semibold rounded-xl hover:bg-indigo-700 transition-colors block"
+                            className="w-full py-3 mt-2 text-center bg-indigo-600 text-white font-semibold rounded-xl hover:bg-indigo-700 transition-colors block shadow-md"
                         >
                             Hire Me
                         </Link>

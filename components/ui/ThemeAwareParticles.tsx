@@ -23,10 +23,11 @@ const ThemeAwareParticles = () => {
         <Particles
             key={isDark ? "dark" : "light"} // Force re-mount on theme change to ensure clean transition
             particleColors={isDark ? ["#ffffff"] : ["#000000"]}
-            particleCount={200}
+            particleCount={75}
             particleSpread={10}
             speed={0.1}
-            particleBaseSize={100}
+            particleBaseSize={85}
+            pixelRatio={1.25}
             moveParticlesOnHover={true}
             alphaParticles={false}
             disableRotation={false}

@@ -25,125 +25,134 @@ import { cn } from "@/lib/utils";
 
 const contactInfo = {
     name: "Zishan Khan",
-    title: "Software Engineer",
-    location: "Indore, MP",
-    phone: "+919174996768",
+    title: "Backend & AI Engineer",
+    location: "Indore, MP, India",
+    phone: "+91 9174996768",
     email: "zishanverse@gmail.com",
-    linkedin: "https://linkedin.com/in/zishan-khan-",
+    linkedin: "https://www.linkedin.com/in/zishan-khan-/",
+    github: "https://github.com/zishanverse",
+    website: "https://zishanverse.vercel.app",
 };
 
-const executiveSummary = "Full-Stack Developer with strong expertise in Next.js, React, Node.js, and AI-powered development. Experienced in building scalable web applications, integrating AI/ML solutions, and deploying production systems. Skilled in leveraging LLMs and prompt engineering to optimize workflows, improve code quality, and deliver intelligent, high-performance applications.";
+const executiveSummary = "Backend and AI Systems Engineer with proven experience designing production-grade REST APIs on government infrastructure, event-driven multi-agent architectures, and real-time Voice AI telephony systems. Expert in Node.js, TypeScript, Next.js, and Python, with deep hands-on expertise in LangGraph, Twilio telephony, pgvector, Redis/BullMQ task queues, and Docker containerization. Winner of 2x Smart India Hackathon (SIH 2024 & 2025) and Nxtwave Mega Challenge.";
 
 const highlights = [
-    "Production-ready AI chat platform with RAG-based persistent memory (pgvector)",
-    "Containerized architecture with monitoring (Prometheus/Grafana)",
-    "Full-stack development with Next.js, React, Node.js, REST APIs",
-    "AI/ML integration with Python, Scikit-learn, LLMs, LangGraph",
-    "Prompt engineering using ChatGPT, Claude, and Model Context Protocol (MCP)",
-    "Advanced UI with 3D models (Spline/Three.js) and GSAP/Framer-Motion animations",
+    "Production REST API backend deployed on government infrastructure across 9 modules and 91 source files (THDC India)",
+    "Real-time autonomous Voice AI & telephony platform with Twilio, streaming ASR, and ElevenLabs neural TTS",
+    "Production RAG platform (Haanna) serving 200+ concurrent users with <150ms p95 latency (pgvector)",
+    "National Winner — 2x Smart India Hackathon (SIH) 2024 & 2025 (Govt. of India)",
+    "Winner — Nxtwave Mega Challenge (1st Prize among thousands of developers)",
+    "Event-driven multi-agent runtimes with Redis/BullMQ, WebSockets, and pgvector semantic memory",
 ];
 
 const technicalSkills = [
-    { category: "Languages & Frameworks", skills: ["Node.js", "TypeScript", "Next.js", "Python", "React", "FastAPI"] },
-    { category: "Databases & Caching", skills: ["PostgreSQL", "pgvector", "MongoDB", "Redis", "Prisma"] },
-    { category: "AI & ML", skills: ["Agentic AI", "RAG", "LangGraph", "LangChain", "Prompt Engineering", "Hugging Face"] },
-    { category: "DevOps & Cloud", skills: ["Docker", "Prometheus", "Grafana", "AWS (EC2/S3)", "Azure", "Vercel", "CI/CD"] },
+    { category: "ML & AI", skills: ["Advanced RAG", "Context Engineering", "LLM Evals", "AI Observability", "Guardrails & Safety", "LangGraph", "LangChain", "Multi-Agent Systems", "Vector Search (pgvector)", "HuggingFace Transformers", "Pydantic", "MLflow", "Weights & Biases", "PyTorch", "Scikit-learn", "TensorFlow", "NumPy", "Pandas", "Fine-tuning", "Deep Learning"] },
+    { category: "Languages & Core", skills: ["Python", "TypeScript", "JavaScript", "SQL", "Context Engineering", "Agent Orchestration", "Prompt Engineering"] },
+    { category: "Tools & Concepts", skills: ["Socket.io", "BullMQ", "Redis", "GSAP", "Three.js", "Spline", "JWT", "Jest", "REST APIs", "OAuth", "RBAC", "Streamlit", "MCP"] },
+    { category: "Databases & Storage", skills: ["PostgreSQL", "pgvector", "MongoDB", "Redis", "SQLite", "Cloudflare R2"] },
+    { category: "Frameworks & Libraries", skills: ["Next.js", "React", "Node.js", "Express", "FastAPI", "Transformers", "Prisma", "Tailwind CSS"] },
+    { category: "DevOps & Infrastructure", skills: ["Docker", "GitHub Actions", "AWS S3", "Prometheus", "Grafana", "Vercel", "VPS Management", "CI/CD"] },
 ];
 
 const softSkills = [
     "Problem Solving",
     "Team Leading",
     "Logical & Analytical Thinking",
-    "Adaptability",
+    "Architecture Design",
     "Attention to Detail",
     "Debugging Mindset",
 ];
 
 const experience = [
     {
-        company: "THDC India Limited Official",
-        role: "Back End Developer",
+        company: "THDC India Limited",
+        role: "Backend Developer",
         period: "Sep 2025 - Present",
         description: [
-            "Built and deployed production-ready backend systems with blockchain integration using Hyperledger Fabric, focusing on scalable architecture, secure APIs, and clean code practices.",
-            "Designed and handled secure backend APIs.",
+            "Architected and deployed a production REST API backend in Node.js/TypeScript (Express) on government infrastructure, covering document lifecycle management across 9 modules and 91 source files.",
+            "Designed a multi-tier RBAC system with role-gated state transitions, ownership enforcement, and full audit trails; maintained >80% Jest test coverage with GitHub Actions CI.",
+            "Built document generation pipelines (DOCX + QR) with Cloudflare R2 artifact storage and tamper-proof public verification endpoints.",
         ],
     },
     {
-        company: "KKRF GROUP",
-        role: "Full-stack Developer",
+        company: "Freelance Software Engineer",
+        role: "Self-Employed (Remote)",
+        period: "Jan 2026 - Present",
+        description: [
+            "Engineered Haanna, a production RAG chat platform serving 200+ concurrent users — sole engineer across Python AI pipeline, Node.js backend, infrastructure, and monitoring.",
+            "Deployed a pgvector + LangChain RAG pipeline with persistent semantic memory and structured prompt assembly over REST API, sustaining <150ms p95 LLM inference latency.",
+            "Built real-time messaging via Socket.io with Redis-backed BullMQ queues for async LLM task processing; integrated HuggingFace open-source models as live fallback inference layer.",
+            "Monitored system health and LLM throughput with Prometheus, Grafana, and MLflow; deployed full stack via Docker on self-managed VPS.",
+        ],
+    },
+    {
+        company: "KKRF Group",
+        role: "Full-Stack Developer",
         period: "Nov 2024 - Jan 2025",
         description: [
-            "Focused on building high-performance, visually engaging web applications using Next.js, advanced 3D models, and heavy animations.",
-            "Responsible for deploying production-ready applications on Hostinger, ensuring scalability, security, and optimized performance.",
-            "Worked and handled multiple projects.",
-            "Learned prompt engineering to accelerate development, improve code quality, and enhance problem-solving workflows.",
+            "Built Next.js web applications with Three.js 3D components, GSAP animations, and Spline integrations; deployed to production with Lighthouse-optimized performance and SEO.",
+            "Owned full project lifecycle across three concurrent client engagements — from architecture decisions through deployment.",
         ],
     },
     {
         company: "Bigbooster Technology",
-        role: "Full-stack Developer",
+        role: "Full-Stack Developer",
         period: "May 2024 - Jul 2024",
         description: [
-            "Worked as an all-rounder (designing, frontend, backend, DevOps) to build projects for a SaaS company.",
-            "Learned AWS S3 Bucket, 3D component integration, Next.js, TypeScript, TailwindCSS.",
-            "Handled full website development.",
+            "Shipped full-stack SaaS features using Next.js, TypeScript, and AWS S3, handling frontend, backend, and deployment independently.",
+            "Built reusable Tailwind CSS component library reducing UI development time across multiple product screens.",
         ],
     },
     {
-        company: "YuvaCracy Foundation",
-        role: "Frontend Developer",
-        period: "Jan 2023 - Sep 2023",
+        company: "Archway",
+        role: "Technical Trainer",
+        period: "Mar 2024 - Nov 2024",
         description: [
-            "Frontend team member for creating interactive UI.",
-            "Developed Contact-Us section of YuvaCracy Website.",
-            "Worked as lead on frontend dev.",
+            "Delivered backend and web development workshops; mentored students through hands-on project-based learning.",
+        ],
+    },
+    {
+        company: "GDSC",
+        role: "Web Development Team",
+        period: "Aug 2023 - Aug 2024",
+        description: [
+            "Built and maintained event web pages for the campus developer community.",
         ],
     },
 ];
 
 const projects = [
     {
-        title: "Haanna - AI-Powered Conversational Platform with RAG",
+        title: "Platform.voice – Autonomous Voice AI & Telephony Platform",
         period: "2026",
-        description: "Built a production-ready AI chat platform with RAG-based persistent memory using pgvector and structured prompt assembly. Implemented containerized architecture with Prometheus and Grafana for latency monitoring.",
-        stack: "Next.js, Node.js, pgvector, PostgreSQL, Docker, Prometheus, Grafana, LLM, RAG, LangGraph, Redis, WebSocket",
+        description: "Engineered a real-time autonomous Voice AI platform integrating Twilio, streaming ASR, LangGraph multi-agent orchestration, and ElevenLabs neural TTS for human-like inbound and outbound calling. Built an event-driven runtime with Redis/BullMQ, WebSockets, PostgreSQL (pgvector), and persistent call state for campaigns, interruption handling, and RAG knowledge retrieval.",
+        stack: "Node.js, TypeScript, Fastify, Twilio, ElevenLabs, Redis, BullMQ, PostgreSQL (pgvector), LangGraph, WebSockets",
     },
     {
-        title: "Intelligent DCRM Diagnostics & Predictive Maintenance System",
+        title: "Haannaa AI – Cognitive Companion & Production RAG Platform",
+        period: "2026",
+        description: "Engineered a production-grade AI companion platform using Cognitive Graph architecture (LangGraph) and Next.js, implementing multi-LLM fallback orchestration (Hugging Face, Azure OpenAI, Groq). Architected dual-vector Semantic Memory (RAG) using PostgreSQL with pgvector and Redis intent caching. Built a real-time Cognitive Loop pipeline via Ably WebSockets.",
+        stack: "Next.js, TypeScript, Node.js, LangGraph, PostgreSQL (pgvector), Prisma, Redis, Ably, Docker, Prometheus, Grafana",
+    },
+    {
+        title: "AI/ML Lab – Machine Learning Engineering Workspace",
         period: "2025",
-        description: "Engineered a real-time analytics engine processing widely varying telemetry data. Reduced manual analysis time by replacing legacy workflows with automated, AI-driven fault detection and reporting pipelines.",
-        stack: "Next.js, React Query, Python, FastAPI, PostgreSQL, Prisma, LLMs (Gemini), REST APIs",
+        description: "Implemented supervised, unsupervised, and deep learning models in PyTorch with Weights & Biases experiment tracking (loss curves, sweeps, model comparisons). Integrated HuggingFace Transformers for open-source model inference and exposed model inference via FastAPI REST endpoints consumed by an interactive Next.js frontend with client-side 1D CNN telemetry classification.",
+        stack: "Python, PyTorch, Scikit-learn, HuggingFace Transformers, FastAPI, Next.js, Weights & Biases, ONNX",
     },
     {
-        title: "adClickMagnet",
-        period: "2025",
-        description: "Implemented adClickmagnet application. A one-stop platform for digital marketing, SEO, web dev, and graphic design. Implemented pages like Preloader (3d model), Home, service pages, about-us, career, case-studies, blog, SEO analyzer, etc. Integrated 3D models and trending animations.",
-        stack: "Next.js, TypeScript, CSS, Tailwind CSS, AWS S3, Spline, Three.js, MongoDB, GSAP, Framer Motion, Aceternity UI, NextUI",
-    },
-    {
-        title: "AI-Powered Learning Path Generator (MCP)",
+        title: "AI Learning Path Generator – Agentic System",
         period: "2024",
-        description: "Developed an AI-powered agentic application that auto-generates personalized learning curriculums by orchestrating autonomous agents to aggregate video content, organize documents, and schedule tasks using the Model Context Protocol (MCP).",
-        stack: "Python, LangChain, LangGraph, MCP, AI Models (Gemini, Claude, Mistral), Hugging Face, Streamlit, Composio",
+        description: "Engineered a production-grade AI learning platform using Next.js and LangChain.js to generate structured, day-wise learning paths with Zod-validated LLM outputs. Integrated Composio OAuth to write directly into users' YouTube (playlist creation), Google Drive (document upload), and Notion (page creation) with per-user credential isolation.",
+        stack: "Next.js, TypeScript, LangChain.js, Gemini, Composio, Prisma, PostgreSQL, Tailwind CSS",
     },
 ];
 
 const education = [
     {
-        degree: "B Tech - Computer Science Engineering (CSE)",
-        institution: "IPS Academy, Institute of Engineering and Science, Indore",
+        degree: "B.Tech in Computer Science & Engineering",
+        institution: "IPS Academy (IES), Indore",
         period: "2022 - 2026",
-    },
-    {
-        degree: "Intermediate Other (89.6%)",
-        institution: "Maa Narmada Academy School, Dhamnod",
-        period: "2019 - 2021",
-    },
-    {
-        degree: "Secondary School Of Certificate (88.0%)",
-        institution: "Shahid Bhagat Singh Convent School, Dharampuri",
-        period: "2018 - 2019",
     },
 ];
 
@@ -216,17 +225,25 @@ export default function ResumePage() {
                         </div>
                         <div className="flex items-center gap-2">
                             <Linkedin size={16} />
-                            <Link href={contactInfo.linkedin} target="_blank" className="hover:text-primary transition-colors">
+                            <Link href={contactInfo.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
                                 linkedin.com/in/zishan-khan-
                             </Link>
                         </div>
+                        <div className="flex items-center gap-2">
+                            <Globe size={16} />
+                            <Link href={contactInfo.website} target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
+                                zishanverse.vercel.app
+                            </Link>
+                        </div>
                     </div>
-                    <button
-                        onClick={() => window.open("https://drive.google.com/file/d/1r4-I_-UUYEqXXIdOjcLrCD6QkYsEnt8Y/view?usp=sharing", "_blank")}
-                        className="hidden md:flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:opacity-90 transition-opacity font-medium print:hidden"
+                    <a
+                        href="https://drive.google.com/file/d/1r4-I_-UUYEqXXIdOjcLrCD6QkYsEnt8Y/view?usp=sharing"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:opacity-90 transition-opacity font-medium print:hidden cursor-pointer shadow-sm"
                     >
                         <Download size={18} /> Download Resume
-                    </button>
+                    </a>
                 </motion.header>
 
                 {/* Executive Summary */}
@@ -372,8 +389,10 @@ export default function ResumePage() {
                             <div className="glass p-4 rounded-xl print:bg-transparent print:border print:border-black/20">
                                 <h3 className="font-bold text-primary mb-2">Certifications</h3>
                                 <ul className="list-disc ml-5 text-sm text-muted-foreground space-y-1 print:text-black">
-                                    <li>Certified Agentic AI developer</li>
-                                    <li>Certified Full-stack Developer</li>
+                                    <li>Certified Agentic AI Developer</li>
+                                    <li>Certified Full-Stack Developer</li>
+                                    <li>Artificial Intelligence & Machine Learning (AI/ML) Course Completion Certificate</li>
+                                    <li>Natural Language Processing (NLP) Course Completion Certificate</li>
                                 </ul>
                             </div>
                         </div>

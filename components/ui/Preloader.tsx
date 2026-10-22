@@ -7,35 +7,57 @@ import { usePreloader } from "@/components/providers/PreloaderProvider";
 export function Preloader() {
     const { isSplineLoaded } = usePreloader();
     const [progress, setProgress] = useState(0);
-    const [showPreloader, setShowPreloader] = useState(true);
+    const [showPreloader, setShowPreloader] = useState(() => {
+        if (typeof window !== "undefined") {
+            return !sessionStorage.getItem("portfolio_visited");
+        }
+        return true;
+    });
 
     useEffect(() => {
-        // Simulated loading progress
+        if (!showPreloader) return;
+
+        // Fast ramp-up counter (reaches 100% in ~600ms)
         const interval = setInterval(() => {
             setProgress((prev) => {
-                if (prev >= 99) {
+                if (prev >= 98) {
                     clearInterval(interval);
-                    return 99;
+                    return 98;
                 }
-                // Slower near the end to wait for spline
-                const increment = prev > 80 ? 1 : Math.floor(Math.random() * 5) + 2;
-                return Math.min(prev + increment, 99);
+                const increment = Math.floor(Math.random() * 8) + 4;
+                return Math.min(prev + increment, 98);
             });
-        }, 50);
+        }, 25);
 
-        return () => clearInterval(interval);
-    }, []);
+        // Maximum 900ms safety cap so user is never blocked
+        const maxTimer = setTimeout(() => {
+            setProgress(100);
+            setTimeout(() => {
+                setShowPreloader(false);
+                try {
+                    sessionStorage.setItem("portfolio_visited", "true");
+                } catch {}
+            }, 150);
+        }, 900);
+
+        return () => {
+            clearInterval(interval);
+            clearTimeout(maxTimer);
+        };
+    }, [showPreloader]);
 
     useEffect(() => {
-        if (isSplineLoaded) {
-            // When Spline finishes, quickly bump to 100% and remove preloader
+        if (isSplineLoaded && showPreloader) {
             setProgress(100);
             const timer = setTimeout(() => {
                 setShowPreloader(false);
-            }, 500); // Wait a half second at 100% before animating out
+                try {
+                    sessionStorage.setItem("portfolio_visited", "true");
+                } catch {}
+            }, 150);
             return () => clearTimeout(timer);
         }
-    }, [isSplineLoaded]);
+    }, [isSplineLoaded, showPreloader]);
 
     return (
         <AnimatePresence>
@@ -45,7 +67,7 @@ export function Preloader() {
                     initial={{ opacity: 1 }}
                     exit={{ 
                         opacity: 0, 
-                        transition: { duration: 1.2, ease: "easeInOut" } 
+                        transition: { duration: 0.4, ease: "easeOut" } 
                     }}
                     className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-zinc-950 text-white"
                 >

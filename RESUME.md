@@ -1,7 +1,7 @@
 # Zishan Khan
 **Software Engineer**
 *Indore, MP* | *+919174996768* | *zishanverse@gmail.com*
-[LinkedIn](https://linkedin.com/in/zishan-khan-)
+[LinkedIn](https://www.linkedin.com/in/zishan-khan-/)
 
 ## EXECUTIVE SUMMARY
 Full-Stack Developer with strong expertise in Next.js, React, Node.js, and AI-powered development. Experienced in building scalable web applications, integrating AI/ML solutions, and deploying production systems. Skilled in leveraging LLMs and prompt engineering to optimize workflows, improve code quality, and deliver intelligent, high-performance applications.
@@ -15,8 +15,8 @@ Full-Stack Developer with strong expertise in Next.js, React, Node.js, and AI-po
 
 ## TECHNICAL SKILLS
 *   **Languages & Frameworks:** Node.js, TypeScript, Next.js, Python
-*   **Databases & Caching:** MongoDB, Redis, PostgreSQL
-*   **AI & ML:** Agentic AI, Prompt Engineering, RAG (Retrieval-Augmented Generation), NumPy, Pandas, Matplotlib, Scikit-learn
+*   **Databases & Caching:** MongoDB, Redis, PostgreSQL, pgvector
+*   **AI & ML:** Advanced RAG, Context Engineering, LLM Evals, AI Observability, Guardrails & Safety, Agentic AI, LangGraph, LangChain, Multi-Agent Systems, Scikit-learn, PyTorch
 *   **DevOps & Cloud:** CI/CD Pipelines (GitHub Actions / GitLab CI), Web Hosting & Deployment (Hostinger/Vercel/ EC2), AWS / Azure (Basics)
 
 ## SOFT SKILLS

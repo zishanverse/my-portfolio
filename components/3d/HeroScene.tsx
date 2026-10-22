@@ -35,55 +35,107 @@ export default function HeroScene() {
         return () => window.removeEventListener('resize', checkWidth);
     }, []);
 
+    useEffect(() => {
+        // Suppress non-fatal Spline runtime internal timeline warnings/errors in development
+        const handleSplineError = (event: ErrorEvent) => {
+            const message = event.message || "";
+            if (message.includes("Missing property") || event.filename?.includes("runtime.js")) {
+                event.preventDefault();
+                event.stopImmediatePropagation();
+            }
+        };
+
+        const handleRejection = (event: PromiseRejectionEvent) => {
+            const message = event.reason?.message || String(event.reason || "");
+            if (message.includes("Missing property")) {
+                event.preventDefault();
+                event.stopImmediatePropagation();
+            }
+        };
+
+        window.addEventListener("error", handleSplineError, true);
+        window.addEventListener("unhandledrejection", handleRejection, true);
+
+        const originalConsoleError = console.error;
+        console.error = (...args: any[]) => {
+            const firstArg = args[0];
+            const msg = typeof firstArg === "string" ? firstArg : firstArg?.message || "";
+            if (typeof msg === "string" && msg.includes("Missing property")) {
+                return;
+            }
+            originalConsoleError.apply(console, args);
+        };
+
+        return () => {
+            window.removeEventListener("error", handleSplineError, true);
+            window.removeEventListener("unhandledrejection", handleRejection, true);
+            console.error = originalConsoleError;
+        };
+    }, []);
+
     useGSAP(() => {
         if (!containerRef.current || !splineRef.current || !isDesktop) return;
 
-        const tl = gsap.timeline({
-            scrollTrigger: {
-                trigger: "body",
-                start: "top top",
-                end: "bottom bottom",
-                scrub: 1.5,
-            }
+        const mm = gsap.matchMedia();
+
+        mm.add("(prefers-reduced-motion: no-preference)", () => {
+            const tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: "body",
+                    start: "top top",
+                    end: "bottom bottom",
+                    scrub: 0.6,
+                }
+            });
+
+            // Hero -> About
+            tl.to(splineRef.current, {
+                x: "-25vw",
+                yPercent: 15,
+                scale: 0.7,
+                duration: 0.2,
+                ease: "power2.inOut"
+            });
+
+            // About -> Skills
+            tl.to(splineRef.current, {
+                x: "35vw",
+                yPercent: 5,
+                scale: 0.5,
+                duration: 0.2,
+                ease: "power2.inOut"
+            });
+
+            // Skills -> AI Systems
+            tl.to(splineRef.current, {
+                x: "-30vw",
+                yPercent: 0,
+                scale: 0.6,
+                duration: 0.2,
+                ease: "power2.inOut"
+            });
+
+            // Keep at end
+            tl.to(splineRef.current, {
+                x: "20vw",
+                yPercent: 10,
+                opacity: 0.4,
+                scale: 0.4,
+                duration: 0.2,
+                ease: "power2.inOut"
+            });
         });
 
-        // Hero -> About
-        tl.to(splineRef.current, {
-            x: "-25vw",
-            yPercent: 15,
-            scale: 0.7,
-            duration: 0.2,
-            ease: "power2.inOut"
+        mm.add("(prefers-reduced-motion: reduce)", () => {
+            gsap.set(splineRef.current, {
+                x: 0,
+                yPercent: 0,
+                scale: 0.65,
+                opacity: 0.5
+            });
         });
 
-        // About -> Skills
-        tl.to(splineRef.current, {
-            x: "35vw",
-            yPercent: 5,
-            scale: 0.5,
-            duration: 0.2,
-            ease: "power2.inOut"
-        });
-
-        // Skills -> AI Systems
-        tl.to(splineRef.current, {
-            x: "-30vw",
-            yPercent: 0,
-            scale: 0.6,
-            duration: 0.2,
-            ease: "power2.inOut"
-        });
-
-        // Keep at end
-        tl.to(splineRef.current, {
-            x: "20vw",
-            yPercent: 10,
-            opacity: 0.4,
-            scale: 0.4,
-            duration: 0.2,
-            ease: "power2.inOut"
-        });
-
+        return () => mm.revert();
     }, { scope: containerRef, dependencies: [isDesktop] });
 
     if (!isDesktop) return null;
@@ -103,6 +155,10 @@ export default function HeroScene() {
                     <Spline
                         scene="https://prod.spline.design/KP4hwDFoEbQT1Utk/scene.splinecode"
                         onLoad={() => setSplineLoaded(true)}
+                        onError={(err) => {
+                            console.warn("Spline loading warning:", err);
+                            setSplineLoaded(true);
+                        }}
                     />
                 </div>
             </div>

@@ -28,19 +28,20 @@ const Hero = () => {
                             Zishan Khan
                         </h1>
                         <ContainerTextFlip
-                            words={["AI Engineer", "Full-Stack Dev", "RAG Pipelines", "Agentic AI"]}
+                            words={["Backend Engineer", "Voice AI & Telephony", "RAG Systems", "Multi-Agent Systems"]}
                             className="text-2xl sm:text-3xl md:text-5xl font-semibold text-muted-foreground"
                         />
                     </div>
 
                     <p className="text-base sm:text-lg text-muted-foreground dark:text-gray-300 max-w-lg leading-relaxed">
-                        AI Engineer and Full-Stack Developer specialized in building intelligent applications powered by RAG pipelines, LLM integrations, and scalable backend systems.
+                        Backend and AI Systems Engineer architecting production multi-agent runtimes, real-time Voice AI pipelines, and distributed backends with verified sub-150ms inference latency.
                     </p>
 
                     <div className="flex flex-wrap gap-4 mt-4">
                         <MovingButton
+                            as="div"
                             borderRadius="1.75rem"
-                            className="bg-background text-foreground border-neutral-200 dark:border-slate-800 w-full sm:w-auto"
+                            className="bg-background text-foreground border-neutral-200 dark:border-slate-800 w-full sm:w-auto cursor-pointer"
                         >
                             <Link href="#projects" className="flex items-center justify-center gap-2 w-full px-2">
                                 View Projects
@@ -48,10 +49,11 @@ const Hero = () => {
                             </Link>
                         </MovingButton>
                         <MovingButton
+                            as="div"
                             borderRadius="1.75rem"
-                            className="bg-background text-foreground border-neutral-200 dark:border-slate-800 w-full sm:w-auto"
+                            className="bg-background text-foreground border-neutral-200 dark:border-slate-800 w-full sm:w-auto cursor-pointer"
                         >
-                            <Link href="/contact" className="flex items-center justify-center gap-2 w-full px-2">
+                            <Link href="/resume" className="flex items-center justify-center gap-2 w-full px-2">
                                 <FileText className="w-4 h-4" />
                                 Resume
                             </Link>
@@ -83,6 +85,7 @@ const Hero = () => {
                                 src="/profile.jpg"
                                 alt="Zishan Khan"
                                 fill
+                                priority
                                 sizes="(max-width: 640px) 240px, (max-width: 768px) 280px, 350px"
                                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out grayscale-[0.2] hover:grayscale-0"
                             />

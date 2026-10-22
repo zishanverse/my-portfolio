@@ -80,6 +80,7 @@ const GlassSurface: React.FC<GlassSurfaceProps> = ({
     const redGradId = `red-grad-${uniqueId}`;
     const blueGradId = `blue-grad-${uniqueId}`;
 
+    const [mounted, setMounted] = useState<boolean>(false);
     const [svgSupported, setSvgSupported] = useState<boolean>(false);
 
     const containerRef = useRef<HTMLDivElement>(null);
@@ -90,6 +91,11 @@ const GlassSurface: React.FC<GlassSurfaceProps> = ({
     const gaussianBlurRef = useRef<SVGFEGaussianBlurElement>(null);
 
     const isDarkMode = useDarkMode();
+
+    useEffect(() => {
+        setMounted(true);
+        setSvgSupported(supportsSVGFilters());
+    }, []);
 
     const generateDisplacementMap = () => {
         const rect = containerRef.current?.getBoundingClientRect();
@@ -157,24 +163,6 @@ const GlassSurface: React.FC<GlassSurfaceProps> = ({
     ]);
 
     useEffect(() => {
-        setSvgSupported(supportsSVGFilters());
-    }, []);
-
-    useEffect(() => {
-        if (!containerRef.current) return;
-
-        const resizeObserver = new ResizeObserver(() => {
-            setTimeout(updateDisplacementMap, 0);
-        });
-
-        resizeObserver.observe(containerRef.current);
-
-        return () => {
-            resizeObserver.disconnect();
-        };
-    }, []);
-
-    useEffect(() => {
         if (!containerRef.current) return;
 
         const resizeObserver = new ResizeObserver(() => {
@@ -211,8 +199,8 @@ const GlassSurface: React.FC<GlassSurfaceProps> = ({
     };
 
     const supportsBackdropFilter = () => {
-        if (typeof window === 'undefined') return false;
-        return CSS.supports('backdrop-filter', 'blur(10px)');
+        if (typeof window === 'undefined' || !mounted) return false;
+        return typeof CSS !== 'undefined' && CSS.supports('backdrop-filter', 'blur(10px)');
     };
 
     const getContainerStyles = (): React.CSSProperties => {
@@ -307,6 +295,7 @@ const GlassSurface: React.FC<GlassSurfaceProps> = ({
     return (
         <div
             ref={containerRef}
+            suppressHydrationWarning
             className={`${glassSurfaceClasses} ${focusVisibleClasses} ${className}`}
             style={getContainerStyles()}
         >
