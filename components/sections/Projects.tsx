@@ -38,7 +38,7 @@ const projectsData: ProjectData[] = [
         ],
         tags: ["Node.js", "TypeScript", "Fastify", "Twilio", "ElevenLabs", "LangGraph", "Redis", "pgvector"],
         imageColor: "from-violet-600 to-indigo-600",
-        link: "https://github.com/zishanverse/business-agents",
+        link: "https://business-agents-web-tau.vercel.app/",
         github: "https://github.com/zishanverse/business-agents"
     },
     {
@@ -54,8 +54,8 @@ const projectsData: ProjectData[] = [
         ],
         tags: ["Next.js", "LangChain.js", "Composio", "Gemini", "Prisma", "PostgreSQL"],
         imageColor: "from-emerald-500 to-teal-500",
-        link: "https://mcp-learning-path-generator-owktou3mrkax6fdj7bhpgg.streamlit.app/",
-        github: "https://github.com/zishanverse/mcp-learning-path-generator"
+        link: "https://mcp-agents.vercel.app/",
+        github: "https://github.com/zishanverse/mcp-agents"
     },
     {
         id: "1",
