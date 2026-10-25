@@ -22,16 +22,16 @@ const ThemeAwareParticles = () => {
     return (
         <Particles
             key={isDark ? "dark" : "light"} // Force re-mount on theme change to ensure clean transition
-            particleColors={isDark ? ["#ffffff"] : ["#000000"]}
-            particleCount={75}
-            particleSpread={10}
-            speed={0.1}
-            particleBaseSize={85}
-            pixelRatio={1.25}
+            particleColors={isDark ? ["#ffffff", "#818cf8", "#a5b4fc"] : ["#09090b", "#6366f1", "#4f46e5"]}
+            particleCount={36}
+            particleSpread={12}
+            speed={0.05}
+            particleBaseSize={55}
+            pixelRatio={1}
             moveParticlesOnHover={true}
-            alphaParticles={false}
+            alphaParticles={true}
             disableRotation={false}
-            className="absolute inset-0"
+            className="absolute inset-0 pointer-events-none opacity-40 dark:opacity-30"
         />
     );
 };

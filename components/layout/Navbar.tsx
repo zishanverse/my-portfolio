@@ -78,11 +78,7 @@ export const Navbar = () => {
                                 className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1.5"
                             >
                                 {item.name}
-                                {item.name === "AI Lab" && (
-                                    <span className="text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full bg-indigo-500/10 text-indigo-500 border border-indigo-500/20">
-                                        Live
-                                    </span>
-                                )}
+
                             </Link>
                         ))}
                         <div className="flex items-center gap-4">

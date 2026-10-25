@@ -127,11 +127,10 @@ const FeatureTabs = ({
             <button
                 key={tab}
                 onClick={() => onChange(tab)}
-                className={`px-5 py-3 text-xs font-semibold tracking-wide transition-colors cursor-pointer border-b-2 -mb-px whitespace-nowrap ${
-                    active === tab
+                className={`px-5 py-3 text-xs font-semibold tracking-wide transition-colors cursor-pointer border-b-2 -mb-px whitespace-nowrap ${active === tab
                         ? "border-white text-foreground"
                         : "border-transparent text-muted-foreground hover:text-muted-foreground"
-                }`}
+                    }`}
             >
                 {tab}
             </button>
@@ -213,13 +212,22 @@ const ProjectCard = ({
 
     useEffect(() => {
         if (open) {
+            const originalBodyOverflow = document.body.style.overflow;
+            const originalHtmlOverflow = document.documentElement.style.overflow;
             document.body.style.overflow = "hidden";
-        } else {
-            document.body.style.overflow = "auto";
+            document.documentElement.style.overflow = "hidden";
+
+            const handleKeyDown = (e: KeyboardEvent) => {
+                if (e.key === "Escape") setOpen(false);
+            };
+            window.addEventListener("keydown", handleKeyDown);
+
+            return () => {
+                document.body.style.overflow = originalBodyOverflow;
+                document.documentElement.style.overflow = originalHtmlOverflow;
+                window.removeEventListener("keydown", handleKeyDown);
+            };
         }
-        return () => {
-            document.body.style.overflow = "auto";
-        };
     }, [open]);
 
     return (
@@ -242,13 +250,13 @@ const ProjectCard = ({
                         </motion.div>
                         <div className="flex-1 min-w-0">
                             <Label>{label}</Label>
-                            <motion.h3 
+                            <motion.h3
                                 layoutId={`card-title-${layoutId}`}
                                 className="text-base font-bold text-foreground mb-1.5"
                             >
                                 {title}
                             </motion.h3>
-                            <motion.p 
+                            <motion.p
                                 layoutId={`card-desc-${layoutId}`}
                                 className="text-sm text-muted-foreground leading-relaxed"
                             >
@@ -268,7 +276,7 @@ const ProjectCard = ({
                     </div>
                     <button
                         onClick={() => setOpen(true)}
-                        className="w-full flex items-center justify-center gap-1.5 py-2.5 rounded-xl bg-foreground text-background text-sm font-bold hover:bg-foreground/90 transition-colors"
+                        className="w-full flex items-center justify-center gap-1.5 py-2.5 rounded-xl bg-foreground text-background text-sm font-bold hover:bg-foreground/90 transition-colors cursor-pointer"
                     >
                         Explore System
                     </button>
@@ -277,7 +285,10 @@ const ProjectCard = ({
 
             <AnimatePresence>
                 {open && (
-                    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-12">
+                    <div 
+                        data-lenis-prevent="true"
+                        className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-12"
+                    >
                         <motion.div
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
@@ -287,6 +298,9 @@ const ProjectCard = ({
                         />
                         <motion.div
                             layoutId={`card-container-${layoutId}`}
+                            data-lenis-prevent="true"
+                            role="dialog"
+                            aria-modal="true"
                             className="relative w-full max-w-5xl max-h-[90vh] overflow-hidden rounded-3xl border border-border bg-background shadow-2xl flex flex-col z-10"
                         >
                             <div className="sticky top-0 z-20 flex items-center justify-between p-4 sm:p-6 border-b border-border bg-background/80 backdrop-blur-xl shrink-0">
@@ -298,7 +312,7 @@ const ProjectCard = ({
                                         <Icon className="w-5 h-5" />
                                     </motion.div>
                                     <div>
-                                        <motion.h3 
+                                        <motion.h3
                                             layoutId={`card-title-${layoutId}`}
                                             className="text-base sm:text-lg font-bold text-foreground leading-tight"
                                         >
@@ -309,14 +323,19 @@ const ProjectCard = ({
                                 </div>
                                 <button
                                     onClick={() => setOpen(false)}
-                                    className="p-2 sm:p-2.5 rounded-full hover:bg-secondary transition-colors bg-secondary border border-border flex shrink-0"
+                                    className="p-2 sm:p-2.5 rounded-full hover:bg-secondary transition-colors bg-secondary border border-border flex shrink-0 cursor-pointer"
                                 >
                                     <X className="w-4 h-4 sm:w-5 sm:h-5 text-muted-foreground" />
                                 </button>
                             </div>
-                            
-                            <div className="flex-1 overflow-y-auto no-visible-scrollbar p-4 sm:p-8">
-                                <motion.div 
+
+                            <div 
+                                data-lenis-prevent="true"
+                                className="flex-1 overflow-y-auto overscroll-contain p-4 sm:p-8"
+                                style={{ overscrollBehavior: "contain", WebkitOverflowScrolling: "touch" }}
+                                onWheel={(e) => e.stopPropagation()}
+                            >
+                                <motion.div
                                     initial={{ opacity: 0, y: 10 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ delay: 0.2 }}
@@ -359,8 +378,6 @@ export default function AiLabPage() {
             >
                 {/* System meta row */}
                 <div className="flex flex-wrap items-center gap-3 mb-8">
-                    <StatusBadge text="Model Loaded" color="emerald" />
-                    <StatusBadge text="TF.js Runtime" color="indigo" />
                     <span className="text-xs text-muted-foreground font-mono">Conv1D · 3,892 params · &lt;2ms latency</span>
                 </div>
 

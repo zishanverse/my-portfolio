@@ -72,11 +72,11 @@ const ProjectCard = ({ project, onClick }: ProjectCardProps) => {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            className="group relative min-h-[24rem] sm:min-h-[28rem] flex w-full cursor-pointer perspective-1000"
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            className="group relative min-h-[24rem] sm:min-h-[28rem] flex w-full cursor-pointer perspective-1000 will-change-transform transform-gpu"
         >
             {/* Outer Container for Glassmorphism & Shadow */}
-            <div className="flex flex-col w-full bg-white/3 dark:bg-zinc-900/40 backdrop-blur-xl border border-white/10 rounded-3xl overflow-hidden transition-all duration-500 group-hover:border-indigo-500/50 shadow-sm group-hover:shadow-lg">
+            <div className="flex flex-col w-full bg-card/90 dark:bg-zinc-900/60 backdrop-blur-xl border border-border hover:border-indigo-500/50 rounded-3xl overflow-hidden transition-all duration-300 shadow-sm hover:shadow-xl">
                 
 
                 {/* Content Section */}

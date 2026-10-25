@@ -199,7 +199,21 @@ const Particles: React.FC<ParticlesProps> = ({
         let lastTime = performance.now();
         let elapsed = 0;
 
+        let isRunning = true;
+        const onVisibilityChange = () => {
+            if (document.hidden) {
+                isRunning = false;
+                cancelAnimationFrame(animationFrameId);
+            } else if (!isRunning) {
+                isRunning = true;
+                lastTime = performance.now();
+                animationFrameId = requestAnimationFrame(update);
+            }
+        };
+        document.addEventListener('visibilitychange', onVisibilityChange);
+
         const update = (t: number) => {
+            if (!isRunning) return;
             animationFrameId = requestAnimationFrame(update);
             const delta = t - lastTime;
             lastTime = t;
@@ -227,6 +241,8 @@ const Particles: React.FC<ParticlesProps> = ({
         animationFrameId = requestAnimationFrame(update);
 
         return () => {
+            isRunning = false;
+            document.removeEventListener('visibilitychange', onVisibilityChange);
             window.removeEventListener('resize', resize);
             if (moveParticlesOnHover) {
                 container.removeEventListener('mousemove', handleMouseMove);

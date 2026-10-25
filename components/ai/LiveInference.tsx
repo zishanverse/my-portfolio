@@ -419,7 +419,7 @@ export const LiveInference = () => {
     "Renewable_Energy": ${renewable / 100},
     "Population": 1.44
   },
-  "timestamp": "${new Date().toISOString()}"
+  "timestamp": "2026-10-25T12:00:00.000Z"
 }`}
                             </pre>
                         </div>

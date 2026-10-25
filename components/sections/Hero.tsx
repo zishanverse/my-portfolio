@@ -1,6 +1,5 @@
 "use client";
 
-import { Button as MovingButton } from "@/components/ui/moving-border";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, FileText } from "lucide-react";
@@ -37,27 +36,21 @@ const Hero = () => {
                         Backend and AI Systems Engineer architecting production multi-agent runtimes, real-time Voice AI pipelines, and distributed backends with verified sub-150ms inference latency.
                     </p>
 
-                    <div className="flex flex-wrap gap-4 mt-4">
-                        <MovingButton
-                            as="div"
-                            borderRadius="1.75rem"
-                            className="bg-background text-foreground border-neutral-200 dark:border-slate-800 w-full sm:w-auto cursor-pointer"
+                    <div className="flex flex-wrap items-center gap-4 mt-2">
+                        <Link
+                            href="#projects"
+                            className="group inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-2xl bg-foreground text-background font-semibold text-sm shadow-md hover:shadow-xl hover:bg-foreground/90 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
                         >
-                            <Link href="#projects" className="flex items-center justify-center gap-2 w-full px-2">
-                                View Projects
-                                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                            </Link>
-                        </MovingButton>
-                        <MovingButton
-                            as="div"
-                            borderRadius="1.75rem"
-                            className="bg-background text-foreground border-neutral-200 dark:border-slate-800 w-full sm:w-auto cursor-pointer"
+                            <span>View Projects</span>
+                            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
+                        </Link>
+                        <Link
+                            href="/resume"
+                            className="group inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-2xl bg-card/80 backdrop-blur-md border border-border hover:border-foreground/30 text-foreground font-semibold text-sm shadow-xs hover:bg-muted/50 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
                         >
-                            <Link href="/resume" className="flex items-center justify-center gap-2 w-full px-2">
-                                <FileText className="w-4 h-4" />
-                                Resume
-                            </Link>
-                        </MovingButton>
+                            <FileText className="w-4 h-4 text-muted-foreground group-hover:text-foreground transition-colors" />
+                            <span>Resume</span>
+                        </Link>
                     </div>
                 </div>
 
@@ -69,10 +62,10 @@ const Hero = () => {
 
                     {/* Premium Profile Image Container */}
                     <motion.div
-                        initial={{ opacity: 0, scale: 0.8, x: 50 }}
+                        initial={{ opacity: 0, scale: 0.85, x: 40 }}
                         animate={{ opacity: 1, scale: 1, x: 0 }}
-                        transition={{ duration: 1, ease: "easeOut", delay: 0.3 }}
-                        whileHover={{ y: -10 }}
+                        transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+                        whileHover={{ y: -6 }}
                         className="relative w-64 sm:w-72 md:w-80 aspect-[3/4] rounded-[2.5rem] p-3 bg-white/5 dark:bg-white/5 backdrop-blur-xl border border-white/20 shadow-2xl group"
                     >
                         {/* Decorative Background Glows */}
@@ -87,34 +80,34 @@ const Hero = () => {
                                 fill
                                 priority
                                 sizes="(max-width: 640px) 240px, (max-width: 768px) 280px, 350px"
-                                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out grayscale-[0.2] hover:grayscale-0"
+                                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                             />
 
                             {/* Inner Glass Overlay (Bottom) */}
-                            <div className="absolute bottom-0 left-0 w-full p-6 bg-linear-to-t from-black/80 via-black/40 to-transparent">
+                            <div className="absolute bottom-0 left-0 w-full p-6 bg-linear-to-t from-black/85 via-black/45 to-transparent">
                                 <p className="text-white font-bold text-lg tracking-tight">Zishan Khan</p>
-                                <p className="text-zinc-200 text-xs font-medium uppercase tracking-widest">AI Engineer</p>
+                                <p className="text-zinc-300 text-xs font-semibold uppercase tracking-widest mt-0.5">AI Systems & Backend</p>
                             </div>
                         </div>
 
-                        {/* Floating Interaction Badges */}
+                        {/* Floating Interaction Badges - Calibrated to prevent screen edge overflow */}
                         <motion.div
-                            animate={{ y: [0, -10, 0] }}
+                            animate={{ y: [0, -8, 0] }}
                             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                            className="absolute -top-6 -left-6 sm:-left-8 p-4 rounded-2xl bg-white/80 dark:bg-zinc-900/80 backdrop-blur-2xl border border-white/20 dark:border-white/10 shadow-xl hidden sm:block z-20"
+                            className="absolute -top-5 left-2 sm:-left-6 px-3.5 py-2 rounded-xl bg-card/90 dark:bg-zinc-900/90 backdrop-blur-2xl border border-border/80 shadow-lg hidden sm:block z-20"
                         >
-                            <div className="flex items-center gap-3">
-                                <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                                <span className="text-xs font-bold text-zinc-900 dark:text-white uppercase tracking-tighter">Available for Work</span>
+                            <div className="flex items-center gap-2.5">
+                                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                                <span className="text-[11px] font-bold text-foreground uppercase tracking-wider">Available for Work</span>
                             </div>
                         </motion.div>
 
                         <motion.div
-                            animate={{ y: [0, 10, 0] }}
-                            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                            className="absolute -bottom-6 -right-6 sm:-right-8 p-4 rounded-2xl bg-indigo-600/90 backdrop-blur-xl border border-white/20 shadow-xl hidden sm:block z-20"
+                            animate={{ y: [0, 8, 0] }}
+                            transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                            className="absolute -bottom-4 right-2 sm:right-0 px-4 py-2 rounded-xl bg-indigo-600/95 backdrop-blur-xl border border-white/20 shadow-xl hidden sm:block z-20"
                         >
-                            <span className="text-xs font-black text-white uppercase tracking-widest">3+ years</span>
+                            <span className="text-[11px] font-bold text-white uppercase tracking-widest">3+ Years Exp</span>
                         </motion.div>
                     </motion.div>
 

@@ -98,13 +98,14 @@ const Projects = () => {
 
 
             <div className="container mx-auto px-4 sm:px-6 relative z-20">
-                <div className="mb-12 md:mb-20 max-w-2xl">
-                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-4 bg-clip-text text-transparent bg-linear-to-r from-foreground to-muted-foreground">
-                        Featured Projects
+                <div className="mb-12 md:mb-16 max-w-3xl">
+
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-4 text-foreground">
+                        Featured Systems & Engineering
                     </h2>
-                    <div className="h-1.5 w-20 bg-indigo-500 rounded-full mb-6" />
+                    <div className="h-1 w-16 bg-indigo-500/40 rounded-full mb-6" />
                     <p className="text-muted-foreground text-base sm:text-lg md:text-xl leading-relaxed">
-                        A curation of my professional work and personal experiments, focusing on AI systems and high-performance web applications.
+                        Production-grade multi-agent architectures, real-time Voice AI runtimes, and distributed diagnostic pipelines engineered for high throughput and verified reliability.
                     </p>
                 </div>
 
@@ -119,10 +120,7 @@ const Projects = () => {
                     <div className="absolute top-0 right-0 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none -z-10 group-hover:bg-indigo-500/15 transition-all" />
                     <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
                         <div className="space-y-3 max-w-2xl">
-                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs font-semibold uppercase tracking-wider">
-                                <span className="w-2 h-2 rounded-full bg-indigo-500 animate-pulse" />
-                                Flagship Engineering Demo
-                            </div>
+
                             <h3 className="text-2xl sm:text-3xl font-bold text-foreground">
                                 Interactive AI / ML Workspace & Neural Lab
                             </h3>

@@ -4,7 +4,6 @@ import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { TextHighlight } from "@/components/ui/hero-highlight";
 import { Brain, Code2, Rocket, Share2 } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -34,25 +33,26 @@ const About = () => {
     }, { scope: containerRef });
 
     return (
-        <section 
+        <section
             id="about"
-            ref={containerRef} 
+            ref={containerRef}
             className="py-32 w-full bg-transparent dark:bg-transparent relative overflow-hidden flex flex-col items-center justify-center"
         >
             <div className="container mx-auto px-6 relative z-10 flex flex-col items-center">
-                
+
                 {/* Centered Content */}
                 <div ref={contentRef} className="max-w-4xl w-full flex flex-col items-center text-center space-y-12">
-                    
+
                     {/* Header */}
                     <div className="space-y-4 flex flex-col items-center">
-                        <TextHighlight className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-foreground uppercase">
+
+                        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-foreground uppercase">
                             Architecture & Engineering
-                        </TextHighlight>
-                        <p className="text-muted-foreground font-semibold text-sm md:text-base tracking-widest uppercase mt-4">
+                        </h2>
+                        <p className="text-muted-foreground font-semibold text-xs sm:text-sm md:text-base tracking-widest uppercase mt-2">
                             Production Backends · Multi-Agent AI · Real-Time Systems
                         </p>
-                        <div className="w-16 h-1.5 bg-foreground/20 rounded-full mt-6" />
+                        <div className="w-16 h-1 bg-indigo-500/40 rounded-full mt-4" />
                     </div>
 
                     {/* Main Text */}
@@ -68,28 +68,28 @@ const About = () => {
                     {/* Core Pillars - Clean Bento Grid */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 w-full pt-8">
                         {[
-                            { 
-                                icon: Brain, 
-                                title: "Multi-Agent Systems", 
+                            {
+                                icon: Brain,
+                                title: "Multi-Agent Systems",
                                 desc: "LangGraph orchestration, BullMQ queues, and autonomous supervisor-critic loops."
                             },
-                            { 
-                                icon: Code2, 
-                                title: "Voice AI & Telephony", 
+                            {
+                                icon: Code2,
+                                title: "Voice AI & Telephony",
                                 desc: "Twilio streaming ASR, ElevenLabs neural TTS, and sub-second interruption handling."
                             },
-                            { 
-                                icon: Rocket, 
-                                title: "Vector & RAG Memory", 
+                            {
+                                icon: Rocket,
+                                title: "Vector & RAG Memory",
                                 desc: "PostgreSQL + pgvector, Redis intent caching, and verified sub-150ms p95 latency."
                             },
-                            { 
-                                icon: Share2, 
-                                title: "Production Backends", 
+                            {
+                                icon: Share2,
+                                title: "Production Backends",
                                 desc: "Node.js, TypeScript, Express, Fastify, multi-tier RBAC, and Docker deployments."
                             }
                         ].map((pillar, i) => (
-                            <div 
+                            <div
                                 key={i}
                                 className="p-6 rounded-2xl bg-card border border-border hover:border-foreground/20 transition-all group flex flex-col items-center text-center gap-4"
                             >

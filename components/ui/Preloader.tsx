@@ -7,12 +7,18 @@ import { usePreloader } from "@/components/providers/PreloaderProvider";
 export function Preloader() {
     const { isSplineLoaded } = usePreloader();
     const [progress, setProgress] = useState(0);
-    const [showPreloader, setShowPreloader] = useState(() => {
-        if (typeof window !== "undefined") {
-            return !sessionStorage.getItem("portfolio_visited");
+    const [showPreloader, setShowPreloader] = useState(false);
+
+    useEffect(() => {
+        try {
+            const visited = sessionStorage.getItem("portfolio_visited");
+            if (!visited) {
+                setShowPreloader(true);
+            }
+        } catch {
+            setShowPreloader(true);
         }
-        return true;
-    });
+    }, []);
 
     useEffect(() => {
         if (!showPreloader) return;

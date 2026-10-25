@@ -15,14 +15,17 @@ export function SmoothScrolling({ children }: { children: React.ReactNode }) {
         const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
         const lenis = new Lenis({
-            duration: prefersReducedMotion ? 0.1 : 0.85,
+            duration: prefersReducedMotion ? 0 : 0.55,
             easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
             orientation: "vertical",
             gestureOrientation: "vertical",
             smoothWheel: !prefersReducedMotion,
-            touchMultiplier: 1.8,
-            wheelMultiplier: 1.1,
+            touchMultiplier: 1.0,
+            wheelMultiplier: 1.0,
             autoRaf: false,
+            prevent: (node) => Boolean(
+                (node as HTMLElement)?.closest?.('[data-lenis-prevent], [role="dialog"], [aria-modal="true"]')
+            ),
         });
 
         lenisRef.current = lenis;

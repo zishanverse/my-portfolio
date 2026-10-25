@@ -5,7 +5,6 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import AiConversationalAgent from "../ai/AiConversationalAgent";
-import { TextHighlight } from "@/components/ui/hero-highlight";
 import { motion } from "framer-motion";
 import {
     Brain,
@@ -86,16 +85,18 @@ const AiSystems = () => {
 
     return (
         <section ref={containerRef} className="py-20 md:py-32 w-full bg-transparent dark:bg-transparent relative overflow-hidden flex flex-col items-center">
-            
+
             {/* Section Header */}
-            <div ref={textRef} className="text-center space-y-4 mb-16 md:mb-24 z-10 px-4">
-                <TextHighlight className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-foreground uppercase">
+            <div ref={textRef} className="text-center space-y-4 mb-16 md:mb-24 z-10 px-4 flex flex-col items-center">
+
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-foreground uppercase">
                     Agentic & Telephony Ecosystem
-                </TextHighlight>
-                <p className="text-muted-foreground font-medium text-sm tracking-widest uppercase mt-2">
-                    Event-Driven AI Runtimes
+                </h2>
+                <p className="text-muted-foreground font-semibold text-xs sm:text-sm tracking-widest uppercase mt-2">
+                    Production Autonomous Runtimes
                 </p>
-                <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto mt-6 font-medium leading-relaxed">
+                <div className="w-16 h-1 bg-indigo-500/40 rounded-full mt-2 mb-2" />
+                <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto font-medium leading-relaxed">
                     Production multi-agent architectures, real-time Voice AI runtimes, and high-throughput vector retrieval pipelines engineered for autonomous decision-making and low-latency execution.
                 </p>
             </div>

@@ -79,59 +79,71 @@ export default function HeroScene() {
         const mm = gsap.matchMedia();
 
         mm.add("(prefers-reduced-motion: no-preference)", () => {
+            // Set initial hero docking
+            gsap.set(splineRef.current, {
+                x: "22vw",
+                yPercent: -2,
+                scale: 0.7,
+                opacity: 0.95,
+                transformOrigin: "center center",
+            });
+
             const tl = gsap.timeline({
                 scrollTrigger: {
                     trigger: "body",
                     start: "top top",
-                    end: "bottom bottom",
-                    scrub: 0.6,
+                    end: "60% bottom",
+                    scrub: 0.8,
                 }
             });
 
-            // Hero -> About
+            // Hero -> About: smoothly dock in right margin, scale down to prevent any text occlusion
             tl.to(splineRef.current, {
-                x: "-25vw",
-                yPercent: 15,
-                scale: 0.7,
-                duration: 0.2,
-                ease: "power2.inOut"
-            });
-
-            // About -> Skills
-            tl.to(splineRef.current, {
-                x: "35vw",
-                yPercent: 5,
+                x: "36vw",
+                yPercent: 6,
                 scale: 0.5,
-                duration: 0.2,
-                ease: "power2.inOut"
-            });
-
-            // Skills -> AI Systems
-            tl.to(splineRef.current, {
-                x: "-30vw",
-                yPercent: 0,
-                scale: 0.6,
-                duration: 0.2,
-                ease: "power2.inOut"
-            });
-
-            // Keep at end
-            tl.to(splineRef.current, {
-                x: "20vw",
-                yPercent: 10,
                 opacity: 0.4,
-                scale: 0.4,
-                duration: 0.2,
+                duration: 0.25,
+                ease: "power2.inOut"
+            });
+
+            // About -> Skills: maintain right perimeter dock cleanly
+            tl.to(splineRef.current, {
+                x: "37vw",
+                yPercent: 10,
+                scale: 0.46,
+                opacity: 0.32,
+                duration: 0.25,
+                ease: "power2.inOut"
+            });
+
+            // Skills -> AI Systems: stay on right margin beside the skills grid
+            tl.to(splineRef.current, {
+                x: "38vw",
+                yPercent: 4,
+                scale: 0.42,
+                opacity: 0.28,
+                duration: 0.25,
+                ease: "power2.inOut"
+            });
+
+            // Past AI Systems (Projects & Contact): fade out to zero so interactive project cards get full GPU & focus
+            tl.to(splineRef.current, {
+                x: "40vw",
+                yPercent: 8,
+                opacity: 0,
+                scale: 0.35,
+                duration: 0.25,
                 ease: "power2.inOut"
             });
         });
 
         mm.add("(prefers-reduced-motion: reduce)", () => {
             gsap.set(splineRef.current, {
-                x: 0,
+                x: "20vw",
                 yPercent: 0,
-                scale: 0.65,
-                opacity: 0.5
+                scale: 0.55,
+                opacity: 0.4
             });
         });
 
@@ -143,13 +155,14 @@ export default function HeroScene() {
     return (
         <div ref={containerRef} className="fixed inset-0 z-0 pointer-events-none flex items-center justify-center overflow-hidden">
             {/* 
-                Optimized Spline Container:
-                1. Render at fixed size and scale down visually for 'smaller' footprint as requested.
-                2. Lower z-index to stay behind UI correctly.
+                Calibrated 3D Spline Container:
+                1. Keeps interactive 3D model active in Hero and margins.
+                2. pointer-events-none prevents blocking text selection or buttons.
+                3. will-change and transform-gpu ensure 60fps buttery scrolling.
             */}
             <div 
                 ref={splineRef} 
-                className={`w-[1000px] h-[600px] pointer-events-auto relative overflow-hidden transition-opacity duration-1000 ${isSplineLoaded ? 'opacity-100' : 'opacity-0'}`}
+                className={`w-[1000px] h-[600px] pointer-events-none select-none relative overflow-hidden transition-opacity duration-1000 will-change-transform transform-gpu ${isSplineLoaded ? 'opacity-100' : 'opacity-0'}`}
             >
                 <div className="absolute left-0 w-full h-[calc(100%+200px)] -top-[100px]">
                     <Spline

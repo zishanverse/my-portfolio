@@ -31,20 +31,21 @@ const techLogos = [
     { node: <SiDocker className="text-[#2496ED]" />, title: "Docker", href: "https://www.docker.com" },
 ];
 
-const softSkills = [
+const coreCompetencies = [
     "Advanced RAG", "Context Engineering", "LLM Evals", "AI Observability",
     "Guardrails & Safety", "Multi-Agent AI", "Agent Orchestration",
-    "Problem Solving", "System Architecture", "CI/CD & DevOps"
+    "Event-Driven Telephony", "Vector DB Architecture", "CI/CD & DevOps"
 ];
 
 const Skills = () => {
     return (
-        <section id="skills" className="py-20 md:py-24 w-full bg-transparent dark:bg-transparent relative overflow-hidden">
+        <section id="skills" className="py-20 md:py-28 w-full bg-transparent dark:bg-transparent relative overflow-hidden">
 
             <div className="container mx-auto px-4 sm:px-6 relative z-20">
                 <div className="mb-12 md:mb-16 text-center md:text-left">
-                    <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-foreground dark:text-white">Skills & Expertise</h2>
-                    <p className="text-muted-foreground mt-2 text-base sm:text-lg">My creative and technical toolbox.</p>
+
+                    <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight text-foreground">Production Stack & Architecture</h2>
+                    <p className="text-muted-foreground mt-2 text-base sm:text-lg max-w-xl">Technologies, distributed infrastructure, and AI engineering frameworks battle-tested in production.</p>
                 </div>
 
                 <div className="space-y-12">
@@ -78,25 +79,25 @@ const Skills = () => {
                         />
                     </div>
 
-                    {/* Soft Skills & Concepts - Text Badges */}
-                    <div className="w-full overflow-hidden pt-8">
+                    {/* Core Architectural Competencies - Text Badges */}
+                    <div className="w-full overflow-hidden pt-6">
                         <LogoLoop
-                            logos={softSkills.map((skill) => ({
+                            logos={coreCompetencies.map((skill) => ({
                                 node: (
-                                    <div className="px-6 py-2 rounded-full border border-neutral-200 dark:border-neutral-800 bg-neutral-100 dark:bg-neutral-900/50 text-sm md:text-base font-medium text-neutral-800 dark:text-neutral-200 whitespace-nowrap shadow-sm">
+                                    <div className="px-5 py-2 rounded-xl border border-border bg-card/80 backdrop-blur-sm text-xs sm:text-sm font-semibold text-foreground whitespace-nowrap shadow-xs hover:border-indigo-500/40 transition-colors">
                                         {skill}
                                     </div>
                                 )
                             }))}
-                            speed={80}
+                            speed={70}
                             direction="left"
                             logoHeight={40}
-                            gap={40}
+                            gap={28}
                             pauseOnHover
                             fadeOut
                             fadeOutColor="transparent"
                             renderItem={(item: any) => item.node}
-                            ariaLabel="Soft Skills and Concepts"
+                            ariaLabel="Core AI and Engineering Competencies"
                         />
                     </div>
                 </div>

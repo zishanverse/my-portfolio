@@ -16,26 +16,38 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: "Zishan Khan | Creative Developer",
+    default: "Zishan Khan | Backend & AI Systems Engineer",
     template: "%s | Zishan Khan",
   },
-  description: "A creative developer specializing in 3D web experiences, modern UI/UX, and scalable frontend architecture.",
-  keywords: ["Creative Developer", "Frontend Engineer", "React", "Next.js", "Three.js", "Portfolio"],
+  description: "Backend and AI Systems Engineer specializing in autonomous multi-agent runtimes, real-time Voice AI telephony pipelines, and high-throughput vector search infrastructure.",
+  keywords: [
+    "Backend Engineer",
+    "AI Systems Engineer",
+    "Voice AI",
+    "Telephony",
+    "Multi-Agent Systems",
+    "LangGraph",
+    "pgvector",
+    "Next.js",
+    "TypeScript",
+    "Node.js",
+    "Distributed Systems"
+  ],
   authors: [{ name: "Zishan Khan" }],
   creator: "Zishan Khan",
   openGraph: {
     type: "website",
     locale: "en_US",
     url: "https://zishan-portfolio.vercel.app",
-    title: "Zishan Khan | Creative Developer",
-    description: "Building immersive digital experiences.",
+    title: "Zishan Khan | Backend & AI Systems Engineer",
+    description: "Building production multi-agent runtimes, real-time voice telephony, and resilient backend systems.",
     siteName: "Zishan Khan Portfolio",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Zishan Khan | Creative Developer",
-    description: "Building immersive digital experiences.",
-    creator: "@johndoe",
+    title: "Zishan Khan | Backend & AI Systems Engineer",
+    description: "Building production multi-agent runtimes, real-time voice telephony, and resilient backend systems.",
+    creator: "@zishanverse",
   },
   robots: {
     index: true,

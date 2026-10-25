@@ -30,11 +30,7 @@ const Contact = () => {
 
             <div className="container mx-auto px-6 text-center">
                 <div className="max-w-3xl mx-auto space-y-8">
-                    {/* Status Pill */}
-                    <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-xs font-semibold">
-                        <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                        Available for AI Engineering & Full-Stack Roles
-                    </div>
+
 
                     <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-foreground">
                         Ready to Build Something <span className="text-indigo-500">Intelligent?</span>
